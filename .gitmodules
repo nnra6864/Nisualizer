@@ -1,0 +1,3 @@
+[submodule "Nisualizer/Assets/NnUtils"]
+	path = Nisualizer/Assets/NnUtils
+	url = https://github.com/nnra6864/NnUtils.git
