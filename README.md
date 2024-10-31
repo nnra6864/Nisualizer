@@ -24,7 +24,7 @@ Nisualizer requires a little setup in order to work, it should take no more than
         }
         ```
    
-2. Create a virtual input device that captures all the output data(yes, a microphone capturing your system audio), following example is a fish function that can easily be translated to bash(thanks gpt btw):
+2. Create a virtual input device that captures all the output data(yes, a microphone capturing your system audio). Following example is a fish function that can easily be translated to bash(thanks gpt btw):
     ```fish
     function output_input
         # Create a new virtual source that other apps can use as input
@@ -49,7 +49,7 @@ Nisualizer requires a little setup in order to work, it should take no more than
     ```
     
 3. Reload your fish config, usually done by simply restarting the terminal, and run the `output_input` command. </br>
-*If all your output devices are present before starting you de(e.g. Hyprland), you can run this command on startup, e.g. `exec-once = output_input` for Hyprland.*
+*If all your output devices are present before starting your de(e.g. Hyprland), you can run this command on startup, e.g. `exec-once = output_input` for Hyprland.*
 4. Start the visualizer. This can be done by either running the app directly, or starting it with your de, e.g. Hyprland:
     ```
     exec-once = Path/To/Nisualizer.x86_64
@@ -61,7 +61,7 @@ Nisualizer requires a little setup in order to work, it should take no more than
 2. How's the performance?
     - Nisualizer itself should perform just fine on most systems. As for the resource usage, it depends, shouldn't be too bad, but my focus isn't on that, I just wanna create a good looking background.
 3. Can I fork this project and make my own visualizer?
-    - Absolutely, I am really interested to see what the community is capable of creating, after all, there are much more skilled artists and developers than me out there.
+    - Absolutely, I am really interested to see what the community is capable of creating. After all, there are much more skilled artists and developers, than me, out there.
 
 # How it works
 Nisualizer works by capturing the audio data from a virtual input device called output_input, created in [Setup](#setup), and processing it in various ways to create interesting effects.
