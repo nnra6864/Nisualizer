@@ -800,54 +800,6 @@ PrefabInstance:
       propertyPath: _microphoneData
       value: 
       objectReference: {fileID: 152640829}
-    - target: {fileID: 4563210201025919042, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: _playRateRange.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
-      value: Loudness
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Name
-      value: WindSpeed
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Vector2f.m_Array.Array.data[1].m_Value.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Vector2f.m_Array.Array.data[1].m_Value.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
-      value: -3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
