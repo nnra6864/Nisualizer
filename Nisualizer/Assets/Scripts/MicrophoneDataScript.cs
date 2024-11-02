@@ -9,11 +9,11 @@ public class MicrophoneDataScript : MonoBehaviour
     private AudioClip _microphoneClip;
 
     public float Loudness { get; private set; }
-    [SerializeField] private float _mutliplier = 0.25f;
+    [SerializeField] private float _multiplier = 0.25f;
     [SerializeField] private float _lerpTime = 0.25f;
     [SerializeField] private Easings.Type _easing = Easings.Type.CubicOut;
     
-    private void Start() => InitializeMicrophone();
+    private void Awake() => InitializeMicrophone();
 
     private void InitializeMicrophone() =>
         _microphoneClip = Microphone.Start(_microphone, true, 20, AudioSettings.outputSampleRate);
@@ -60,6 +60,6 @@ public class MicrophoneDataScript : MonoBehaviour
 
     private void Update()
     {
-        LerpMicrophoneLoudness(GetLoudness() * _mutliplier);
+        LerpMicrophoneLoudness(GetLoudness() * _multiplier);
     }
 }
