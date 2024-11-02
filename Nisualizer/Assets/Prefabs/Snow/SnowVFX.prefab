@@ -60,7 +60,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 100, y: 500}
+      - m_Value: {x: 50, y: 300}
         m_Name: SnowDensityRange
         m_Overridden: 1
       - m_Value: {x: 1, y: 8}

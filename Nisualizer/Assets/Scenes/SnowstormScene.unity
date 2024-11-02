@@ -513,6 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 832575519}
   - component: {fileID: 832575518}
+  - component: {fileID: 832575520}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -552,6 +553,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &832575520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832575517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43c803f92ab4b1d8b95039be887c153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _microphoneData: {fileID: 152640829}
+  _volume: {fileID: 832575518}
+  _lensDistortionRange: {x: 0, y: -0.1}
+  _vignetteRange: {x: 0.25, y: 0.3}
 --- !u!1 &1050520316
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,7 +729,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 330585545}
-  m_PlaneDistance: 30
+  m_PlaneDistance: 50
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -795,6 +812,10 @@ PrefabInstance:
     - target: {fileID: 3229060298939367558, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
       propertyPath: m_Name
       value: SnowVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3229060298939367558, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4563210201025919042, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
       propertyPath: _microphoneData
