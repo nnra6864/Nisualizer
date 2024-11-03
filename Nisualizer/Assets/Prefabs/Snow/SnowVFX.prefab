@@ -63,7 +63,7 @@ VisualEffect:
       - m_Value: {x: 50, y: 150}
         m_Name: SnowDensityRange
         m_Overridden: 1
-      - m_Value: {x: 1, y: 15}
+      - m_Value: {x: 10, y: 30}
         m_Name: WindStrengthRange
         m_Overridden: 1
     m_Vector3f:

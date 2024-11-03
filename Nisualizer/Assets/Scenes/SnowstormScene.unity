@@ -569,6 +569,9 @@ MonoBehaviour:
   _volume: {fileID: 832575518}
   _lensDistortionRange: {x: 0, y: -0.1}
   _vignetteRange: {x: 0.25, y: 0.3}
+  _postExpoRange: {x: 0, y: 0.25}
+  _contrastRange: {x: 0, y: 10}
+  _saturationRange: {x: 0, y: 10}
 --- !u!1 &1050520316
 GameObject:
   m_ObjectHideFlags: 0
