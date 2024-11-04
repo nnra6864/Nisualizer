@@ -4,20 +4,38 @@ using UnityEngine;
 
 public class MicrophoneDataScript : MonoBehaviour
 {
+    //More values lead to a smoother appearance but also add more delay
     private const int SampleWindow = 64;
-    private readonly string _microphone = "OutputInput";
+    
+    //Name of the input device that's being used
+    //TODO: Implement custom names in config for _microphone
+    private string _microphone = "OutputInput";
+    
+    //Stores the AudioClip used in loudness detection
     private AudioClip _microphoneClip;
 
+    //Represents the current audio loudness
     public float Loudness { get; private set; }
-    [SerializeField] private float _multiplier = 0.25f;
-    [SerializeField] private float _lerpTime = 0.25f;
-    [SerializeField] private Easings.Type _easing = Easings.Type.CubicOut;
     
+    [Tooltip("Multiplies the total loudness of audio.")]
+    [SerializeField] private float _loudnessMultiplier = 0.25f;
+    [Tooltip("Time in seconds it will take to transition to the new Loudness value.")]
+    [SerializeField] private float _transitionTime = 0.25f;
+    [Tooltip("Easing applied to the Loudness transition.")]
+    [SerializeField] private Easings.Type _transitionEasing = Easings.Type.CubicOut;
+
+    //Initialize microphone in Awake to be able to access data as early as possible in other scripts
     private void Awake() => InitializeMicrophone();
 
     private void InitializeMicrophone() =>
         _microphoneClip = Microphone.Start(_microphone, true, 20, AudioSettings.outputSampleRate);
 
+    private void Update()
+    {
+        TweenMicrophoneLoudness(GetLoudness() * _loudnessMultiplier);
+    }
+    
+    //Returns the total loudness of microphone audio
     private float GetLoudness()
     {
         //Get microphone clip position and return 0 if negative
@@ -36,30 +54,35 @@ public class MicrophoneDataScript : MonoBehaviour
         return loudness;
     }
 
-    private void LerpMicrophoneLoudness(float loudness)
+    //Tweens the loudness for a smoother look
+    private void TweenMicrophoneLoudness(float loudness)
     {
+        //If new loudness is approximately the same as current, return, otherwise tween
         if (Mathf.Approximately(Loudness, loudness)) return;
-        this.RestartRoutine(ref _lerpLoudnessRoutine, LerpLoudnessRoutine(loudness));
+        this.RestartRoutine(ref _tweenLoudnessRoutine, TweenLoudnessRoutine(loudness));
     }
 
-    private Coroutine _lerpLoudnessRoutine;
-    private IEnumerator LerpLoudnessRoutine(float loudness)
+    private Coroutine _tweenLoudnessRoutine;
+    private IEnumerator TweenLoudnessRoutine(float loudness)
     {
+        //Store the current loudness
         var startLoudness = Loudness;
 
+        //Start the tweening loop
         float lerpPos = 0;
         while (lerpPos < 1)
         {
-            var t = Misc.Tween(ref lerpPos, _lerpTime, _easing);
+            //Update the lerp position and store the eased value
+            var t = Misc.Tween(ref lerpPos, _transitionTime, _transitionEasing);
+            
+            //Update the loudness
             Loudness = Mathf.Lerp(startLoudness, loudness, t);
+            
+            //Wait for the next frame
             yield return null;
         }
         
-        _lerpLoudnessRoutine = null;
-    }
-
-    private void Update()
-    {
-        LerpMicrophoneLoudness(GetLoudness() * _multiplier);
+        //Set the coroutine value null to avoid an unnecessary call
+        _tweenLoudnessRoutine = null;
     }
 }
