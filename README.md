@@ -1,4 +1,5 @@
 # Nisualizer
+![Screenshot](/Media/Screenshot.png)
 This project aims to bring visualizers, such as [GLava](https://github.com/jarcode-foss/glava) and [Cava](https://github.com/karlstav/cava), to the next level. <br/>
 It acts as both a visualizer and a background, eliminating the need for any additional apps. <br/>
 A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE).

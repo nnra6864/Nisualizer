@@ -25,7 +25,11 @@ public class MicrophoneDataScript : MonoBehaviour
     [SerializeField] private Easings.Type _transitionEasing = Easings.Type.CubicOut;
 
     //Initialize microphone in Awake to be able to access data as early as possible in other scripts
-    private void Awake() => InitializeMicrophone();
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        InitializeMicrophone();
+    }
 
     private void InitializeMicrophone() =>
         _microphoneClip = Microphone.Start(_microphone, true, 20, AudioSettings.outputSampleRate);
