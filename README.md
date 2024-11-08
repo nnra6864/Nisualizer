@@ -11,7 +11,7 @@ A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE
 - [x] Music Reactive VFX Graph
 - [x] Music Reactive Volume
 - [x] Clock, Date and Day
-- [ ] Weather
+- [ ] Weather(via [Metro](https://open-meteo.com/))
 - [ ] JSON Config with Per Scene Settings
 - [ ] Modular UI
 
@@ -19,7 +19,7 @@ A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE
 - [ ] Custom Fonts
 - [ ] System Info
 - [ ] System Usage
-- [ ] Media Info(via Player CTL)
+- [ ] Media Info(via [Player CTL](https://github.com/altdesktop/playerctl))
 
 # Usage
 Nisualizer requires a little setup in order to work, it should take no more than 5 minutes.
