@@ -11,6 +11,7 @@ A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE
 - [x] Music Reactive VFX Graph
 - [x] Music Reactive Volume
 - [x] Clock, Date and Day
+- [x] Background From Local Files
 - [ ] Weather(via [Metro](https://open-meteo.com/))
 - [ ] JSON Config with Per Scene Settings
 - [ ] Modular UI
