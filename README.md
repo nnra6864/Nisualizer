@@ -4,6 +4,23 @@ This project aims to bring visualizers, such as [GLava](https://github.com/jarco
 It acts as both a visualizer and a background, eliminating the need for any additional apps. <br/>
 A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE).
 
+# Roadmap
+
+## Must Have
+- [x] Music Reactive Particle System
+- [x] Music Reactive VFX Graph
+- [x] Music Reactive Volume
+- [x] Clock, Date and Day
+- [ ] Weather
+- [ ] JSON Config with Per Scene Settings
+- [ ] Modular UI
+
+## If Possible
+- [ ] Custom Fonts
+- [ ] System Info
+- [ ] System Usage
+- [ ] Media Info(via Player CTL)
+
 # Usage
 Nisualizer requires a little setup in order to work, it should take no more than 5 minutes.
 
