@@ -27,7 +27,6 @@ public class MicrophoneDataScript : MonoBehaviour
     //Initialize microphone in Awake to be able to access data as early as possible in other scripts
     private void Awake()
     {
-        Application.targetFrameRate = 60;
         InitializeMicrophone();
     }
 
