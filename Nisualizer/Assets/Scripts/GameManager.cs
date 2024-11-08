@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -25,8 +26,8 @@ public class GameManager : MonoBehaviour
     private int _fps;
     public static int FPS => Instance._fps;
 
-    private string _background;
-    public static string Background => Instance._background;
+    private Sprite _background;
+    public static Sprite Background => Instance._background;
     
     private void Awake()
     {
@@ -39,7 +40,25 @@ public class GameManager : MonoBehaviour
         _fps = 60;
         Application.targetFrameRate = _fps;
         
-        //Load Background
-        _background = "~/.config/Backgrounds/Nord/NordicRuinsInASnowyBlizzard.jpg";
+        LoadBackground();
     }
+
+    private void LoadBackground()
+    {
+        //Read the config value and replace relative with full path
+        var bg = "~/.config/Backgrounds/Nord/SnowyNordicMountains.jpg";
+        bg = bg.Replace("~", System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
+        
+        //Check if the file exists
+        Debug.Assert(File.Exists(bg), $"{bg} doesn't exist.");
+
+        //Read image data and store it into a Texture2D
+        var bgData = File.ReadAllBytes(bg);
+        Texture2D bgTex = new(0, 0);
+        Debug.Assert(bgTex.LoadImage(bgData), "Background file failed to load into a texture.\nAre you sure it's a valid image?");
+
+        _background = Texture2DToSprite(bgTex);
+    }
+
+    private Sprite Texture2DToSprite(Texture2D texture) => Sprite.Create(texture, new(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
 }
