@@ -38,7 +38,7 @@ namespace Core
             get => _background;
             private set
             {
-                if (_background?.texture == value?.texture) return;
+                //No need for duplicate check, too expensive here
                 _background = value;
                 OnBackgroundChanged?.Invoke(value);
             }
@@ -48,8 +48,11 @@ namespace Core
         
         private Sprite LoadBackground(string bg)
         {
+            if (_backgroundPath == bg) return _background;
+            _backgroundPath = bg;
+            
             //Read the config value and replace relative with full path
-            bg = bg.Replace("~", Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
+            bg = bg.Replace("~", Environment.GetFolderPath(Environment.SpecialFolder.Personal));
         
             //TODO: Add custom logging when implemented
             //Check if the file exists, if not, return the default bg
