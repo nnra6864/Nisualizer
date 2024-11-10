@@ -9,6 +9,11 @@ namespace Core
     {
         public void Init()
         {
+            //Load the default config from Resources
+            //Getting text directly because storing it as a text asset and not a string causes some code to not execute later :/
+            _defaultConfig = Resources.Load<TextAsset>("DefaultConfig").text;
+            Debug.Assert(_defaultConfig != null, "Default config was not found in Resources, this is really bad!");
+            
             //Generate the default config if it doesn't exist
             GenerateDefaultConfig();
             
@@ -16,7 +21,6 @@ namespace Core
             LoadConfigFile();
             
             //Watch for changes in the config file
-            //TODO: Implement a live reload check
             WatchForConfigChanges();
         }
         
@@ -82,66 +86,91 @@ namespace Core
         #endregion
 
         #region ConfigFile
+        //Gets loaded from resources in Init()
+        private string _defaultConfig;
+        
         //Used to detect file changes
         private FileSystemWatcher _configWatcher;
 
         //Path to the config
         private readonly string _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/Nisualizer/config.json");
 
-        //TODO: Paste the default config to ~/.config/Nisualizer/Config.json
         private void GenerateDefaultConfig()
         {
+            const string debugPrefix = "GenerateDefaultConfig: ";
             
+            //Return if config already exists
+            if (File.Exists(_configPath))
+            {
+                Debug.Log(debugPrefix + "Config already exists, returning");
+                return;
+            }
+
+            //Generate parent directories if they don't exist
+            var configDir = Path.GetDirectoryName(_configPath);
+            var dirExists = Directory.Exists(configDir);
+            if (!dirExists) Directory.CreateDirectory(configDir!);
+            Debug.Log(debugPrefix + (dirExists ?
+                $"Config directory already exists at {configDir}" :
+                $"Generated config directory at {configDir}"));
+            
+            //Write the contents to the target config path
+            File.WriteAllText(_configPath, _defaultConfig);
+            Debug.Log(debugPrefix + $"Default config generated at: {_configPath}");
+        }
+
+        private void LoadConfigFile()
+        {
+            Debug.Assert(File.Exists(_configPath), $"{_configPath} not found");
         }
         
-        //Sets up a file watcher and config change handling
+        //Sets up the FileSystemWatcher to monitor changes to the config file
         private void WatchForConfigChanges()
         {
-            //Set up the FileSystemWatcher to monitor changes to the config file
+            const string debugPrefix = "WatchForConfigChanges: ";
+            
             _configWatcher = new()
             {
                 Path = Path.GetDirectoryName(_configPath),
                 Filter = Path.GetFileName(_configPath),
                 NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size
             };
-            _configWatcher.Changed += HandleConfigChanges;
+            //BUG: Renamed event gets triggered after editing the file(with nvim at least)
+            _configWatcher.Changed += HandleConfigChanged;
+            _configWatcher.Renamed += HandleConfigRenamed;
+            _configWatcher.Deleted += HandleConfigDeleted;
             _configWatcher.EnableRaisingEvents = true;
-        }
-
-        //Regenerate if deleted or renamed, reload if changed
-        private void HandleConfigChanges(object sender, FileSystemEventArgs args)
-        {
-            switch (args.ChangeType)
-            {
-                case WatcherChangeTypes.Deleted:
-                    GenerateDefaultConfig();
-                    break;
-                case WatcherChangeTypes.Renamed:
-                    GenerateDefaultConfig();
-                    break;
-                case WatcherChangeTypes.Changed:
-                    LoadConfigFile();
-                    break;
-            }
-        }
-
-        private void LoadConfigFile()
-        {
-            Debug.Assert(File.Exists(_configPath), $"{_configPath} not found");
             
+            Debug.Log(debugPrefix + "Config watcher set up");
+        }
+
+        private void HandleConfigChanged(object sender, FileSystemEventArgs args)
+        {
+            Debug.Log("Config changed, reloading");
+            LoadConfigFile();
+        }
+        
+        private void HandleConfigRenamed(object sender, FileSystemEventArgs args)
+        {
+            Debug.Log("Config renamed, regenerating");
+            GenerateDefaultConfig();
+        }
+        
+        private void HandleConfigDeleted(object sender, FileSystemEventArgs args)
+        {
+            Debug.Log("Config deleted, regenerating");
+            GenerateDefaultConfig();
         }
         #endregion
 
-        private void Awake() => LoadConfigFile();
-
         //TODO: This will trigger OnChanged events, cba to optimize now
-        public void ResetToDefault()
+        private void ResetToDefault()
         {
             FPS = _defaultFPS;
             Background = _defaultBackground;
         }
 
-        public void Load()
+        private void Load()
         {
             //Reset to default to make sure all vars are set
             ResetToDefault();

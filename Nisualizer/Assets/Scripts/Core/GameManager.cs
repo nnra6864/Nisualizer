@@ -53,7 +53,7 @@ namespace Core
         private void Start()
         {
             //Load the Config in Start to allow for other scripts to subscribe to events in Awake
-            Config.Load();
+            Config.Init();
         }
     }
 }
