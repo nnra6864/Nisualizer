@@ -149,6 +149,7 @@ namespace Config
 
         private void OnDestroy()
         {
+            if (_configWatcher == null) return;
             _configWatcher.Changed -= HandleConfigChanged;
             _configWatcher.Renamed -= HandleConfigRenamed;
             _configWatcher.Deleted -= HandleConfigDeleted;
