@@ -58,7 +58,7 @@ namespace Core
             
             //Set FPS
             SetFPS(ConfigScript.Config.General.FPS);
-            ConfigScript.Config.General.OnFPSChanged += SetFPS;
+            ConfigScript.Config.OnConfigLoaded += conf => SetFPS(conf.General.FPS);
         }
 
         private void OnDestroy()
@@ -66,7 +66,7 @@ namespace Core
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
             if (ConfigScript?.Config == null) return;
             
-            ConfigScript.Config.General.OnFPSChanged -= SetFPS;
+            ConfigScript.Config.OnConfigLoaded -= conf => SetFPS(conf.General.FPS);
         }
 
         private void SetFPS(int fps) => Application.targetFrameRate = fps;

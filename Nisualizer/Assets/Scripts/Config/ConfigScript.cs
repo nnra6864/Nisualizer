@@ -90,11 +90,13 @@ namespace Config
             const string debugPrefix = "LoadConfig: ";
             
             // Reset to default to make sure all vars are set and changes no longer present in config are undone
-            Config.Reset();
+            // Using ResetSilent because the OnChanged event will get triggered by Load() anyways
+            Config.ResetSilent();
             Debug.Log(debugPrefix + "Reset to default config");
             
             // Reload the config
             JsonUtility.FromJsonOverwrite(_configText, Config);
+            Config.Load();
             Debug.Log(debugPrefix + $"Loaded config from {_configPath}");
         }
         

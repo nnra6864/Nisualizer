@@ -16,7 +16,7 @@ namespace UI
         private void Start()
         {
             UpdateBackground(ConfigScript.Config.General.BackgroundSprite);
-            ConfigScript.Config.General.OnBackgroundSpriteChanged += UpdateBackground;
+            ConfigScript.Config.OnConfigLoaded += conf => UpdateBackground(conf.General.BackgroundSprite);
         }
 
         private void OnDestroy()
@@ -24,7 +24,7 @@ namespace UI
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
             if (ConfigScript == null || ConfigScript.Config == null) return;
             
-            ConfigScript.Config.General.OnBackgroundSpriteChanged -= UpdateBackground;
+            ConfigScript.Config.OnConfigLoaded -= conf => UpdateBackground(conf.General.BackgroundSprite);
         }
 
         private void UpdateBackground(Sprite sprite) => _image.sprite = sprite;
