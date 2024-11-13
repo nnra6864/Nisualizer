@@ -1,28 +1,7 @@
 {
-  "general": {
-    "volumeMultiplier": 1,
-    "background": "defaultBackground.png"
-  },
-  
-  "sceneSettings": {
-    "SomeScene": {
-      "postProcessing": {
-        "enabled": true,
-        "vibrancyRange": {
-          "x": 0.8,
-          "y": 1.2
-        }
-      }
-    },
-    
-    "AnotherScene": {
-      "postProcessing": {
-        "enabled": false,
-        "vibrancyRange": {
-          "x": 1.0,
-          "y": 1.0
-        }
-      }
-    }
+  "General": {
+    "FPS": 240,
+    "Sensitivity": 1,
+    "Background": "~/.config/Backgrounds/NordicRuinsInASnowyBlizzard.jpg"
   }
 }

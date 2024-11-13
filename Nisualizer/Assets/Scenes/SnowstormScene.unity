@@ -360,8 +360,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a48b760906f087693f5ca4b6ec71eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultFPS: 60
-  _defaultBackground: {fileID: 21300000, guid: 3da6a1eddfea5815ba2fb75f53d07b38, type: 3}
+  _config:
+    General:
+      _defaultFPS: 60
+      _defaultSensitivity: 1
+      _defaultBackground: 
+      _defaultBackgroundSprite: {fileID: 21300000, guid: 3da6a1eddfea5815ba2fb75f53d07b38, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

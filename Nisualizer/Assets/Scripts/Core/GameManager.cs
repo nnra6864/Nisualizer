@@ -1,3 +1,4 @@
+using Config;
 using UnityEngine;
 
 namespace Core
@@ -36,7 +37,7 @@ namespace Core
 
         //Contains all the Config data and logic
         [SerializeField] private ConfigScript _config;
-        public static ConfigScript Config => Instance._config;
+        public static ConfigScript ConfigScript => Instance._config;
         
         private void Reset()
         {
@@ -53,7 +54,21 @@ namespace Core
         private void Start()
         {
             //Load the Config in Start to allow for other scripts to subscribe to events in Awake
-            Config.Init();
+            ConfigScript.Init();
+            
+            //Set FPS
+            SetFPS(ConfigScript.Config.General.FPS);
+            ConfigScript.Config.General.OnFPSChanged += SetFPS;
         }
+
+        private void OnDestroy()
+        {
+            // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
+            if (ConfigScript?.Config == null) return;
+            
+            ConfigScript.Config.General.OnFPSChanged -= SetFPS;
+        }
+
+        private void SetFPS(int fps) => Application.targetFrameRate = fps;
     }
 }
