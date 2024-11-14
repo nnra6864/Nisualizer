@@ -47,9 +47,6 @@ namespace Config
         /// Contains all the config values and gets loaded in <see cref="LoadConfig"/>
         public Config Config => _config;
 
-        /// Used to detect file changes
-        private FileSystemWatcher _configWatcher;
-
         /// Path to the config
         private readonly string _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/Nisualizer/config.json");
         
@@ -111,6 +108,10 @@ namespace Config
         #endregion
         
         #region LiveConfigReload
+
+        /// Used to detect file changes
+        private FileSystemWatcher _configWatcher;
+        
         /// Sets up the FileSystemWatcher to monitor changes to the config file
         private void WatchForConfigChanges()
         {
