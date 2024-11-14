@@ -15,7 +15,6 @@ namespace Config
         public void Load()
         {
             General.BackgroundSprite = Misc.SpriteFromFile(General.Background);
-            //if (General.BackgroundSprite == null) General.BackgroundSprite = General.DefaultBackgroundSprite;
             OnConfigLoaded?.Invoke(this);
         }
         

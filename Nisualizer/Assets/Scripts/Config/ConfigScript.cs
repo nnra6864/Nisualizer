@@ -6,6 +6,14 @@ namespace Config
 {
     public class ConfigScript : MonoBehaviour
     {
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                HandleConfigChanged(default, default);
+            }
+        }
+
         public void Init()
         {
             //Load the default config from Resources
@@ -37,20 +45,19 @@ namespace Config
         [SerializeField] private Config _config;
         
         /// Contains all the config values and gets loaded in <see cref="LoadConfig"/>
-        public Config Config
-        {
-            get => _config;
-            private set => _config = value;
-        }
+        public Config Config => _config;
 
         /// Used to detect file changes
         private FileSystemWatcher _configWatcher;
 
         /// Path to the config
         private readonly string _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/Nisualizer/config.json");
-
+        
+        /// <summary>
         /// Generates the default config file if one is not found
-        private void GenerateDefaultConfigFile()
+        /// </summary>
+        /// <returns>Whether config is generated</returns>
+        private bool GenerateDefaultConfigFile()
         {
             const string debugPrefix = "GenerateDefaultConfig: ";
             
@@ -58,7 +65,7 @@ namespace Config
             if (File.Exists(_configPath))
             {
                 Debug.Log(debugPrefix + "Config already exists, returning");
-                return;
+                return false;
             }
 
             //Generate parent directories if they don't exist
@@ -72,6 +79,7 @@ namespace Config
             //Write the contents to the target config path
             File.WriteAllText(_configPath, _defaultConfigText);
             Debug.Log(debugPrefix + $"Default config generated at: {_configPath}");
+            return true;
         }
 
         /// Loads the config file into memory
@@ -93,7 +101,7 @@ namespace Config
             // Using ResetSilent because the OnChanged event will get triggered by Load() anyways
             Config.ResetSilent();
             Debug.Log(debugPrefix + "Reset to default config");
-            
+
             // Reload the config
             JsonUtility.FromJsonOverwrite(_configText, Config);
             Config.Load();
@@ -116,45 +124,32 @@ namespace Config
             };
             
             // BUG: Renamed event gets triggered after editing the file(with nvim at least)
-            _configWatcher.Changed += HandleConfigChanged;
-            _configWatcher.Renamed += HandleConfigRenamed;
-            _configWatcher.Deleted += HandleConfigDeleted;
-            _configWatcher.EnableRaisingEvents = true;
+            _configWatcher.Changed             += HandleConfigChanged;
+            _configWatcher.Renamed             += HandleConfigChanged;
+            _configWatcher.Deleted             += HandleConfigChanged;
+            //_configWatcher.EnableRaisingEvents =  true;
             
             Debug.Log(debugPrefix + $"Config watcher for {_configPath} set up");
         }
 
-        /// Handles config file being edited
+        /// Handles config file being changed
         private void HandleConfigChanged(object sender, FileSystemEventArgs args)
         {
+            // Generate the default config if one is not present, load the file and load the config
             Debug.Log("Config changed, reloading");
+            GenerateDefaultConfigFile();
             LoadConfigFile();
             LoadConfig();
         }
-        
-        /// Handles config file being renamed
-        private void HandleConfigRenamed(object sender, FileSystemEventArgs args)
-        {
-            Debug.Log("Config renamed, regenerating");
-            GenerateDefaultConfigFile();
-            LoadConfig();
-        }
-        
-        /// Handles config file being deleted
-        private void HandleConfigDeleted(object sender, FileSystemEventArgs args)
-        {
-            Debug.Log("Config deleted, regenerating");
-            GenerateDefaultConfigFile();
-            LoadConfig();
-        }
+
         #endregion
 
         private void OnDestroy()
         {
             if (_configWatcher == null) return;
             _configWatcher.Changed -= HandleConfigChanged;
-            _configWatcher.Renamed -= HandleConfigRenamed;
-            _configWatcher.Deleted -= HandleConfigDeleted;
+            _configWatcher.Renamed -= HandleConfigChanged;
+            _configWatcher.Deleted -= HandleConfigChanged;
             _configWatcher.EnableRaisingEvents = false;
         }
     }

@@ -10,17 +10,7 @@ namespace Core
         private static GameManager _instance;
         public static GameManager Instance
         {
-            get
-            {
-                //If instance is null, find the GameManager in the scene
-                _instance ??= FindFirstObjectByType<GameManager>();
-                
-                //If instance is still null, create a new one
-                if (_instance == null)
-                    _instance = new GameObject("GameManager", typeof(GameManager)).GetComponent<GameManager>();
-
-                return _instance;
-            }
+            get => _instance;
             private set
             {
                 //If instance exists and is not this, destroy this

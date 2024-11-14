@@ -27,6 +27,9 @@ namespace UI
             ConfigScript.Config.OnConfigLoaded -= conf => UpdateBackground(conf.General.BackgroundSprite);
         }
 
-        private void UpdateBackground(Sprite sprite) => _image.sprite = sprite;
+        private void UpdateBackground(Sprite sprite)
+        {
+            _image.sprite = sprite;
+        }
     }
 }
