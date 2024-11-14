@@ -6,12 +6,13 @@ namespace Config
 {
     public class ConfigScript : MonoBehaviour
     {
+        private bool _configChanged;
+        
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                HandleConfigChanged(default, default);
-            }
+            if (!_configChanged) return;
+            _configChanged = false;
+            HandleConfigChanged();
         }
 
         public void Init()
@@ -125,18 +126,19 @@ namespace Config
             };
             
             // BUG: Renamed event gets triggered after editing the file(with nvim at least)
-            _configWatcher.Changed             += HandleConfigChanged;
-            _configWatcher.Renamed             += HandleConfigChanged;
-            _configWatcher.Deleted             += HandleConfigChanged;
-            //_configWatcher.EnableRaisingEvents =  true;
+            _configWatcher.Changed             += MarkDirty;
+            _configWatcher.Renamed             += MarkDirty;
+            _configWatcher.Deleted             += MarkDirty;
+            _configWatcher.EnableRaisingEvents =  true;
             
             Debug.Log(debugPrefix + $"Config watcher for {_configPath} set up");
         }
 
+        private void MarkDirty(object sender, FileSystemEventArgs args) => _configChanged = true;
+        
         /// Handles config file being changed
-        private void HandleConfigChanged(object sender, FileSystemEventArgs args)
+        private void HandleConfigChanged()
         {
-            // Generate the default config if one is not present, load the file and load the config
             Debug.Log("Config changed, reloading");
             GenerateDefaultConfigFile();
             LoadConfigFile();
@@ -148,9 +150,9 @@ namespace Config
         private void OnDestroy()
         {
             if (_configWatcher == null) return;
-            _configWatcher.Changed -= HandleConfigChanged;
-            _configWatcher.Renamed -= HandleConfigChanged;
-            _configWatcher.Deleted -= HandleConfigChanged;
+            _configWatcher.Changed -= MarkDirty;
+            _configWatcher.Renamed -= MarkDirty;
+            _configWatcher.Deleted -= MarkDirty;
             _configWatcher.EnableRaisingEvents = false;
         }
     }
