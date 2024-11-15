@@ -14,7 +14,10 @@ namespace Config
         /// Takes care of post loading stuff that has to be done
         public void Load()
         {
-            General.BackgroundSprite = Misc.SpriteFromFile(General.Background);
+            var bg = Misc.SpriteFromFile(General.Background);
+            if (bg != null)
+                General.BackgroundSprite = Misc.SpriteFromFile(General.Background);
+
             OnConfigLoaded?.Invoke(this);
         }
         

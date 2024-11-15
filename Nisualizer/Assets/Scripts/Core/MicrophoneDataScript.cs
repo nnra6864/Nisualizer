@@ -6,6 +6,8 @@ namespace Core
 {
     public class MicrophoneDataScript : MonoBehaviour
     {
+        private static Config.Config Config => GameManager.ConfigScript.Config;
+        
         //More values lead to a smoother appearance but also add more delay
         private const int SampleWindow = 64;
     
@@ -19,8 +21,6 @@ namespace Core
         //Represents the current audio loudness
         public float Loudness { get; private set; }
     
-        [Tooltip("Multiplies the total loudness of audio.")]
-        [SerializeField] private float _loudnessMultiplier = 0.25f;
         [Tooltip("Time in seconds it will take to transition to the new Loudness value.")]
         [SerializeField] private float _transitionTime = 0.25f;
         [Tooltip("Easing applied to the Loudness transition.")]
@@ -37,7 +37,7 @@ namespace Core
 
         private void Update()
         {
-            TweenMicrophoneLoudness(GetLoudness() * _loudnessMultiplier);
+            TweenMicrophoneLoudness(GetLoudness() * Config.General.Sensitivity);
         }
     
         //Returns the total loudness of microphone audio
