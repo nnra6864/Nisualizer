@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core
 {
-    [RequireComponent(typeof(ConfigScript))]
+    [RequireComponent(typeof(ConfigScript), typeof(FontManager))]
     public class GameManager : MonoBehaviour
     {
         //Simple singleton implementation
@@ -25,13 +25,17 @@ namespace Core
             }
         }
 
-        //Contains all the Config data and logic
+        /// Contains all the Config data and logic
         [SerializeField] private ConfigScript _config;
         public static ConfigScript ConfigScript => Instance._config;
+        
+        [SerializeField] private FontManager _fontManager;
+        public static FontManager FontManager => Instance._fontManager;
         
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
+            _fontManager = GetComponent<FontManager>();
         }
 
 
@@ -47,16 +51,16 @@ namespace Core
             ConfigScript.Init();
             
             //Set FPS
-            SetFPS(ConfigScript.Config.General.FPS);
-            ConfigScript.Config.OnConfigLoaded += conf => SetFPS(conf.General.FPS);
+            SetFPS(ConfigScript.Data.General.FPS);
+            ConfigScript.Data.OnConfigLoaded += conf => SetFPS(conf.General.FPS);
         }
 
         private void OnDestroy()
         {
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
-            if (ConfigScript?.Config == null) return;
+            if (ConfigScript?.Data == null) return;
             
-            ConfigScript.Config.OnConfigLoaded -= conf => SetFPS(conf.General.FPS);
+            ConfigScript.Data.OnConfigLoaded -= conf => SetFPS(conf.General.FPS);
         }
 
         private void SetFPS(int fps) => Application.targetFrameRate = fps;

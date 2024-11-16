@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc90e14332dae21e8422eb4246542c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loudnessMultiplier: 0.25
   _transitionTime: 0.25
   _transitionEasing: 9
 --- !u!4 &152640830
@@ -313,6 +312,7 @@ GameObject:
   - component: {fileID: 301504485}
   - component: {fileID: 301504486}
   - component: {fileID: 301504487}
+  - component: {fileID: 301504488}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 301504487}
+  _fontManager: {fileID: 0}
 --- !u!114 &301504487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,16 +361,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a48b760906f087693f5ca4b6ec71eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config:
+  _configData:
     General:
       DefaultFPS: 60
       FPS: 0
       DefaultSensitivity: 1
-      Sensitivity: 1
+      Sensitivity: 0
+      DefaultFont: Default
+      Font: 
       DefaultBackground: 
       Background: 
-      DefaultBackgroundSprite: {fileID: 21300000, guid: 3da6a1eddfea5815ba2fb75f53d07b38, type: 3}
+      DefaultBackgroundSprite: {fileID: 0}
       BackgroundSprite: {fileID: 0}
+--- !u!114 &301504488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301504484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff3ad18320ff45588d20d78d618d32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultFont: {fileID: 11400000, guid: 33f4286d2908f91d091b520252f47d46, type: 2}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

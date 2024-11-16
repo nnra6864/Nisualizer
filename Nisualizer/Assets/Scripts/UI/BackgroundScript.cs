@@ -1,4 +1,5 @@
 using Core;
+using Config;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ namespace UI
     [RequireComponent(typeof(Image))]
     public class BackgroundScript : MonoBehaviour
     {
-        private static Config.ConfigScript ConfigScript => GameManager.ConfigScript;
+        private static ConfigScript Config => GameManager.ConfigScript;
         
         [SerializeField] private Image _image;
         
@@ -15,16 +16,16 @@ namespace UI
 
         private void Start()
         {
-            UpdateBackground(ConfigScript.Config.General.BackgroundSprite);
-            ConfigScript.Config.OnConfigLoaded += conf => UpdateBackground(conf.General.BackgroundSprite);
+            UpdateBackground(Config.Data.General.BackgroundSprite);
+            Config.Data.OnConfigLoaded += conf => UpdateBackground(conf.General.BackgroundSprite);
         }
 
         private void OnDestroy()
         {
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
-            if (ConfigScript == null || ConfigScript.Config == null) return;
+            if (Config == null || Config.Data == null) return;
             
-            ConfigScript.Config.OnConfigLoaded -= conf => UpdateBackground(conf.General.BackgroundSprite);
+            Config.Data.OnConfigLoaded -= conf => UpdateBackground(conf.General.BackgroundSprite);
         }
 
         private void UpdateBackground(Sprite sprite)

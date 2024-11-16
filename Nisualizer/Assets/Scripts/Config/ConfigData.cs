@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace Config
 {
+    // TODO: Move BackgroundSprite to SceneConfig or delete it altogether
     [Serializable]
-    public class Config
+    public class ConfigData
     {
-        public Action<Config> OnConfigLoaded;
+        public Action<ConfigData> OnConfigLoaded;
         
         public GeneralSettings General;
 
@@ -39,8 +40,11 @@ namespace Config
             public int FPS;
 
             public float DefaultSensitivity = 1;
-            public float Sensitivity = 1;
+            public float Sensitivity;
 
+            public string DefaultFont = "Default";
+            public string Font;
+            
             public string DefaultBackground = "";
             public string Background;
 

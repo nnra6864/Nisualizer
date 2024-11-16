@@ -43,10 +43,10 @@ namespace Config
         /// Config text loaded from the config file
         private string _configText;
         
-        [SerializeField] private Config _config;
+        [SerializeField] private ConfigData _data;
         
         /// Contains all the config values and gets loaded in <see cref="LoadConfig"/>
-        public Config Config => _config;
+        public ConfigData Data => _data;
 
         /// Path to the config
         private readonly string _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/Nisualizer/config.json");
@@ -97,12 +97,12 @@ namespace Config
             
             // Reset to default to make sure all vars are set and changes no longer present in config are undone
             // Using ResetSilent because the OnChanged event will get triggered by Load() anyways
-            Config.ResetSilent();
+            Data.ResetSilent();
             Debug.Log(debugPrefix + "Reset to default config");
 
             // Reload the config
-            JsonUtility.FromJsonOverwrite(_configText, Config);
-            Config.Load();
+            JsonUtility.FromJsonOverwrite(_configText, Data);
+            Data.Load();
             Debug.Log(debugPrefix + $"Loaded config from {_configPath}");
         }
         

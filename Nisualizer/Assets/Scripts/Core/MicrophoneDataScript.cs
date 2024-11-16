@@ -6,7 +6,7 @@ namespace Core
 {
     public class MicrophoneDataScript : MonoBehaviour
     {
-        private static Config.Config Config => GameManager.ConfigScript.Config;
+        private static Config.ConfigData ConfigData => GameManager.ConfigScript.Data;
         
         //More values lead to a smoother appearance but also add more delay
         private const int SampleWindow = 64;
@@ -37,7 +37,7 @@ namespace Core
 
         private void Update()
         {
-            TweenMicrophoneLoudness(GetLoudness() * Config.General.Sensitivity);
+            TweenMicrophoneLoudness(GetLoudness() * ConfigData.General.Sensitivity);
         }
     
         //Returns the total loudness of microphone audio
