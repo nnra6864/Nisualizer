@@ -17,7 +17,7 @@ namespace Core
             get => _fontAsset;
             set
             {
-                if (value == null || _fontAsset == value) return;
+                if (!value || _fontAsset == value) return;
                 _fontAsset = value;
                 OnFontChanged?.Invoke(value);
             }
