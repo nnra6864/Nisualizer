@@ -13,12 +13,12 @@ A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE
 - [x] Clock, Date and Day
 - [x] Background From Local Files
 - [x] Live Reload JSON Config
+- [x] Custom Fonts
 - [ ] Weather(via [Metro](https://open-meteo.com/))
 - [ ] Async Config Reload
 - [ ] Modular UI
 
 ## If Possible
-- [ ] Custom Fonts
 - [ ] System Info
 - [ ] System Usage
 - [ ] Media Info(via [Player CTL](https://github.com/altdesktop/playerctl))
