@@ -16,8 +16,7 @@ namespace Config
         public void Load()
         {
             var bg = Misc.SpriteFromFile(General.Background);
-            if (bg != null)
-                General.BackgroundSprite = Misc.SpriteFromFile(General.Background);
+            if (bg) General.BackgroundSprite = Misc.SpriteFromFile(General.Background);
 
             OnConfigLoaded?.Invoke(this);
         }
