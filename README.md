@@ -20,7 +20,7 @@ A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE
 - [x] Background From Local Files
 - [x] Live Reload JSON Config
 - [x] Custom Fonts
-- [ ] Startup Transition
+- [x] Startup Transition
 - [ ] Custom Clock Formatting
 - [ ] Weather(via [Metro](https://open-meteo.com/))
 - [ ] Async Config Reload
