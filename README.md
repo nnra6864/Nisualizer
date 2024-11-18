@@ -4,9 +4,15 @@ This project aims to bring visualizers, such as [GLava](https://github.com/jarco
 It acts as both a visualizer and a background, eliminating the need for any additional apps. <br/>
 A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE).
 
+# Features
+
+- Audio Interactive Components
+- Digital Clock
+- Live Config Reload
+- System Fonts
+
 # Roadmap
 
-## Must Have
 - [x] Music Reactive Particle System
 - [x] Music Reactive VFX Graph
 - [x] Music Reactive Volume
@@ -14,11 +20,10 @@ A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE
 - [x] Background From Local Files
 - [x] Live Reload JSON Config
 - [x] Custom Fonts
+- [ ] Custom Clock Formatting
 - [ ] Weather(via [Metro](https://open-meteo.com/))
 - [ ] Async Config Reload
 - [ ] Modular UI
-
-## If Possible
 - [ ] System Info
 - [ ] System Usage
 - [ ] Media Info(via [Player CTL](https://github.com/altdesktop/playerctl))
