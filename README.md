@@ -105,7 +105,7 @@ Adding your own scenes can easily be done by following these steps:
 5. Add a new object to your scene, name it `SceneNameManager`, e.g. `SnowstormManager`, and attach the previously created script
 6. Create a `SceneNameConfig.json` file in your scene directory, e.g. `SnowstormConfig.json`, this will be your default scene config
 7. Make a new script in your scene directory and call it `SceneNameConfigData`, e.g. `SnowstormConfigData`, that inherits from the `ConfigData` class, this class is used as a container to store values from your JSON config
-8. Create a new `ScriptableObject` menu item by adding the following above the class name `[CreateAssetMenu(fileName = "SceneNameConfigData", menuName = "Config/SceneNameConfigData")]`
+8. Create a new scriptable object menu item by adding the following above the class name `[CreateAssetMenu(fileName = "SceneNameConfigData", menuName = "Config/SceneNameConfigData")]`
 9. Create a new instance of this scriptable object
 10. Attach all the components to the `ConfigScript` under your `SceneManager`, and make sure that the `ConfigName` value matches your scene name, scene loading won't work otherwise
 11. Drag the `GameManager` prefab to your scene so you can start the playmode directly from your scene without any issues
