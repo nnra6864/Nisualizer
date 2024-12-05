@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 301504487}
-  _fontManager: {fileID: 0}
+  _fontManager: {fileID: 301504488}
 --- !u!114 &301504487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1620,6 +1620,10 @@ PrefabInstance:
       propertyPath: _microphoneData
       value: 
       objectReference: {fileID: 152640829}
+    - target: {fileID: 4673459665233926332, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5318915596191604993, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
       propertyPath: m_PropertySheet.m_Vector2f.m_Array.Array.data[1].m_Value.y
       value: 50
