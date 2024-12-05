@@ -148,7 +148,7 @@ namespace Config
         /// Handles config file being changed
         private void HandleConfigChanged()
         {
-            Debug.Log("Config changed, reloading");
+            Debug.Log($"[{_configName}] Config changed, reloading");
             GenerateDefaultConfigFile();
             LoadConfigFile();
             LoadConfig();
