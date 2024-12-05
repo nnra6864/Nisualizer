@@ -7,7 +7,8 @@ namespace InteractiveComponents
     [RequireComponent(typeof(VisualEffect))]
     public class InteractiveVFX : MonoBehaviour
     {
-        [SerializeField] private MicrophoneDataScript _microphoneData;
+        private static MicrophoneDataScript MicrophoneData => GameManager.MicrophoneData;
+        
         [SerializeField] private VisualEffect _vfx;
     
         [Tooltip("Name of the parameter in your VFX graph that'll be assigned a value of microphone loudness")]
@@ -19,13 +20,12 @@ namespace InteractiveComponents
         private void Reset()
         {
             _vfx            = GetComponent<VisualEffect>();
-            _microphoneData = FindFirstObjectByType<MicrophoneDataScript>();
         }
 
         private void Update()
         {
-            _vfx.playRate = Mathf.LerpUnclamped(_playRateRange.x, _playRateRange.y, _microphoneData.Loudness);
-            _vfx.SetFloat("Loudness", _microphoneData.Loudness);
+            _vfx.playRate = Mathf.LerpUnclamped(_playRateRange.x, _playRateRange.y, MicrophoneData.Loudness);
+            _vfx.SetFloat("Loudness", MicrophoneData.Loudness);
         }
     }
 }
