@@ -9,7 +9,7 @@ namespace Config
         public int DefaultFPS = 60;
         [ReadOnly] public int FPS;
 
-        public float DefaultSensitivity = 1;
+        public float DefaultSensitivity = 0.5f;
         [ReadOnly] public float Sensitivity;
 
         public string DefaultFont = "Default";

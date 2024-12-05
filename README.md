@@ -20,7 +20,7 @@ A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE
 - [x] Background From Local Files
 - [x] Live Reload JSON Config
 - [x] Custom Fonts
-- [x] Startup Transition
+- [x] Multiple Scenes
 - [ ] Custom Clock Formatting
 - [ ] Weather(via [Metro](https://open-meteo.com/))
 - [ ] Async Config Reload
@@ -83,11 +83,11 @@ Nisualizer requires a little setup in order to work, it should take no more than
 
 # FAQ
 1. Does it work on Windows?
-    - If you find a way to send Nisualizer to the background layer(good luck), and pass the system audio to a virtual device called output_input(should be possible w external apps), sure, it will work, again, good luck.
+    - Technically yes, try using [Lively](https://github.com/rocksdanister/lively) to send the app to background, not sure about custom input yet
 2. How's the performance?
     - Nisualizer itself should perform just fine on most systems. As for the resource usage, it depends, shouldn't be too bad, but my focus isn't on that, I just wanna create a good looking background.
 3. Can I fork this project and make my own visualizer?
-    - Absolutely, I am really interested to see what the community is capable of creating. After all, there are much more skilled artists and developers, than me, out there.
+    - Absolutely, I am really interested to see what the community is capable of creating. After all, there are much more skilled artists and developers than me, out there. You are also welcome to make a pull request to get your background merged into the master branch.
 
 # How it works
-Nisualizer works by capturing the audio data from a virtual input device called output_input, created in [Setup](#setup), and processing it in various ways to create interesting effects.
+Nisualizer works by capturing the audio data from a virtual input device called OutputInput, created in [Setup](#setup), and processing it in various ways to create interesting effects.
