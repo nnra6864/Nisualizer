@@ -109,7 +109,8 @@ Adding your own scenes can easily be done by following these steps:
 9. Create a new instance of this scriptable object
 10. Attach all the components to the `ConfigScript` under your `SceneManager`, and make sure that the `ConfigName` value matches your scene name, scene loading won't work otherwise
 11. Drag the `GameManager` prefab to your scene so you can start the playmode directly from your scene without any issues
-12. Utilize powerful scripts built with modularity in mind, such as `InteractiveVFX`, `InteractiveVolume` etc.
+12. Make sure you added your scene to the build settings
+13. Utilize powerful scripts built with modularity in mind, such as `InteractiveVFX`, `InteractiveVolume` etc.
 
 ## Contributing
 If you've made something that would fit into the actual project, feel free to make a pull request and I'll merge it if I like it. Have fun!
