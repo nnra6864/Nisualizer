@@ -28,10 +28,10 @@ namespace Core
         private void Start()
         {
             UpdateFont();
-            Config.Data.OnLoaded += UpdateFont;
+            ConfigData.OnLoaded += UpdateFont;
         }
 
-        private void OnDestroy() => Config.Data.OnLoaded -= UpdateFont;
+        private void OnDestroy() => ConfigData.OnLoaded -= UpdateFont;
 
         private void UpdateFont()
         {

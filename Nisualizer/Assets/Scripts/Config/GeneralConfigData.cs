@@ -15,13 +15,14 @@ namespace Config
         public string DefaultFont = "Default";
         [ReadOnly] public string Font;
 
+        public string DefaultScene = "Snowstorm";
+        [ReadOnly] public string Scene;
+        
         public string DefaultBackground = "";
         [ReadOnly] public string Background;
 
         public Sprite DefaultBackgroundSprite;
         [ReadOnly] public Sprite BackgroundSprite;
-
-        public void LoadBackgroundSprite(string path) => BackgroundSprite = Misc.SpriteFromFile(path);
 
         /// Loads the General Config Data
         public override void Load()
@@ -36,6 +37,8 @@ namespace Config
         {
             FPS              = DefaultFPS;
             Sensitivity      = DefaultSensitivity;
+            Font             = DefaultFont;
+            Scene            = DefaultScene;
             Background       = DefaultBackground;
             BackgroundSprite = DefaultBackgroundSprite;
             

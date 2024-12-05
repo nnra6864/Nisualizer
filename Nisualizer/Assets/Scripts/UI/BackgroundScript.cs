@@ -18,7 +18,7 @@ namespace UI
         private void Start()
         {
             UpdateBackground();
-            Config.Data.OnLoaded += UpdateBackground;
+            ConfigData.OnLoaded += UpdateBackground;
         }
 
         private void OnDestroy()
@@ -26,7 +26,7 @@ namespace UI
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
             if (Config == null || Config.Data == null) return;
             
-            Config.Data.OnLoaded -= UpdateBackground;
+            ConfigData.OnLoaded -= UpdateBackground;
         }
 
         private void UpdateBackground()

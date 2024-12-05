@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core
 {
-    [RequireComponent(typeof(ConfigScript), typeof(FontManager))]
+    [RequireComponent(typeof(ConfigScript), typeof(SceneManager), typeof(FontManager))]
     public class GameManager : MonoBehaviour
     {
         //Simple singleton implementation
@@ -28,8 +28,10 @@ namespace Core
         /// Contains all the Config data and logic
         [SerializeField] private ConfigScript _config;
         public static ConfigScript ConfigScript => Instance._config;
-
-        private static GeneralConfigData _configData => (GeneralConfigData)Instance._config.Data;
+        private static GeneralConfigData ConfigData => (GeneralConfigData)Instance._config.Data;
+        
+        [SerializeField] private SceneManager _sceneManager;
+        public static SceneManager SceneManager => Instance._sceneManager;
         
         [SerializeField] private FontManager _fontManager;
         public static FontManager FontManager => Instance._fontManager;
@@ -37,6 +39,7 @@ namespace Core
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
+            _sceneManager = GetComponent<SceneManager>();
             _fontManager = GetComponent<FontManager>();
         }
 
@@ -54,7 +57,7 @@ namespace Core
             
             // Set FPS
             SetFPS();
-            _configData.OnLoaded += SetFPS;
+            ConfigData.OnLoaded += SetFPS;
         }
 
         private void OnDestroy()
@@ -62,9 +65,9 @@ namespace Core
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
             if (ConfigScript?.Data == null) return;
             
-            _configData.OnLoaded -= SetFPS;
+            ConfigData.OnLoaded -= SetFPS;
         }
 
-        private void SetFPS() => Application.targetFrameRate = _configData.FPS;
+        private void SetFPS() => Application.targetFrameRate = ConfigData.FPS;
     }
 }
