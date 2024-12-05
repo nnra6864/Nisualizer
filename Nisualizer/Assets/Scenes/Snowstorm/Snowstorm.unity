@@ -119,52 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &152640828
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 152640830}
-  - component: {fileID: 152640829}
-  m_Layer: 0
-  m_Name: MicrophoneData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &152640829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152640828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddc90e14332dae21e8422eb4246542c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transitionTime: 0.25
-  _transitionEasing: 9
---- !u!4 &152640830
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152640828}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282416262
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43c803f92ab4b1d8b95039be887c153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _microphoneData: {fileID: 152640829}
+  _microphoneData: {fileID: 0}
   _volume: {fileID: 832575518}
   _postExpoRange: {x: 0, y: 0.25}
   _contrastRange: {x: 0, y: 10}
@@ -1459,7 +1413,7 @@ PrefabInstance:
     - target: {fileID: 4563210201025919042, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
       propertyPath: _microphoneData
       value: 
-      objectReference: {fileID: 152640829}
+      objectReference: {fileID: 0}
     - target: {fileID: 4673459665233926332, guid: fe5120c75f893bc33b0979ecc6b74055, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1481,7 +1435,6 @@ SceneRoots:
   - {fileID: 1908701085}
   - {fileID: 604110111}
   - {fileID: 832575519}
-  - {fileID: 152640830}
   - {fileID: 330585546}
   - {fileID: 2117113947}
   - {fileID: 410087041}

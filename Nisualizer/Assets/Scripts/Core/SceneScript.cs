@@ -1,6 +1,4 @@
-using System;
 using Config;
-using NnUtils.Scripts;
 using UnityEngine;
 
 namespace Core
