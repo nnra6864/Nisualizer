@@ -40,7 +40,7 @@ namespace Config
         #region ConfigFile
 
         [Tooltip("Name of the config file. Use / to store in a subdirectory, e.g. path/to/config.")]
-        [SerializeField] private string _configName = "config";
+        [SerializeField] private string _configName = "Config";
         
         [Tooltip("Path to the config")]
         [ReadOnly] [SerializeField] private string _configPath;
