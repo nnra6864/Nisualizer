@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a48b760906f087693f5ca4b6ec71eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultConfig: {fileID: 4900000, guid: 606b8d5d95f544ed965ee13be48514c6, type: 3}
   _data:
     General:
       DefaultFPS: 60

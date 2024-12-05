@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using NnUtils.Scripts;
 using UnityEngine;
 
 namespace Config
@@ -17,10 +18,11 @@ namespace Config
 
         public void Init()
         {
-            //Load the default config from Resources
+            //Set config path
+            _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $".config/Nisualizer/{_configName}");
+                
             //Getting text directly because storing it as a text asset and not a string causes some code to not execute later :/
-            _defaultConfigText = Resources.Load<TextAsset>("DefaultConfig").text;
-            Debug.Assert(_defaultConfigText != null, "Default config was not found in Resources, this is really bad!");
+            _defaultConfigText = _defaultConfig.text;
             
             //Generate the default config if it doesn't exist
             GenerateDefaultConfigFile();
@@ -36,6 +38,15 @@ namespace Config
         }
 
         #region ConfigFile
+
+        [Tooltip("Name of the config file. Use / to store in a subdirectory, e.g. path/to/config.")]
+        [SerializeField] private string _configName = "config.json";
+        
+        [Tooltip("Path to the config")]
+        [ReadOnly] [SerializeField] private string _configPath;
+        
+        [Tooltip("Default Config")]
+        [SerializeField] private TextAsset _defaultConfig;
         
         /// Gets loaded from resources in <see cref="Init"/>
         private string _defaultConfigText;
@@ -48,8 +59,6 @@ namespace Config
         /// Contains all the config values and gets loaded in <see cref="LoadConfig"/>
         public ConfigData Data => _data;
 
-        /// Path to the config
-        private readonly string _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/Nisualizer/config.json");
         
         /// <summary>
         /// Generates the default config file if one is not found
