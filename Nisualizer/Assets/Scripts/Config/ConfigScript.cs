@@ -19,7 +19,7 @@ namespace Config
         public void Init()
         {
             //Set config path
-            _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $".config/Nisualizer/{_configName}");
+            _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $".config/Nisualizer/{_configName}.json");
                 
             //Getting text directly because storing it as a text asset and not a string causes some code to not execute later :/
             _defaultConfigText = _defaultConfig.text;
@@ -40,7 +40,7 @@ namespace Config
         #region ConfigFile
 
         [Tooltip("Name of the config file. Use / to store in a subdirectory, e.g. path/to/config.")]
-        [SerializeField] private string _configName = "config.json";
+        [SerializeField] private string _configName = "config";
         
         [Tooltip("Path to the config")]
         [ReadOnly] [SerializeField] private string _configPath;
@@ -54,11 +54,11 @@ namespace Config
         /// Config text loaded from the config file
         private string _configText;
         
+        [Tooltip("Config Data Script")]
         [SerializeField] private ConfigData _data;
         
         /// Contains all the config values and gets loaded in <see cref="LoadConfig"/>
         public ConfigData Data => _data;
-
         
         /// <summary>
         /// Generates the default config file if one is not found
@@ -66,7 +66,7 @@ namespace Config
         /// <returns>Whether config is generated</returns>
         private bool GenerateDefaultConfigFile()
         {
-            const string debugPrefix = "GenerateDefaultConfig: ";
+            var debugPrefix = $"[{_configName}] GenerateDefaultConfig: ";
             
             //Return if config already exists
             if (File.Exists(_configPath))
@@ -92,7 +92,7 @@ namespace Config
         /// Loads the config file into memory
         private void LoadConfigFile()
         {
-            const string debugPrefix = "LoadConfigFile: ";
+            var debugPrefix = $"[{_configName}] LoadConfigFile: ";
             
             Debug.Assert(File.Exists(_configPath), $"{_configPath} not found");
             _configText = File.ReadAllText(_configPath);
@@ -102,7 +102,7 @@ namespace Config
         /// Loads config values into a new Config object
         private void LoadConfig()
         {
-            const string debugPrefix = "LoadConfig: ";
+            var debugPrefix = $"[{_configName}] LoadConfig: ";
             
             // Reset to default to make sure all vars are set and changes no longer present in config are undone
             // Using ResetSilent because the OnChanged event will get triggered by Load() anyways
@@ -125,7 +125,7 @@ namespace Config
         /// Sets up the FileSystemWatcher to monitor changes to the config file
         private void WatchForConfigChanges()
         {
-            const string debugPrefix = "WatchForConfigChanges: ";
+            var debugPrefix = $"[{_configName}] WatchForConfigChanges: ";
             
             _configWatcher = new()
             {
