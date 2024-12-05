@@ -364,18 +364,7 @@ MonoBehaviour:
   _configName: config
   _configPath: 
   _defaultConfig: {fileID: 4900000, guid: 606b8d5d95f544ed965ee13be48514c6, type: 3}
-  _data:
-    General:
-      DefaultFPS: 60
-      FPS: 0
-      DefaultSensitivity: 1
-      Sensitivity: 0
-      DefaultFont: Default
-      Font: 
-      DefaultBackground: 
-      Background: 
-      DefaultBackgroundSprite: {fileID: 0}
-      BackgroundSprite: {fileID: 0}
+  _data: {fileID: 11400000, guid: ac17013b988d6e81baf1f5fc58a00e8a, type: 2}
 --- !u!114 &301504488
 MonoBehaviour:
   m_ObjectHideFlags: 0

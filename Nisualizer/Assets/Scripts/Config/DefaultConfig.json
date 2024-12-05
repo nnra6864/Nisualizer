@@ -1,7 +1,5 @@
 {
-  "General": {
-    "FPS": 240,
-    "Sensitivity": 1,
-    "Background": "~/.config/Backgrounds/NordicRuinsInASnowyBlizzard.jpg"
-  }
+  "FPS": 240,
+  "Sensitivity": 1,
+  "Background": "~/.config/Backgrounds/NordicRuinsInASnowyBlizzard.jpg"
 }

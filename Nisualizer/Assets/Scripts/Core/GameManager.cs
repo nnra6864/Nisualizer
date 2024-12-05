@@ -28,6 +28,8 @@ namespace Core
         /// Contains all the Config data and logic
         [SerializeField] private ConfigScript _config;
         public static ConfigScript ConfigScript => Instance._config;
+
+        private static GeneralConfigData _configData => (GeneralConfigData)Instance._config.Data;
         
         [SerializeField] private FontManager _fontManager;
         public static FontManager FontManager => Instance._fontManager;
@@ -47,12 +49,12 @@ namespace Core
 
         private void Start()
         {
-            //Load the Config in Start to allow for other scripts to subscribe to events in Awake
+            // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
             
-            //Set FPS
-            SetFPS(ConfigScript.Data.General.FPS);
-            ConfigScript.Data.OnConfigLoaded += conf => SetFPS(conf.General.FPS);
+            // Set FPS
+            SetFPS();
+            _configData.OnLoaded += SetFPS;
         }
 
         private void OnDestroy()
@@ -60,9 +62,9 @@ namespace Core
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
             if (ConfigScript?.Data == null) return;
             
-            ConfigScript.Data.OnConfigLoaded -= conf => SetFPS(conf.General.FPS);
+            _configData.OnLoaded -= SetFPS;
         }
 
-        private void SetFPS(int fps) => Application.targetFrameRate = fps;
+        private void SetFPS() => Application.targetFrameRate = _configData.FPS;
     }
 }

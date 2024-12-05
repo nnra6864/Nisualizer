@@ -9,6 +9,7 @@ namespace Core
     public class FontManager : MonoBehaviour
     {
         private static ConfigScript Config => GameManager.ConfigScript;
+        private static GeneralConfigData ConfigData => (GeneralConfigData)Config.Data;
         
         [SerializeField] private TMP_FontAsset _defaultFont;
         private TMP_FontAsset _fontAsset;
@@ -26,15 +27,15 @@ namespace Core
 
         private void Start()
         {
-            UpdateFont(Config.Data);
-            Config.Data.OnConfigLoaded += UpdateFont;
+            UpdateFont();
+            Config.Data.OnLoaded += UpdateFont;
         }
 
-        private void OnDestroy() => Config.Data.OnConfigLoaded -= UpdateFont;
+        private void OnDestroy() => Config.Data.OnLoaded -= UpdateFont;
 
-        private void UpdateFont(ConfigData configData)
+        private void UpdateFont()
         {
-            var font = configData.General.Font;
+            var font = ConfigData.Font;
 
             if (font == "Default")
             {
@@ -42,7 +43,7 @@ namespace Core
                 return;
             }
             
-            FontAsset = SystemTMP.GenerateFontFromName(configData.General.Font);
+            FontAsset = SystemTMP.GenerateFontFromName(ConfigData.Font);
             
             foreach (var tmpText in FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             {

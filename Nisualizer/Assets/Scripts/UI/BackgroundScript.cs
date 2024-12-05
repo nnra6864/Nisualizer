@@ -9,6 +9,7 @@ namespace UI
     public class BackgroundScript : MonoBehaviour
     {
         private static ConfigScript Config => GameManager.ConfigScript;
+        private static GeneralConfigData ConfigData => (GeneralConfigData)Config.Data;
         
         [SerializeField] private Image _image;
         
@@ -16,8 +17,8 @@ namespace UI
 
         private void Start()
         {
-            UpdateBackground(Config.Data.General.BackgroundSprite);
-            Config.Data.OnConfigLoaded += conf => UpdateBackground(conf.General.BackgroundSprite);
+            UpdateBackground();
+            Config.Data.OnLoaded += UpdateBackground;
         }
 
         private void OnDestroy()
@@ -25,12 +26,12 @@ namespace UI
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
             if (Config == null || Config.Data == null) return;
             
-            Config.Data.OnConfigLoaded -= conf => UpdateBackground(conf.General.BackgroundSprite);
+            Config.Data.OnLoaded -= UpdateBackground;
         }
 
-        private void UpdateBackground(Sprite sprite)
+        private void UpdateBackground()
         {
-            _image.sprite = sprite;
+            _image.sprite = ConfigData.BackgroundSprite;
         }
     }
 }

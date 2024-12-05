@@ -1,4 +1,5 @@
 using System.Collections;
+using Config;
 using NnUtils.Scripts;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Core
 {
     public class MicrophoneDataScript : MonoBehaviour
     {
-        private static Config.ConfigData ConfigData => GameManager.ConfigScript.Data;
+        private static GeneralConfigData ConfigData => (GeneralConfigData)GameManager.ConfigScript.Data;
         
         //More values lead to a smoother appearance but also add more delay
         private const int SampleWindow = 64;
@@ -37,7 +38,7 @@ namespace Core
 
         private void Update()
         {
-            TweenMicrophoneLoudness(GetLoudness() * ConfigData.General.Sensitivity);
+            TweenMicrophoneLoudness(GetLoudness() * ConfigData.Sensitivity);
         }
     
         //Returns the total loudness of microphone audio
