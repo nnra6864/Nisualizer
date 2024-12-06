@@ -3,6 +3,7 @@ using Config;
 using NnUtils.Scripts;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core
 {
@@ -28,12 +29,17 @@ namespace Core
         private void Start()
         {
             UpdateFont();
-            ConfigData.OnLoaded += UpdateFont;
+            ConfigData.OnLoaded                                  += UpdateFont;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += UpdateFontOnSceneLoad;
         }
 
-        private void OnDestroy() => ConfigData.OnLoaded -= UpdateFont;
+        private void OnDestroy()
+        {
+            ConfigData.OnLoaded -= UpdateFont;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= UpdateFontOnSceneLoad;
+        }
 
-        private void UpdateFont()
+        public void UpdateFont()
         {
             var font = ConfigData.Font;
             FontAsset = font == "Default" ? _defaultFont : SystemTMP.GenerateFontFromName(ConfigData.Font);
@@ -41,5 +47,7 @@ namespace Core
             foreach (var tmpText in FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None))
                 tmpText.font = FontAsset;
         }
+        
+        public void UpdateFontOnSceneLoad(Scene scene, LoadSceneMode mode) => UpdateFont();
     }
 }
