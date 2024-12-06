@@ -36,19 +36,10 @@ namespace Core
         private void UpdateFont()
         {
             var font = ConfigData.Font;
-
-            if (font == "Default")
-            {
-                FontAsset = _defaultFont;
-                return;
-            }
-            
-            FontAsset = SystemTMP.GenerateFontFromName(ConfigData.Font);
+            FontAsset = font == "Default" ? _defaultFont : SystemTMP.GenerateFontFromName(ConfigData.Font);
             
             foreach (var tmpText in FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None))
-            {
                 tmpText.font = FontAsset;
-            }
         }
     }
 }
