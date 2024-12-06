@@ -27,13 +27,10 @@ namespace Core
         [Tooltip("Easing applied to the Loudness transition.")]
         [SerializeField] private Easings.Type _transitionEasing = Easings.Type.CubicOut;
 
-        //Initialize microphone in Awake to be able to access data as early as possible in other scripts
-        private void Awake()
-        {
-            InitializeMicrophone();
-        }
-
-        private void InitializeMicrophone() =>
+        /// <summary>
+        /// This function should be called from the GameManager after initializing ConfigScript
+        /// </summary>
+        public void InitializeMicrophone() =>
             _microphoneClip = Microphone.Start(_microphone, true, 20, AudioSettings.outputSampleRate);
 
         private void Update()

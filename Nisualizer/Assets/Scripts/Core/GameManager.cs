@@ -45,7 +45,7 @@ namespace Core
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
-            _microphoneData = GetComponent<MicrophoneDataScript>();
+            _microphoneData = FindFirstObjectByType<MicrophoneDataScript>();
             _sceneManager = GetComponent<SceneManager>();
             _fontManager = GetComponent<FontManager>();
         }
@@ -61,6 +61,7 @@ namespace Core
         {
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
+            MicrophoneData.InitializeMicrophone();
             
             // Set FPS
             SetFPS();
