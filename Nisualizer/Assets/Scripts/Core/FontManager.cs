@@ -47,7 +47,7 @@ namespace Core
             foreach (var tmpText in FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None))
                 tmpText.font = FontAsset;
         }
-        
-        public void UpdateFontOnSceneLoad(Scene scene, LoadSceneMode mode) => UpdateFont();
+
+        private void UpdateFontOnSceneLoad(Scene scene, LoadSceneMode mode) => UpdateFont();
     }
 }
