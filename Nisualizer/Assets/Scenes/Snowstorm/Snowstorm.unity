@@ -654,7 +654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43c803f92ab4b1d8b95039be887c153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _microphoneData: {fileID: 0}
   _volume: {fileID: 832575518}
   _postExpoRange: {x: 0, y: 0.25}
   _contrastRange: {x: 0, y: 10}
@@ -731,7 +730,6 @@ GameObject:
   - component: {fileID: 1050520319}
   - component: {fileID: 1050520318}
   - component: {fileID: 1050520320}
-  - component: {fileID: 1050520321}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -810,19 +808,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 4
   m_AspectRatio: 1.7772622
---- !u!114 &1050520321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050520316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042f872ce6b8d37818fb26fcf1ad2a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _image: {fileID: 1050520318}
 --- !u!1 &1284781449
 GameObject:
   m_ObjectHideFlags: 0

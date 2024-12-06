@@ -19,13 +19,13 @@ namespace InteractiveComponents
 
         private void Reset()
         {
-            _vfx            = GetComponent<VisualEffect>();
+            _vfx = GetComponent<VisualEffect>();
         }
 
         private void Update()
         {
             _vfx.playRate = Mathf.LerpUnclamped(_playRateRange.x, _playRateRange.y, MicrophoneData.Loudness);
-            _vfx.SetFloat("Loudness", MicrophoneData.Loudness);
+            _vfx.SetFloat(_loudnessPropertyName, MicrophoneData.Loudness);
         }
     }
 }
