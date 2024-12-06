@@ -2,7 +2,7 @@
 ![Screenshot](/Media/Screenshot.png)
 This project aims to bring visualizers, such as [GLava](https://github.com/jarcode-foss/glava) and [Cava](https://github.com/karlstav/cava), to the next level. <br/>
 It acts as both a visualizer and a background, eliminating the need for any additional apps. <br/>
-A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE).<br/>
+A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 
 # Features
 
@@ -22,6 +22,7 @@ A simple example can be found [here](https://www.youtube.com/watch?v=Up5S7a5OvbE
 - [x] Custom Fonts
 - [x] Multiple Scenes
 - [x] Per Scene Config
+- [ ] Automatic Scene Creation
 - [ ] Weather(via [Metro](https://open-meteo.com/))
 - [ ] Async Config Reload
 - [ ] Modular UI
