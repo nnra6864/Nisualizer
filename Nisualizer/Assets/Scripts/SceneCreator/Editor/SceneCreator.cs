@@ -63,6 +63,12 @@ namespace SceneCreator.Editor
             
             // Create scene manager script
             CreateSceneManagerScript(sceneName, sceneDir);
+            
+            // Create default config
+            CreateDefaultConfig(sceneName, sceneDir);
+            
+            // Create config data script
+            CreateConfigDataScript(sceneName, sceneDir);
         }
 
         private bool CreateSceneDirectory(string sceneName, string sceneDir)
@@ -99,6 +105,48 @@ namespace Scenes.{sceneName}
 ";
             
             var scriptPath = Path.Combine(sceneDir, $"{sceneName}Manager.cs");
+            File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
+        }
+        
+        private void CreateDefaultConfig(string sceneName, string sceneDir)
+        {
+            var configPath = Path.Combine(sceneDir, $"{sceneName}Config.json");
+            File.WriteAllText(configPath, "{\n\n}");
+            AssetDatabase.Refresh();
+        }
+        
+        private void CreateConfigDataScript(string sceneName, string sceneDir)
+        {
+            var scriptContent = $@"using Config;
+using UnityEngine;
+
+namespace Scenes.{sceneName}
+{{
+    /// This class should be a perfect match of your JSON config
+    [CreateAssetMenu(fileName = ""{sceneName}ConfigData"", menuName = ""Config/{sceneName}ConfigData"")]
+    public class {sceneName}ConfigData : ConfigData
+    {{
+        // Gets called when config is loaded
+        public override void Load()
+        {{
+            // Your code here
+
+            base.Load();
+        }}
+        
+        // Use this function to reset all values to default
+        public override void Reset()
+        {{
+            // Your code here
+
+            base.Reset();
+        }}
+    }}
+}}
+";
+            
+            var scriptPath = Path.Combine(sceneDir, $"{sceneName}ConfigData.cs");
             File.WriteAllText(scriptPath, scriptContent);
             AssetDatabase.Refresh();
         }
