@@ -69,6 +69,9 @@ namespace SceneCreator.Editor
             
             // Create config data script
             CreateConfigDataScript(sceneName, sceneDir);
+            
+            // Create config data SO
+            CreateConfigDataSO(sceneName, sceneDir);
         }
 
         private bool CreateSceneDirectory(string sceneName, string sceneDir)
@@ -148,6 +151,15 @@ namespace Scenes.{sceneName}
             
             var scriptPath = Path.Combine(sceneDir, $"{sceneName}ConfigData.cs");
             File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
+        }
+
+        private void CreateConfigDataSO(string sceneName, string sceneDir)
+        {
+            var so = CreateInstance($"{sceneName}ConfigData");
+            var soPath = Path.Combine(sceneDir, $"{sceneName}ConfigData.asset");
+            AssetDatabase.CreateAsset(so, soPath);
+            AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
     }
