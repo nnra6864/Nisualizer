@@ -55,23 +55,13 @@ namespace SceneCreator.Editor
                 return;
             }
             
-            // Create scene dir
             if (!CreateSceneDirectory(sceneName, sceneDir)) return;
-            
-            // Create scene asset
             CreateSceneAsset(scenePath);
-            
-            // Create scene manager script
             CreateSceneManagerScript(sceneName, sceneDir);
-            
-            // Create default config
             CreateDefaultConfig(sceneName, sceneDir);
-            
-            // Create config data script
             CreateConfigDataScript(sceneName, sceneDir);
-            
-            // Create config data SO
             CreateConfigDataSO(sceneName, sceneDir);
+            AddGameManager();
         }
 
         private bool CreateSceneDirectory(string sceneName, string sceneDir)
@@ -162,5 +152,7 @@ namespace Scenes.{sceneName}
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
+
+        private void AddGameManager() => PrefabUtility.InstantiatePrefab(_gameManagerPrefab);
     }
 }
