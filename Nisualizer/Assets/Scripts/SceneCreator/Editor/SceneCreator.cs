@@ -123,7 +123,7 @@ using UnityEngine;
 
 namespace Scenes.{sceneName}
 {{
-    /// This class should be a perfect match of your JSON config
+    // This class should be a perfect match of your JSON config
     [CreateAssetMenu(fileName = ""{sceneName}ConfigData"", menuName = ""Config/{sceneName}ConfigData"")]
     public class {sceneName}ConfigData : ConfigData
     {{
