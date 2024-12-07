@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEditor;
+using UnityEditor.Compilation;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -60,8 +61,11 @@ namespace SceneCreator.Editor
             CreateSceneManagerScript(sceneName, sceneDir);
             CreateDefaultConfig(sceneName, sceneDir);
             CreateConfigDataScript(sceneName, sceneDir);
-            CreateConfigDataSO(sceneName, sceneDir);
-            AddGameManager();
+            AssetDatabase.Refresh();
+            AssetDatabase.SaveAssets();
+            CompilationPipeline.RequestScriptCompilation();
+            CompilationPipeline.compilationFinished += x => CreateConfigDataSO(sceneName, sceneDir);
+            //AddGameManager();
         }
 
         private bool CreateSceneDirectory(string sceneName, string sceneDir)

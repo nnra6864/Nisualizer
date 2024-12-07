@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - m_ViewDataDictionary: {instanceID: 0}
   - _visualTreeAsset: {fileID: 9197481963319205126, guid: 9aa72f11f6f7e8b44be5d5e24b5a3fc7, type: 3}
+  - _gameManagerPrefab: {fileID: 5659401107231073253, guid: 70f2f570f571af807aae8993ab16c130, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
