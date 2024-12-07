@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,8 +12,7 @@ namespace SceneCreator.Editor
         [SerializeField] private GameObject _gameManagerPrefab;
         
         private Button _createButton;
-
-        public string SceneName;
+        private TextField _sceneNameField;
 
         [MenuItem("Window/UI Toolkit/SceneCreator")]
         public static void ShowExample()
@@ -27,18 +27,50 @@ namespace SceneCreator.Editor
             var root = rootVisualElement;
             _visualTreeAsset.CloneTree(root);
             
-            var sceneNameField = root.Q<TextField>("SceneName");
-            sceneNameField.RegisterValueChangedCallback(evt => SceneName = evt.newValue);
+            _sceneNameField = root.Q<TextField>("SceneName");
             
             _createButton = root.Q<Button>("CreateButton");
             _createButton.RegisterCallback<ClickEvent>(OnCreateButtonClick);
         }
 
-        private void CreateNewScene()
+        private void OnCreateButtonClick(ClickEvent evt) => CreateNisualizerScene();
+        
+        private void CreateNisualizerScene()
         {
-            Debug.Log(SceneName);
+            CreateScene();
         }
 
-        private void OnCreateButtonClick(ClickEvent evt) => CreateNewScene();
+        private void CreateScene()
+        {
+            // Store scene name
+            var sceneName = _sceneNameField.text;
+            
+            // Get the scene path
+            var scenePath = Path.Combine("Assets/Scenes", sceneName);
+            
+            if (!CreateSceneDirectory(sceneName, scenePath)) return;
+            
+        }
+
+        private bool CreateSceneDirectory(string sceneName, string scenePath)
+        {
+            // Return if scene name is empty
+            if (string.IsNullOrEmpty(sceneName))
+            {
+                Debug.LogError("Scene name can't be empty");
+                return false;
+            }
+            
+            // Check if the scene with that name already exists
+            if (AssetDatabase.AssetPathExists(scenePath))
+            {
+                Debug.LogError($"A scene directory named '{sceneName}' already exists");
+                return false;
+            }
+            
+            // Create the scene directory
+            AssetDatabase.CreateFolder("Assets/Scenes", sceneName);
+            return true;
+        }
     }
 }
