@@ -60,6 +60,9 @@ namespace SceneCreator.Editor
             
             // Create scene asset
             CreateSceneAsset(scenePath);
+            
+            // Create scene manager script
+            CreateSceneManagerScript(sceneName, sceneDir);
         }
 
         private bool CreateSceneDirectory(string sceneName, string sceneDir)
@@ -80,6 +83,24 @@ namespace SceneCreator.Editor
         {
             var newScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene);
             EditorSceneManager.SaveScene(newScene, scenePath);
+        }
+
+        private void CreateSceneManagerScript(string sceneName, string sceneDir)
+        {
+            var scriptContent = $@"using Core;
+
+namespace Scenes.{sceneName}
+{{
+    public class {sceneName}Manager : SceneScript
+    {{
+        public static {sceneName}ConfigData ConfigData => ({sceneName}ConfigData)Config.Data;
+    }}
+}}
+";
+            
+            var scriptPath = Path.Combine(sceneDir, $"{sceneName}Manager.cs");
+            File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
         }
     }
 }
