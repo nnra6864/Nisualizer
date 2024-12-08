@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 282416263}
   - component: {fileID: 282416266}
   - component: {fileID: 282416265}
+  - component: {fileID: 282416267}
   m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
@@ -178,8 +179,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: HH:mm:ss
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 33f4286d2908f91d091b520252f47d46, type: 2}
-  m_sharedMaterial: {fileID: 1510307815082698839, guid: 33f4286d2908f91d091b520252f47d46, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
+  m_sharedMaterial: {fileID: 1510307815082698839, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -255,6 +256,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282416262}
   m_CullTransparentMesh: 1
+--- !u!114 &282416267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282416262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9809ca2ba096bf5a2a6a78cb76f424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tmpText: {fileID: 282416265}
+  _defaultFont: {fileID: 11400000, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +845,7 @@ GameObject:
   - component: {fileID: 1284781450}
   - component: {fileID: 1284781452}
   - component: {fileID: 1284781451}
+  - component: {fileID: 1284781453}
   m_Layer: 5
   m_Name: Day
   m_TagString: Untagged
@@ -878,8 +894,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Day
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 33f4286d2908f91d091b520252f47d46, type: 2}
-  m_sharedMaterial: {fileID: 1510307815082698839, guid: 33f4286d2908f91d091b520252f47d46, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
+  m_sharedMaterial: {fileID: 1510307815082698839, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -955,6 +971,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284781449}
   m_CullTransparentMesh: 1
+--- !u!114 &1284781453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284781449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9809ca2ba096bf5a2a6a78cb76f424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tmpText: {fileID: 1284781451}
+  _defaultFont: {fileID: 11400000, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
 --- !u!1001 &1490031190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1011,6 +1041,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6727376568078388782, guid: 70f2f570f571af807aae8993ab16c130, type: 3}
+      propertyPath: DefaultConfig
+      value: 
+      objectReference: {fileID: 4900000, guid: 606b8d5d95f544ed965ee13be48514c6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1063,6 +1097,7 @@ GameObject:
   - component: {fileID: 1873705546}
   - component: {fileID: 1873705549}
   - component: {fileID: 1873705548}
+  - component: {fileID: 1873705550}
   m_Layer: 5
   m_Name: Date
   m_TagString: Untagged
@@ -1111,8 +1146,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: dd/MM/yyyy
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 33f4286d2908f91d091b520252f47d46, type: 2}
-  m_sharedMaterial: {fileID: 1510307815082698839, guid: 33f4286d2908f91d091b520252f47d46, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
+  m_sharedMaterial: {fileID: 1510307815082698839, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1188,6 +1223,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873705545}
   m_CullTransparentMesh: 1
+--- !u!114 &1873705550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873705545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9809ca2ba096bf5a2a6a78cb76f424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tmpText: {fileID: 1873705548}
+  _defaultFont: {fileID: 11400000, guid: ceda2de62b1a3eb0fbb598e51b6d42f4, type: 2}
 --- !u!1 &1908701082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,9 +1281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a48b760906f087693f5ca4b6ec71eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _configName: Snowstorm
+  ConfigName: Config
   _configPath: 
-  _defaultConfig: {fileID: 4900000, guid: 7fdb8f79529992cecb17f9f999f39a88, type: 3}
+  DefaultConfig: {fileID: 4900000, guid: 7fdb8f79529992cecb17f9f999f39a88, type: 3}
   _data: {fileID: 11400000, guid: 3c023333857d84cd19c199ebf9f17d25, type: 2}
 --- !u!4 &1908701085
 Transform:

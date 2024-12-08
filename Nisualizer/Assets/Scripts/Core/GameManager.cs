@@ -6,7 +6,6 @@ namespace Core
     [RequireComponent(typeof(ConfigScript))]
     [RequireComponent(typeof(MicrophoneDataScript))]
     [RequireComponent(typeof(SceneManager))]
-    [RequireComponent(typeof(FontManager))]
     public class GameManager : MonoBehaviour
     {
         //Simple singleton implementation
@@ -39,15 +38,11 @@ namespace Core
         [SerializeField] private SceneManager _sceneManager;
         public static SceneManager SceneManager => Instance._sceneManager;
         
-        [SerializeField] private FontManager _fontManager;
-        public static FontManager FontManager => Instance._fontManager;
-        
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
             _microphoneData = FindFirstObjectByType<MicrophoneDataScript>();
             _sceneManager = GetComponent<SceneManager>();
-            _fontManager = GetComponent<FontManager>();
         }
 
 
