@@ -42,12 +42,16 @@ namespace SceneCreator.Editor
             // Link the text field
             _sceneNameField = root.Q<TextField>("SceneName");
             
+            // Create the Nisualizer scene if Return is pressed
+            _sceneNameField.RegisterCallback<KeyDownEvent>(evt =>
+                { if (evt.keyCode == KeyCode.Return) CreateNisualizerScene(); }, TrickleDown.TrickleDown);
+            
             // Link the button
             _createButton = root.Q<Button>("CreateButton");
-            _createButton.RegisterCallback<ClickEvent>(OnCreateButtonClick);
+            
+            // Create the Nisualizer scene if button is pressed
+            _createButton.RegisterCallback<ClickEvent>(_ => CreateNisualizerScene());
         }
-
-        private static void OnCreateButtonClick(ClickEvent evt) => CreateNisualizerScene();
 
         private static void CreateNisualizerScene()
         {
