@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 namespace SceneCreator.Editor
 {
-    public class SceneCreator : EditorWindow
+    public class NisualizerSceneCreator : EditorWindow
     {
         private static Button _createButton;
         private static TextField _sceneNameField;
@@ -29,8 +29,8 @@ namespace SceneCreator.Editor
         {
             ResetEditorData();
             
-            var wnd = GetWindow<SceneCreator>();
-            wnd.titleContent = new("SceneCreator");
+            var wnd = GetWindow<NisualizerSceneCreator>();
+            wnd.titleContent = new("Nisualizer Scene Creator");
         }
 
         public void CreateGUI()
