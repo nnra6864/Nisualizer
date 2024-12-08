@@ -19,10 +19,10 @@ namespace Config
         public void Init()
         {
             //Set config path
-            _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $".config/Nisualizer/{_configName}.json");
+            _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $".config/Nisualizer/{ConfigName}.json");
                 
             //Getting text directly because storing it as a text asset and not a string causes some code to not execute later :/
-            _defaultConfigText = _defaultConfig.text;
+            _defaultConfigText = DefaultConfig.text;
             
             //Generate the default config if it doesn't exist
             GenerateDefaultConfigFile();
@@ -39,14 +39,16 @@ namespace Config
 
         #region ConfigFile
 
+        // Has to be public so that it can be set via SceneCreator script
         [Tooltip("Name of the config file. Use / to store in a subdirectory, e.g. path/to/config.")]
-        [SerializeField] private string _configName = "Config";
+        public string ConfigName = "Config";
         
         [Tooltip("Path to the config")]
         [ReadOnly] [SerializeField] private string _configPath;
         
+        // Has to be public so that it can be set via SceneCreator script
         [Tooltip("Default Config")]
-        [SerializeField] private TextAsset _defaultConfig;
+        public TextAsset DefaultConfig;
         
         /// Gets loaded from resources in <see cref="Init"/>
         private string _defaultConfigText;
@@ -58,15 +60,19 @@ namespace Config
         [SerializeField] private ConfigData _data;
         
         /// Contains all the config values and gets loaded in <see cref="LoadConfig"/>
-        public ConfigData Data => _data;
-        
+        public ConfigData Data
+        {
+            get => _data;
+            set => _data = value;
+        }
+
         /// <summary>
         /// Generates the default config file if one is not found
         /// </summary>
         /// <returns>Whether config is generated</returns>
         private bool GenerateDefaultConfigFile()
         {
-            var debugPrefix = $"[{_configName}] GenerateDefaultConfig: ";
+            var debugPrefix = $"[{ConfigName}] GenerateDefaultConfig: ";
             
             //Return if config already exists
             if (File.Exists(_configPath))
@@ -92,7 +98,7 @@ namespace Config
         /// Loads the config file into memory
         private void LoadConfigFile()
         {
-            var debugPrefix = $"[{_configName}] LoadConfigFile: ";
+            var debugPrefix = $"[{ConfigName}] LoadConfigFile: ";
             
             Debug.Assert(File.Exists(_configPath), $"{_configPath} not found");
             _configText = File.ReadAllText(_configPath);
@@ -102,7 +108,7 @@ namespace Config
         /// Loads config values into a new Config object
         private void LoadConfig()
         {
-            var debugPrefix = $"[{_configName}] LoadConfig: ";
+            var debugPrefix = $"[{ConfigName}] LoadConfig: ";
             
             // Reset to default to make sure all vars are set and changes no longer present in config are undone
             // Using ResetSilent because the OnChanged event will get triggered by Load() anyways
@@ -125,7 +131,7 @@ namespace Config
         /// Sets up the FileSystemWatcher to monitor changes to the config file
         private void WatchForConfigChanges()
         {
-            var debugPrefix = $"[{_configName}] WatchForConfigChanges: ";
+            var debugPrefix = $"[{ConfigName}] WatchForConfigChanges: ";
             
             _configWatcher = new()
             {
@@ -148,7 +154,7 @@ namespace Config
         /// Handles config file being changed
         private void HandleConfigChanged()
         {
-            Debug.Log($"[{_configName}] Config changed, reloading");
+            Debug.Log($"[{ConfigName}] Config changed, reloading");
             GenerateDefaultConfigFile();
             LoadConfigFile();
             LoadConfig();

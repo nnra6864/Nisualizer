@@ -1,4 +1,6 @@
+using System;
 using System.IO;
+using Config;
 using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEditor.SceneManagement;
@@ -12,7 +14,9 @@ namespace SceneCreator.Editor
         private static Button _createButton;
         private static TextField _sceneNameField;
 
-        private static bool _isWorking;
+        // Stage of execution
+        private static int _stage;
+        
         private static string _sceneName, _sceneDir, _scenePath;
         
         // Storing the path instead of a direct reference to simplify the usage, especially in static functions
@@ -20,11 +24,10 @@ namespace SceneCreator.Editor
 
         [SerializeField] private VisualTreeAsset _visualTreeAsset;
         
-        [MenuItem("Window/UI Toolkit/SceneCreator")]
-        public static void ShowExample()
+        [MenuItem("Assets/Create/Nisualizer Scene", false, -202)]
+        public static void ShowSceneCreator()
         {
-            // Setting to false here in case the function was cancelled or sm
-            _isWorking = false;
+            ResetEditorData();
             
             var wnd = GetWindow<SceneCreator>();
             wnd.titleContent = new("SceneCreator");
@@ -48,9 +51,25 @@ namespace SceneCreator.Editor
 
         private static void CreateNisualizerScene()
         {
-            // Return if creation is already in progress
-            if (_isWorking) return;
+            if (_stage == 0) Stage0();
+        }
+
+        [UnityEditor.Callbacks.DidReloadScripts]
+        private static void PostCreation()
+        {
+            LoadEditorData();
             
+            // Return if not working
+            if (_stage == 0) return;
+            switch (_stage)
+            {
+                case 1: Stage1(); break;
+                case 2: Stage2(); break;
+            }
+        }
+
+        private static void Stage0()
+        {
             // Store scene name, dir and path
             _sceneName = _sceneNameField.text;
             _sceneDir = Path.Combine("Assets/Scenes", _sceneName);
@@ -60,22 +79,14 @@ namespace SceneCreator.Editor
             if (string.IsNullOrEmpty(_sceneName))
             {
                 Debug.LogError("Scene name can't be empty");
-                _isWorking = false;
                 return;
             }
-
-            // Set _isWorking to true so the function can't get called twice
-            _isWorking = true;
             
             // Save data to editor prefs
             SaveEditorData();
 
             // Create scene directory and asset
-            if (!CreateSceneDirectory())
-            {
-                _isWorking = false;
-                return;
-            }
+            if (!CreateSceneDirectory()) return;
             CreateSceneAsset();
             
             // Create the scene manager
@@ -84,24 +95,28 @@ namespace SceneCreator.Editor
             // Create config
             CreateDefaultConfig();
             CreateConfigDataScript();
-            AssetDatabase.Refresh();
-            AssetDatabase.SaveAssets();
-            CompilationPipeline.RequestScriptCompilation();
             
-            // The process gets finished in the PostCreation function
-            // It has to be done this way due to all processes getting cancelled on reload
+            // Update stage and reload assets so that assets are available for the next stage
+            _stage = 1;
+            EditorApplication.delayCall += ReloadAssets;
         }
 
-        [UnityEditor.Callbacks.DidReloadScripts]
-        private static void PostCreation()
+        private static void Stage1()
         {
-            LoadEditorData();
-            Debug.Log(_isWorking);
-            if (!_isWorking) return;
-            
             CreateConfigDataSO();
+            
+            // Update stage and reload assets so that assets are available for the next stage
+            _stage = 2;
+            EditorApplication.delayCall += ReloadAssets;
+        }
+
+        private static void Stage2()
+        {
             AddGameManager();
-            _isWorking = false;
+            AddSceneManager();
+            
+            _stage = 0;
+            ResetEditorData();
         }
 
         private static void SaveEditorData()
@@ -109,7 +124,7 @@ namespace SceneCreator.Editor
             EditorPrefs.SetString("SceneName", _sceneName);
             EditorPrefs.SetString("SceneDir", _sceneDir);
             EditorPrefs.SetString("ScenePath", _scenePath);
-            EditorPrefs.SetBool("IsWorking", _isWorking);
+            EditorPrefs.SetInt("Stage", _stage);
         }
 
         private static void LoadEditorData()
@@ -117,7 +132,27 @@ namespace SceneCreator.Editor
             _sceneName = EditorPrefs.GetString("SceneName", _sceneName);
             _sceneDir = EditorPrefs.GetString("SceneDir", _sceneDir);
             _scenePath = EditorPrefs.GetString("ScenePath", _scenePath);
-            _isWorking = EditorPrefs.GetBool("IsWorking", _isWorking);
+            _stage = EditorPrefs.GetInt("Stage", _stage);
+        }
+
+        private static void ResetEditorData()
+        {
+            EditorPrefs.SetString("SceneName", "");
+            EditorPrefs.SetString("SceneDir", "");
+            EditorPrefs.SetString("ScenePath", "");
+            EditorPrefs.SetInt("Stage", 0);
+        }
+
+        /// Always call with <see cref="EditorApplication.delayCall"/>, weird shit can happen otherwise
+        private static void ReloadAssets()
+        {
+            // Saving all the data before reloading
+            SaveEditorData();
+            
+            // Reload
+            AssetDatabase.Refresh();
+            AssetDatabase.SaveAssets();
+            CompilationPipeline.RequestScriptCompilation();
         }
 
         private static bool CreateSceneDirectory()
@@ -155,14 +190,12 @@ namespace Scenes.{_sceneName}
             
             var scriptPath = Path.Combine(_sceneDir, $"{_sceneName}Manager.cs");
             File.WriteAllText(scriptPath, scriptContent);
-            AssetDatabase.Refresh();
         }
         
         private static void CreateDefaultConfig()
         {
             var configPath = Path.Combine(_sceneDir, $"{_sceneName}Config.json");
             File.WriteAllText(configPath, "{\n\n}");
-            AssetDatabase.Refresh();
         }
         
         private static void CreateConfigDataScript()
@@ -197,7 +230,6 @@ namespace Scenes.{_sceneName}
             
             var scriptPath = Path.Combine(_sceneDir, $"{_sceneName}ConfigData.cs");
             File.WriteAllText(scriptPath, scriptContent);
-            AssetDatabase.Refresh();
         }
 
         private static void CreateConfigDataSO()
@@ -205,14 +237,25 @@ namespace Scenes.{_sceneName}
             var so = CreateInstance($"{_sceneName}ConfigData");
             var soPath = Path.Combine(_sceneDir, $"{_sceneName}ConfigData.asset");
             AssetDatabase.CreateAsset(so, soPath);
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
         }
 
-        private static void AddGameManager()
+        private static void AddGameManager() => PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath));
+
+        private static void AddSceneManager()
         {
-            var gameManager = AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath);
-            PrefabUtility.InstantiatePrefab(gameManager);
+            // Create a new Game Object
+            var go = new GameObject($"{_sceneName}Manager");
+            
+            // Add the Scene Script to it
+            go.AddComponent(Type.GetType($"Scenes.{_sceneName}.{_sceneName}Manager, Assembly-CSharp"));
+            
+            // Change Config Script values
+            var conf = go.GetComponent<ConfigScript>();
+            conf.ConfigName = _sceneName;
+            conf.DefaultConfig = AssetDatabase.LoadAssetAtPath<TextAsset>(Path.Combine(_sceneDir, $"{_sceneName}Config.json"));
+            var sm = AssetDatabase.LoadAssetAtPath<ConfigData>(Path.Combine(_sceneDir, $"{_sceneName}ConfigData.asset"));
+            Debug.Log(sm);
+            conf.Data = sm;
         }
     }
 }

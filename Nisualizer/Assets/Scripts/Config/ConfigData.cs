@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Config
 {
-    [CreateAssetMenu(fileName = "ConfigData", menuName = "Config/ConfigData")]
+    [CreateAssetMenu(fileName = "ConfigData", menuName = "Config/ConfigData", order = -201)]
     public class ConfigData : ScriptableObject
     {
         public Action OnLoaded;
