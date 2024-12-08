@@ -15,6 +15,7 @@ namespace Core
         //Name of the input device that's being used
         //TODO: Implement custom names in config for _microphone
         private string _microphone = "OutputInput";
+        //private string _microphone = "CABLE Output (VB-Audio Virtual Cable)";
     
         //Stores the AudioClip used in loudness detection
         private AudioClip _microphoneClip;

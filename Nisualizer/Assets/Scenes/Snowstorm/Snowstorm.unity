@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a48b760906f087693f5ca4b6ec71eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConfigName: Config
+  ConfigName: Snowstorm
   _configPath: 
   DefaultConfig: {fileID: 4900000, guid: 7fdb8f79529992cecb17f9f999f39a88, type: 3}
   _data: {fileID: 11400000, guid: 3c023333857d84cd19c199ebf9f17d25, type: 2}
