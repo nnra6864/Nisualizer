@@ -3,22 +3,31 @@ using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace SceneCreator.Editor
 {
     public class SceneCreator : EditorWindow
     {
+        private static Button _createButton;
+        private static TextField _sceneNameField;
+
+        private static bool _isWorking;
+        private static string _sceneName, _sceneDir, _scenePath;
+        
         [SerializeField] private VisualTreeAsset _visualTreeAsset;
         
-        [SerializeField] private GameObject _gameManagerPrefab;
-        
-        private Button _createButton;
-        private TextField _sceneNameField;
+        // This is an awful way to access the prefab from static scripts, cry about it
+        private const string GameManagerPath = "Assets/Prefabs/GameManager.prefab";
+        private static GameObject _gameManager;
 
         [MenuItem("Window/UI Toolkit/SceneCreator")]
         public static void ShowExample()
         {
+            // Setting to false here in case the function was cancelled or sm
+            _isWorking = false;
+            
             var wnd = GetWindow<SceneCreator>();
             wnd.titleContent = new("SceneCreator");
         }
@@ -29,100 +38,148 @@ namespace SceneCreator.Editor
             var root = rootVisualElement;
             _visualTreeAsset.CloneTree(root);
             
+            // Link the text field
             _sceneNameField = root.Q<TextField>("SceneName");
             
+            // Link the button
             _createButton = root.Q<Button>("CreateButton");
             _createButton.RegisterCallback<ClickEvent>(OnCreateButtonClick);
         }
 
-        private void OnCreateButtonClick(ClickEvent evt) => CreateNisualizerScene();
-        
-        private void CreateNisualizerScene()
-        {
-            CreateScene();
-        }
+        private static void OnCreateButtonClick(ClickEvent evt) => CreateNisualizerScene();
 
-        private void CreateScene()
+        private static void CreateNisualizerScene()
         {
+            // Return if creation is already in progress
+            if (_isWorking) return;
+            
             // Store scene name, dir and path
-            var sceneName = _sceneNameField.text;
-            var sceneDir = Path.Combine("Assets/Scenes", sceneName);
-            var scenePath = Path.Combine(sceneDir, sceneName) + ".unity";
+            _sceneName = _sceneNameField.text;
+            _sceneDir = Path.Combine("Assets/Scenes", _sceneName);
+            _scenePath = Path.Combine(_sceneDir, _sceneName) + ".unity";
+            
+            // Load the game manager prefab
+            _gameManager = AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath);
             
             // Return if scene name is empty
-            if (string.IsNullOrEmpty(sceneName))
+            if (string.IsNullOrEmpty(_sceneName))
             {
                 Debug.LogError("Scene name can't be empty");
+                _isWorking = false;
                 return;
             }
+
+            // Set _isWorking to true so the function can't get called twice
+            _isWorking = true;
             
-            if (!CreateSceneDirectory(sceneName, sceneDir)) return;
-            CreateSceneAsset(scenePath);
-            CreateSceneManagerScript(sceneName, sceneDir);
-            CreateDefaultConfig(sceneName, sceneDir);
-            CreateConfigDataScript(sceneName, sceneDir);
+            // Save data to editor prefs
+            SaveEditorData();
+
+            // Create scene directory and asset
+            if (!CreateSceneDirectory())
+            {
+                _isWorking = false;
+                return;
+            }
+            CreateSceneAsset();
+            
+            // Create the scene manager
+            CreateSceneManagerScript();
+            
+            // Create config
+            CreateDefaultConfig();
+            CreateConfigDataScript();
             AssetDatabase.Refresh();
             AssetDatabase.SaveAssets();
             CompilationPipeline.RequestScriptCompilation();
-            CompilationPipeline.compilationFinished += x => CreateConfigDataSO(sceneName, sceneDir);
-            //AddGameManager();
+            
+            // The process gets finished in the PostCreation function
+            // It has to be done this way due to all processes getting cancelled on reload
         }
 
-        private bool CreateSceneDirectory(string sceneName, string sceneDir)
+        [UnityEditor.Callbacks.DidReloadScripts]
+        private static void PostCreation()
+        {
+            LoadEditorData();
+            if (!_isWorking) return;
+            
+            _gameManager = AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath);
+            CreateConfigDataSO();
+            AddGameManager();
+            _isWorking = false;
+        }
+
+        private static void SaveEditorData()
+        {
+            EditorPrefs.SetString("SceneName", _sceneName);
+            EditorPrefs.SetString("SceneDir", _sceneDir);
+            EditorPrefs.SetString("ScenePath", _scenePath);
+            EditorPrefs.SetBool("IsWorking", _isWorking);
+        }
+
+        private static void LoadEditorData()
+        {
+            _sceneName = EditorPrefs.GetString("SceneName", _sceneName);
+            _sceneDir = EditorPrefs.GetString("SceneDir", _sceneDir);
+            _scenePath = EditorPrefs.GetString("ScenePath", _scenePath);
+            _isWorking = EditorPrefs.GetBool("IsWorking", _isWorking);
+        }
+
+        private static bool CreateSceneDirectory()
         {
             // Check if the scene with that name already exists
-            if (AssetDatabase.AssetPathExists(sceneDir))
+            if (AssetDatabase.AssetPathExists(_sceneDir))
             {
-                Debug.LogError($"A scene directory named '{sceneName}' already exists");
+                Debug.LogError($"A scene directory named '{_sceneName}' already exists");
                 return false;
             }
             
             // Create the scene directory
-            AssetDatabase.CreateFolder("Assets/Scenes", sceneName);
+            AssetDatabase.CreateFolder("Assets/Scenes", _sceneName);
             return true;
         }
 
-        private void CreateSceneAsset(string scenePath)
+        private static void CreateSceneAsset()
         {
             var newScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene);
-            EditorSceneManager.SaveScene(newScene, scenePath);
+            EditorSceneManager.SaveScene(newScene, _scenePath);
         }
 
-        private void CreateSceneManagerScript(string sceneName, string sceneDir)
+        private static void CreateSceneManagerScript()
         {
             var scriptContent = $@"using Core;
 
-namespace Scenes.{sceneName}
+namespace Scenes.{_sceneName}
 {{
-    public class {sceneName}Manager : SceneScript
+    public class {_sceneName}Manager : SceneScript
     {{
-        public static {sceneName}ConfigData ConfigData => ({sceneName}ConfigData)Config.Data;
+        public static {_sceneName}ConfigData ConfigData => ({_sceneName}ConfigData)Config.Data;
     }}
 }}
 ";
             
-            var scriptPath = Path.Combine(sceneDir, $"{sceneName}Manager.cs");
+            var scriptPath = Path.Combine(_sceneDir, $"{_sceneName}Manager.cs");
             File.WriteAllText(scriptPath, scriptContent);
             AssetDatabase.Refresh();
         }
         
-        private void CreateDefaultConfig(string sceneName, string sceneDir)
+        private static void CreateDefaultConfig()
         {
-            var configPath = Path.Combine(sceneDir, $"{sceneName}Config.json");
+            var configPath = Path.Combine(_sceneDir, $"{_sceneName}Config.json");
             File.WriteAllText(configPath, "{\n\n}");
             AssetDatabase.Refresh();
         }
         
-        private void CreateConfigDataScript(string sceneName, string sceneDir)
+        private static void CreateConfigDataScript()
         {
             var scriptContent = $@"using Config;
 using UnityEngine;
 
-namespace Scenes.{sceneName}
+namespace Scenes.{_sceneName}
 {{
     // This class should be a perfect match of your JSON config
-    [CreateAssetMenu(fileName = ""{sceneName}ConfigData"", menuName = ""Config/{sceneName}ConfigData"")]
-    public class {sceneName}ConfigData : ConfigData
+    [CreateAssetMenu(fileName = ""{_sceneName}ConfigData"", menuName = ""Config/{_sceneName}ConfigData"")]
+    public class {_sceneName}ConfigData : ConfigData
     {{
         // Gets called when config is loaded
         public override void Load()
@@ -143,20 +200,23 @@ namespace Scenes.{sceneName}
 }}
 ";
             
-            var scriptPath = Path.Combine(sceneDir, $"{sceneName}ConfigData.cs");
+            var scriptPath = Path.Combine(_sceneDir, $"{_sceneName}ConfigData.cs");
             File.WriteAllText(scriptPath, scriptContent);
             AssetDatabase.Refresh();
         }
 
-        private void CreateConfigDataSO(string sceneName, string sceneDir)
+        private static void CreateConfigDataSO()
         {
-            var so = CreateInstance($"{sceneName}ConfigData");
-            var soPath = Path.Combine(sceneDir, $"{sceneName}ConfigData.asset");
+            var so = CreateInstance($"{_sceneName}ConfigData");
+            var soPath = Path.Combine(_sceneDir, $"{_sceneName}ConfigData.asset");
             AssetDatabase.CreateAsset(so, soPath);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
 
-        private void AddGameManager() => PrefabUtility.InstantiatePrefab(_gameManagerPrefab);
+        private static void AddGameManager()
+        {
+            PrefabUtility.InstantiatePrefab(_gameManager, SceneManager.GetSceneByName(_sceneName));
+        }
     }
 }
