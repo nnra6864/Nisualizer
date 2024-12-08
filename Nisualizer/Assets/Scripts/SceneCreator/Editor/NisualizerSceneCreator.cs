@@ -28,9 +28,7 @@ namespace SceneCreator.Editor
         public static void ShowSceneCreator()
         {
             ResetEditorData();
-            
-            var wnd = GetWindow<NisualizerSceneCreator>();
-            wnd.titleContent = new("Nisualizer Scene Creator");
+            GetWindow<NisualizerSceneCreator>("Nisualizer Scene Creator");
         }
 
         public void CreateGUI()
