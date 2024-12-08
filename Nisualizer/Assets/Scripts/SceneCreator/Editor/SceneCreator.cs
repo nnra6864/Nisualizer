@@ -3,7 +3,6 @@ using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace SceneCreator.Editor
@@ -16,12 +15,11 @@ namespace SceneCreator.Editor
         private static bool _isWorking;
         private static string _sceneName, _sceneDir, _scenePath;
         
+        // Storing the path instead of a direct reference to simplify the usage, especially in static functions
+        private const string GameManagerPath = "Assets/Prefabs/GameManager.prefab";
+
         [SerializeField] private VisualTreeAsset _visualTreeAsset;
         
-        // This is an awful way to access the prefab from static scripts, cry about it
-        private const string GameManagerPath = "Assets/Prefabs/GameManager.prefab";
-        private static GameObject _gameManager;
-
         [MenuItem("Window/UI Toolkit/SceneCreator")]
         public static void ShowExample()
         {
@@ -57,9 +55,6 @@ namespace SceneCreator.Editor
             _sceneName = _sceneNameField.text;
             _sceneDir = Path.Combine("Assets/Scenes", _sceneName);
             _scenePath = Path.Combine(_sceneDir, _sceneName) + ".unity";
-            
-            // Load the game manager prefab
-            _gameManager = AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath);
             
             // Return if scene name is empty
             if (string.IsNullOrEmpty(_sceneName))
@@ -101,9 +96,9 @@ namespace SceneCreator.Editor
         private static void PostCreation()
         {
             LoadEditorData();
+            Debug.Log(_isWorking);
             if (!_isWorking) return;
             
-            _gameManager = AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath);
             CreateConfigDataSO();
             AddGameManager();
             _isWorking = false;
@@ -216,7 +211,8 @@ namespace Scenes.{_sceneName}
 
         private static void AddGameManager()
         {
-            PrefabUtility.InstantiatePrefab(_gameManager, SceneManager.GetSceneByName(_sceneName));
+            var gameManager = AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath);
+            PrefabUtility.InstantiatePrefab(gameManager);
         }
     }
 }
