@@ -22,7 +22,7 @@ A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 - [x] Custom Fonts
 - [x] Multiple Scenes
 - [x] Per Scene Config
-- [ ] Automatic Scene Creation
+- [x] Automatic Scene Creation
 - [ ] Weather(via [Metro](https://open-meteo.com/))
 - [ ] Async Config Reload
 - [ ] Modular UI
@@ -97,7 +97,12 @@ Nisualizer works by capturing the audio data from a virtual input device called 
 # Extending Nisualizer
 Nisualizer is built on top of modular components and utilities, allowing anyone to customize it however they wish.
 
-## Creating(Will automate soon)
+## Creating Scenes
+
+### Automatic(Recommended)
+Right click anywhere in the Project window and navigate to Assets -> Create -> Nisualizer Scene
+
+### Manual(Painful)
 Adding your own scenes can easily be done by following these steps:
 1. Create a new directory under `Assets/Scenes/`
 2. Give it an original, descriptive name, e.g. `Snowstorm`
