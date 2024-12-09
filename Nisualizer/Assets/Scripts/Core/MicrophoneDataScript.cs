@@ -1,6 +1,7 @@
 using System.Collections;
 using Config;
 using NnUtils.Scripts;
+using PortAudioSharp;
 using UnityEngine;
 
 namespace Core
@@ -38,7 +39,12 @@ namespace Core
         {
             TweenMicrophoneLoudness(GetLoudness() * ConfigData.Sensitivity);
         }
-    
+
+        private void StartPortAudio()
+        {
+            PortAudio.Initialize();
+        }
+        
         //Returns the total loudness of microphone audio
         private float GetLoudness()
         {
