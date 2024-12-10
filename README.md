@@ -97,6 +97,12 @@ Nisualizer works by capturing the audio data from a virtual input device called 
 # Extending Nisualizer
 Nisualizer is built on top of modular components and utilities, allowing anyone to customize it however they wish.
 
+## Contributing
+1. Make a fork of Nisualizer
+2. Clone the fork recursively `git clone --recursive https://github.com/YourName/Nisualizer`
+3. Make changes
+4. Create a pull request with detailed description of your contributation
+
 ## Creating Scenes
 
 ### Automatic(Recommended)
