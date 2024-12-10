@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
@@ -116,19 +117,28 @@ namespace SceneCreator.Editor
             {
                 case 1: Stage1(); break;
                 case 2: Stage2(); break;
+                case 3: Stage3(); break;
             }
         }
 
+        // Saves and reloads assets
+        private static void Reload()
+        {
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+        
         /// Always call with <see cref="EditorApplication.delayCall"/>, weird shit can happen otherwise <br/>
         /// This function will stop all the code execution, everything that should be called after it must be done through a function with a <see cref="UnityEditor.Callbacks.DidReloadScripts"/> attribute
-        private static void ReloadAssets()
+        private static void ReloadAndCompile()
         {
             // Saving all the data before reloading
             SaveEditorData();
             
             // Reload
-            AssetDatabase.Refresh();
-            AssetDatabase.SaveAssets();
+            Reload();
+            
+            // Compile
             CompilationPipeline.RequestScriptCompilation();
         }
         
@@ -160,26 +170,44 @@ namespace SceneCreator.Editor
             
             // Update stage and reload assets so that assets are available for the next stage
             _stage = 1;
-            EditorApplication.delayCall += ReloadAssets;
+            EditorApplication.delayCall += ReloadAndCompile;
         }
 
         private static void Stage1()
         {
+            // Create an instance of the config SO
             CreateConfigDataSO();
             
             // Update stage and reload assets so that assets are available for the next stage
             _stage = 2;
-            EditorApplication.delayCall += ReloadAssets;
+            EditorApplication.delayCall += ReloadAndCompile;
         }
 
         private static void Stage2()
         {
+            // Add GameManager to the scene
             AddGameManager();
-            AddSceneManager();
-            AddCamera();
-            CreateVolumeProfile();
-            AddVolume();
             
+            // Add SceneManager to the scene
+            AddSceneManager();
+            
+            // Create the volume profile for the scene
+            CreateVolumeProfile();
+            
+            // Update stage and reload assets so that assets are available for the next stage
+            _stage = 3;
+            EditorApplication.delayCall += ReloadAndCompile;
+        }
+
+        private static void Stage3()
+        {
+            // Add volume to the scene and apply the scene volume profile
+            CreateAndAddVolume();
+            
+            // Add the camera
+            AddCamera();
+            
+            // Update stage and reset editor data
             _stage = 0;
             ResetEditorData();
         }
@@ -298,7 +326,7 @@ namespace Scenes.{_sceneName}
         #region Stage1
         
         /// Creates a scriptable object instance of the newly create config data type <br/>
-        /// Requires the newly created config data type to be compiled which can be achieved with the <see cref="ReloadAssets"/> method
+        /// Requires the newly created config data type to be compiled which can be achieved with the <see cref="ReloadAndCompile"/> method
         private static void CreateConfigDataSO()
         {
             var so = CreateInstance($"{_sceneName}ConfigData");
@@ -314,7 +342,7 @@ namespace Scenes.{_sceneName}
         private static void AddGameManager() => PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath));
 
         /// Adds a newly created scene manager to the scene <br/>
-        /// Requires created scripts to be compiled, call <see cref="ReloadAssets"/> before this function
+        /// Requires created scripts to be compiled, call <see cref="ReloadAndCompile"/> before this function
         private static void AddSceneManager()
         {
             // Create a new Game Object
@@ -329,6 +357,28 @@ namespace Scenes.{_sceneName}
             conf.DefaultConfig = AssetDatabase.LoadAssetAtPath<TextAsset>(Path.Combine(_sceneDir, $"{_sceneName}Config.json"));
             var sm = AssetDatabase.LoadAssetAtPath<ConfigData>(Path.Combine(_sceneDir, $"{_sceneName}ConfigData.asset"));
             conf.Data = sm;
+        }
+        
+        /// Creates a new <see cref="UnityEngine.Rendering.VolumeProfile"/> in the scene dir
+        private static void CreateVolumeProfile() =>
+            AssetDatabase.CreateAsset(CreateInstance<VolumeProfile>(), Path.Combine(_sceneDir, $"{_sceneName}VolumeProfile.asset"));
+
+        #endregion
+        
+        #region Stage3
+        
+        /// Adds a volume with the previously created profile to the scene
+        private static void CreateAndAddVolume()
+        {
+            // Create a new game object
+            GameObject go = new("GlobalVolume");
+            
+            // Attach volume component to it
+            var vol = go.AddComponent<Volume>();
+            
+            // Assign the newly created profile to it
+            var ass = AssetDatabase.LoadAssetAtPath<VolumeProfile>(Path.Combine(_sceneDir, $"{_sceneName}VolumeProfile.asset"));
+            vol.sharedProfile = ass;
         }
 
         /// Creates a new camera
@@ -350,19 +400,6 @@ namespace Scenes.{_sceneName}
             // Enable post-processing
             var uacd = go.AddComponent<UniversalAdditionalCameraData>();
             uacd.renderPostProcessing = true;
-        }
-
-        // TODO: Implement following functions
-        /// Creates a new <see cref="UnityEngine.Rendering.VolumeProfile"/>
-        private static void CreateVolumeProfile()
-        {
-            
-        }
-        
-        /// Adds a volume to the scene and 
-        private static void AddVolume()
-        {
-            
         }
         
         #endregion
