@@ -5,8 +5,8 @@ namespace Core
 {
     public class SceneManager : MonoBehaviour
     {
-        private static ConfigScript Config => GameManager.ConfigScript;
-        private static GeneralConfigData ConfigData => (GeneralConfigData)Config.Data;
+        private static GeneralConfigData _configData;
+        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManager.ConfigScript.Data;
         
         private string _currentScene;
 

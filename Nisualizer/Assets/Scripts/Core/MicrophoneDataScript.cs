@@ -7,7 +7,9 @@ namespace Core
 {
     public class MicrophoneDataScript : MonoBehaviour
     {
-        private static GeneralConfigData ConfigData => (GeneralConfigData)GameManager.ConfigScript.Data;
+        private static GeneralConfigData _configData;
+        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManager.ConfigScript.Data;
+        
         
         //More values lead to a smoother appearance but also add more delay
         private const int SampleWindow = 64;

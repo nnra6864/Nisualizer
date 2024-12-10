@@ -9,8 +9,8 @@ namespace Core
 {
     public class FontManager : MonoBehaviour
     {
-        private static ConfigScript Config => GameManager.ConfigScript;
-        private static GeneralConfigData ConfigData => (GeneralConfigData)Config.Data;
+        private static GeneralConfigData _configData;
+        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManager.ConfigScript.Data;
         
         [SerializeField] private TMP_FontAsset _defaultFont;
         private TMP_FontAsset _fontAsset;

@@ -20,7 +20,6 @@ namespace Core
         {
             if (Instance != null) Destroy(Instance.gameObject);
             Instance = this;
-            Debug.Log(Config);
             Config.Init();
         }
     }
