@@ -13,7 +13,7 @@ namespace SceneCreator.Editor
 {
     public class NisualizerSceneCreator : EditorWindow
     {
-        // Stage of execution
+        /// Stage of execution
         private static int _stage;
         
         // Scene data
@@ -30,6 +30,7 @@ namespace SceneCreator.Editor
         
         #region EditorData
         
+        /// Saves all data to editor prefs
         private static void SaveEditorData()
         {
             EditorPrefs.SetString("SceneName", _sceneName);
@@ -38,6 +39,7 @@ namespace SceneCreator.Editor
             EditorPrefs.SetInt("Stage", _stage);
         }
 
+        /// Loads all data from editor prefs
         private static void LoadEditorData()
         {
             _sceneName = EditorPrefs.GetString("SceneName", _sceneName);
@@ -46,6 +48,7 @@ namespace SceneCreator.Editor
             _stage = EditorPrefs.GetInt("Stage", _stage);
         }
 
+        /// Resets all data in editor prefs
         private static void ResetEditorData()
         {
             EditorPrefs.SetString("SceneName", "");
@@ -121,7 +124,7 @@ namespace SceneCreator.Editor
             }
         }
 
-        // Saves and reloads assets
+        /// Saves and reloads assets
         private static void Reload()
         {
             AssetDatabase.SaveAssets();
@@ -147,8 +150,10 @@ namespace SceneCreator.Editor
         #region Stages
         
         /// Takes care of: <br/>
-        /// Checking if the scene name is invalid or already used <br/>
-        /// 
+        /// Getting the scene data <br/>
+        /// Checking if the scene data is invalid or already used <br/>
+        /// Creating scene directory and asset <br/>
+        /// Creating the scene manager script, default config and config data script
         private static void Stage0()
         {
             // Get new scene data
@@ -173,6 +178,7 @@ namespace SceneCreator.Editor
             EditorApplication.delayCall += ReloadAndCompile;
         }
 
+        /// Creates an instance of a config data scriptable object
         private static void Stage1()
         {
             // Create an instance of the config SO
@@ -183,6 +189,10 @@ namespace SceneCreator.Editor
             EditorApplication.delayCall += ReloadAndCompile;
         }
 
+        /// Takes care of: <br/>
+        /// Adding a <see cref="Core.GameManager"/> instance to the scene <br/>
+        /// Adding a <see cref="Core.SceneScript"/> instance to the scene <br/>
+        /// Creating a <see cref="VolumeProfile"/> for the scene
         private static void Stage2()
         {
             // Add GameManager to the scene
@@ -199,10 +209,13 @@ namespace SceneCreator.Editor
             EditorApplication.delayCall += ReloadAndCompile;
         }
 
+        /// Takes care of: <br/>
+        /// Adding a <see cref="Volume"/> with a previously created <see cref="VolumeProfile"/> to the scene <br/>
+        /// Adding a camera to the scene
         private static void Stage3()
         {
             // Add volume to the scene and apply the scene volume profile
-            CreateAndAddVolume();
+            AddVolume();
             
             // Add the camera
             AddCamera();
@@ -368,7 +381,7 @@ namespace Scenes.{_sceneName}
         #region Stage3
         
         /// Adds a volume with the previously created profile to the scene
-        private static void CreateAndAddVolume()
+        private static void AddVolume()
         {
             // Create a new game object
             GameObject go = new("GlobalVolume");
