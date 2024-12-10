@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Linq;
 using Config;
 using NnUtils.Scripts;
 using UnityEngine;
@@ -10,14 +12,11 @@ namespace Core
         private static GeneralConfigData _configData;
         private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManager.ConfigScript.Data;
         
-        
-        //More values lead to a smoother appearance but also add more delay
+        //Higher values lead to a smoother appearance but also add more delay
         private const int SampleWindow = 64;
     
         //Name of the input device that's being used
-        //TODO: Implement custom names in config for _microphone
-        private string _microphone = "OutputInput";
-        //private string _microphone = "CABLE Output (VB-Audio Virtual Cable)";
+        private static string InputName => ConfigData.InputName;
     
         //Stores the AudioClip used in loudness detection
         private AudioClip _microphoneClip;
@@ -31,21 +30,39 @@ namespace Core
         [SerializeField] private Easings.Type _transitionEasing = Easings.Type.CubicOut;
 
         /// <summary>
-        /// This function should be called from the GameManager after initializing ConfigScript
+        /// Called after initializing config in the <see cref="GameManager"/><br/>
+        /// Should also be called on <see cref="Config.ConfigData.OnLoaded"/>
         /// </summary>
-        public void InitializeMicrophone() =>
-            _microphoneClip = Microphone.Start(_microphone, true, 20, AudioSettings.outputSampleRate);
+        public void InitializeMicrophone()
+        {
+            if (!Microphone.devices.Contains(InputName))
+            {
+                Debug.LogWarning($"Input named {InputName} doesn't exist, returning");
+                return;
+            }
+            _microphoneClip = Microphone.Start(InputName, true, 20, AudioSettings.outputSampleRate);
+        }
+
+        private void Start()
+        {
+            ConfigData.OnLoaded += InitializeMicrophone;
+        }
 
         private void Update()
         {
             TweenMicrophoneLoudness(GetLoudness() * ConfigData.Sensitivity);
         }
-        
+
+        private void OnDestroy()
+        {
+            ConfigData.OnLoaded -= InitializeMicrophone;
+        }
+
         //Returns the total loudness of microphone audio
         private float GetLoudness()
         {
             //Get microphone clip position and return 0 if negative
-            var pos = Microphone.GetPosition(_microphone) - SampleWindow;
+            var pos = Microphone.GetPosition(InputName) - SampleWindow;
             if (pos < 0) return 0;
         
             //Get wave data from the microphone clip

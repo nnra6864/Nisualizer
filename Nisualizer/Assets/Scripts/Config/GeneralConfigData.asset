@@ -15,10 +15,10 @@ MonoBehaviour:
   DefaultFPS: 60
   FPS: 60
   DefaultSensitivity: 0.5
-  Sensitivity: 1
+  Sensitivity: 0.5
+  DefaultInputName: OutputInput
+  InputName: 
   DefaultFont: Default
-  Font: 
-  DefaultBackground: 
-  Background: 
-  DefaultBackgroundSprite: {fileID: 21300000, guid: 3da6a1eddfea5815ba2fb75f53d07b38, type: 3}
-  BackgroundSprite: {fileID: 0}
+  Font: Default
+  DefaultScene: Snowstorm
+  Scene: Snowstorm

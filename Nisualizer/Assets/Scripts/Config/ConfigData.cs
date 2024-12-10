@@ -19,15 +19,9 @@ namespace Config
         /// <summary>
         /// Call base.Reset() at the end of overriden functions to trigger the OnConfigLoaded event
         /// </summary>
-        public virtual void Reset()
+        public virtual void Reset(bool silent = false)
         {
-            ResetSilent();
-            OnLoaded?.Invoke();
-        }
-
-        public virtual void ResetSilent()
-        {
-            
+            if (!silent) OnLoaded?.Invoke();
         }
     }
 }

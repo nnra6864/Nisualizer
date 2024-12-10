@@ -112,7 +112,7 @@ namespace Config
             
             // Reset to default to make sure all vars are set and changes no longer present in config are undone
             // Using ResetSilent because the OnChanged event will get triggered by Load() anyways
-            Data.ResetSilent();
+            Data.Reset(true);
             Debug.Log(debugPrefix + "Reset to default config");
 
             // Reload the config
