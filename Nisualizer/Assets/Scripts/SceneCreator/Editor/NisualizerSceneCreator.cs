@@ -24,6 +24,8 @@ namespace SceneCreator.Editor
 
         [SerializeField] private VisualTreeAsset _visualTreeAsset;
         
+        #region MenuCreation
+        
         [MenuItem("Assets/Create/Nisualizer Scene", false, -202)]
         public static void ShowSceneCreator()
         {
@@ -50,7 +52,11 @@ namespace SceneCreator.Editor
             // Create the Nisualizer scene if button is pressed
             _createButton.RegisterCallback<ClickEvent>(_ => CreateNisualizerScene());
         }
-
+        
+        #endregion
+        
+        #region SceneCreation
+        
         private static void CreateNisualizerScene()
         {
             if (_stage == 0) Stage0();
@@ -70,6 +76,22 @@ namespace SceneCreator.Editor
             }
         }
 
+        /// Always call with <see cref="EditorApplication.delayCall"/>, weird shit can happen otherwise
+        private static void ReloadAssets()
+        {
+            // Saving all the data before reloading
+            SaveEditorData();
+            
+            // Reload
+            AssetDatabase.Refresh();
+            AssetDatabase.SaveAssets();
+            CompilationPipeline.RequestScriptCompilation();
+        }
+        
+        #endregion
+        
+        #region Stages
+        
         private static void Stage0()
         {
             // Store scene name, dir and path
@@ -120,7 +142,11 @@ namespace SceneCreator.Editor
             _stage = 0;
             ResetEditorData();
         }
+        
+        #endregion
 
+        #region EditorData
+        
         private static void SaveEditorData()
         {
             EditorPrefs.SetString("SceneName", _sceneName);
@@ -144,19 +170,11 @@ namespace SceneCreator.Editor
             EditorPrefs.SetString("ScenePath", "");
             EditorPrefs.SetInt("Stage", 0);
         }
+        
+        #endregion
 
-        /// Always call with <see cref="EditorApplication.delayCall"/>, weird shit can happen otherwise
-        private static void ReloadAssets()
-        {
-            // Saving all the data before reloading
-            SaveEditorData();
-            
-            // Reload
-            AssetDatabase.Refresh();
-            AssetDatabase.SaveAssets();
-            CompilationPipeline.RequestScriptCompilation();
-        }
-
+        #region Stage0
+        
         private static bool CreateSceneDirectory()
         {
             // Check if the scene with that name already exists
@@ -233,7 +251,11 @@ namespace Scenes.{_sceneName}
             var scriptPath = Path.Combine(_sceneDir, $"{_sceneName}ConfigData.cs");
             File.WriteAllText(scriptPath, scriptContent);
         }
+        
+        #endregion
 
+        #region Stage1
+        
         private static void CreateConfigDataSO()
         {
             var so = CreateInstance($"{_sceneName}ConfigData");
@@ -241,6 +263,10 @@ namespace Scenes.{_sceneName}
             AssetDatabase.CreateAsset(so, soPath);
         }
 
+        #endregion
+        
+        #region Stage2
+        
         private static void AddGameManager() => PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath));
 
         private static void AddSceneManager()
@@ -259,5 +285,7 @@ namespace Scenes.{_sceneName}
             Debug.Log(sm);
             conf.Data = sm;
         }
+        
+        #endregion
     }
 }
