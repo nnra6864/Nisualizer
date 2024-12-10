@@ -220,11 +220,11 @@ namespace Scenes.{_sceneName}
         }}
         
         // Use this function to reset all values to default
-        public override void Reset()
+        public override void ResetToDefault(bool silent = false)
         {{
             // Your code here
 
-            base.Reset();
+            base.ResetToDefault(silent);
         }}
     }}
 }}

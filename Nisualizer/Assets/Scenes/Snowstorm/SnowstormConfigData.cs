@@ -20,12 +20,12 @@ namespace Scenes.Snowstorm
             base.Load();
         }
         
-        public override void Reset(bool silent = false)
+        public override void ResetToDefault(bool silent = false)
         {
             Background       = DefaultBackground;
             BackgroundSprite = DefaultBackgroundSprite;
             
-            base.Reset(silent);
+            base.ResetToDefault(silent);
         }
     }
 }

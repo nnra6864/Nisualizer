@@ -27,7 +27,7 @@ namespace Config
         [ReadOnly] public string Scene;
         
         /// Resets all the fields to their default values
-        public override void Reset(bool silent = false)
+        public override void ResetToDefault(bool silent = false)
         {
             FPS              = DefaultFPS;
             Sensitivity      = DefaultSensitivity;
@@ -35,7 +35,7 @@ namespace Config
             Font             = DefaultFont;
             Scene            = DefaultScene;
             
-            base.Reset(silent);
+            base.ResetToDefault(silent);
         }
     }
 }
