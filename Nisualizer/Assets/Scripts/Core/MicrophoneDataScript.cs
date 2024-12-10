@@ -34,7 +34,7 @@ namespace Core
         /// </summary>
         public void InitializeMicrophone()
         {
-            if (!Microphone.devices.Contains(InputName))
+            if (string.IsNullOrEmpty(InputName) || !Microphone.devices.Contains(InputName))
             {
                 Debug.LogWarning($"Input named {InputName} doesn't exist, returning");
                 return;
