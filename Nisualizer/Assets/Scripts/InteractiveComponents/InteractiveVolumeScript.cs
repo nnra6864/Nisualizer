@@ -6,9 +6,9 @@ using UnityEngine.Rendering.Universal;
 namespace InteractiveComponents
 {
     [RequireComponent(typeof(Volume))]
-    public class InteractiveVolume : MonoBehaviour
+    public class InteractiveVolumeScript : MonoBehaviour
     {
-        private static MicrophoneData MicrophoneData => GameManager.MicrophoneData;
+        private static MicrophoneDataScript MicrophoneDataScript => GameManagerScript.MicrophoneDataScript;
         
         [SerializeField] private Volume _volume;
     
@@ -43,19 +43,19 @@ namespace InteractiveComponents
         private void Update()
         {
             //Color Adjustments
-            _colorAdjustments.postExposure.value = Mathf.LerpUnclamped(_postExpoRange.x, _postExpoRange.y, MicrophoneData.Loudness);
-            _colorAdjustments.contrast.value     = Mathf.LerpUnclamped(_contrastRange.x, _contrastRange.y, MicrophoneData.Loudness);
-            _colorAdjustments.saturation.value   = Mathf.LerpUnclamped(_saturationRange.x, _saturationRange.y, MicrophoneData.Loudness);
+            _colorAdjustments.postExposure.value = Mathf.LerpUnclamped(_postExpoRange.x, _postExpoRange.y, MicrophoneDataScript.Loudness);
+            _colorAdjustments.contrast.value     = Mathf.LerpUnclamped(_contrastRange.x, _contrastRange.y, MicrophoneDataScript.Loudness);
+            _colorAdjustments.saturation.value   = Mathf.LerpUnclamped(_saturationRange.x, _saturationRange.y, MicrophoneDataScript.Loudness);
 
             //Bloom
-            _bloom.intensity.value = Mathf.LerpUnclamped(_bloomIntensityRange.x, _bloomIntensityRange.y, MicrophoneData.Loudness);
-            _bloom.scatter.value   = Mathf.LerpUnclamped(_bloomScatterRange.x, _bloomScatterRange.y, MicrophoneData.Loudness);
+            _bloom.intensity.value = Mathf.LerpUnclamped(_bloomIntensityRange.x, _bloomIntensityRange.y, MicrophoneDataScript.Loudness);
+            _bloom.scatter.value   = Mathf.LerpUnclamped(_bloomScatterRange.x, _bloomScatterRange.y, MicrophoneDataScript.Loudness);
 
             //Lens Distortion
-            _lensDistortion.intensity.value = Mathf.LerpUnclamped(_lensDistortionRange.x, _lensDistortionRange.y, MicrophoneData.Loudness);
+            _lensDistortion.intensity.value = Mathf.LerpUnclamped(_lensDistortionRange.x, _lensDistortionRange.y, MicrophoneDataScript.Loudness);
 
             //Vignette
-            _vignette.intensity.value = Mathf.LerpUnclamped(_vignetteRange.x, _vignetteRange.y, MicrophoneData.Loudness);
+            _vignette.intensity.value = Mathf.LerpUnclamped(_vignetteRange.x, _vignetteRange.y, MicrophoneDataScript.Loudness);
         }
     }
 }

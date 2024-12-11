@@ -7,10 +7,10 @@ using UnityEngine;
 namespace InteractiveComponents
 {
     [RequireComponent(typeof(TMP_Text))]
-    public class InteractiveText : MonoBehaviour
+    public class InteractiveTextScript : MonoBehaviour
     {
         private static GeneralConfigData _configData;
-        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManager.ConfigScript.Data;
+        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManagerScript.ConfigScript.Data;
 
         [SerializeField] private TMP_Text _tmpText;
         [SerializeField] private TMP_FontAsset _defaultFont;

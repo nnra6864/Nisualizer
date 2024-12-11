@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace Core
 {
-    public class MicrophoneData : MonoBehaviour
+    public class MicrophoneDataScript : MonoBehaviour
     {
         private static GeneralConfigData _configData;
-        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManager.ConfigScript.Data;
+        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManagerScript.ConfigScript.Data;
         
         //Higher values lead to a smoother appearance but also add more delay
         private const int SampleWindow = 64;
@@ -29,7 +29,7 @@ namespace Core
         [SerializeField] private Easings.Type _transitionEasing = Easings.Type.CubicOut;
 
         /// <summary>
-        /// Called after initializing config in the <see cref="GameManager"/><br/>
+        /// Called after initializing config in the <see cref="GameManagerScript"/><br/>
         /// Should also be called on <see cref="Config.ConfigData.OnLoaded"/>
         /// </summary>
         public void InitializeMicrophone()

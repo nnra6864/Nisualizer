@@ -5,9 +5,9 @@ using UnityEngine.Video;
 namespace InteractiveComponents
 {
     [RequireComponent(typeof(VideoPlayer))]
-    public class InteractiveVideoPlayer : MonoBehaviour
+    public class InteractiveVideoPlayerScript : MonoBehaviour
     {
-        private static MicrophoneData MicrophoneData => GameManager.MicrophoneData;
+        private static MicrophoneDataScript MicrophoneDataScript => GameManagerScript.MicrophoneDataScript;
 
         [SerializeField] private VideoPlayer _videoPlayer;
         
@@ -21,7 +21,7 @@ namespace InteractiveComponents
 
         private void Update()
         {
-            _videoPlayer.playbackSpeed = Mathf.LerpUnclamped(_playbackSpeedRange.x, _playbackSpeedRange.y, MicrophoneData.Loudness);
+            _videoPlayer.playbackSpeed = Mathf.LerpUnclamped(_playbackSpeedRange.x, _playbackSpeedRange.y, MicrophoneDataScript.Loudness);
         }
     }
 }

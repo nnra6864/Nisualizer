@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Core
 {
-    public class NisualizerSceneManager : MonoBehaviour
+    public class NisualizerSceneManagerScript : MonoBehaviour
     {
         private static GeneralConfigData _configData;
-        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManager.ConfigScript.Data;
+        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManagerScript.ConfigScript.Data;
         
         private string _currentScene;
 

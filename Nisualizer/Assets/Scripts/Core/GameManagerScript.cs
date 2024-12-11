@@ -4,13 +4,13 @@ using UnityEngine;
 namespace Core
 {
     [RequireComponent(typeof(ConfigScript))]
-    [RequireComponent(typeof(MicrophoneData))]
-    [RequireComponent(typeof(NisualizerSceneManager))]
-    public class GameManager : MonoBehaviour
+    [RequireComponent(typeof(MicrophoneDataScript))]
+    [RequireComponent(typeof(NisualizerSceneManagerScript))]
+    public class GameManagerScript : MonoBehaviour
     {
         //Simple singleton implementation
-        private static GameManager _instance;
-        public static GameManager Instance
+        private static GameManagerScript _instance;
+        public static GameManagerScript Instance
         {
             get => _instance;
             private set
@@ -32,17 +32,17 @@ namespace Core
         public static ConfigScript ConfigScript => Instance._config;
         private static GeneralConfigData ConfigData => (GeneralConfigData)Instance._config.Data;
         
-        [SerializeField] private MicrophoneData _microphoneData;
-        public static MicrophoneData MicrophoneData => Instance._microphoneData;
+        [SerializeField] private MicrophoneDataScript _microphoneData;
+        public static MicrophoneDataScript MicrophoneDataScript => Instance._microphoneData;
         
-        [SerializeField] private NisualizerSceneManager _nisualizerSceneManager;
-        public static NisualizerSceneManager NisualizerSceneManager => Instance._nisualizerSceneManager;
+        [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManagerScript;
+        public static NisualizerSceneManagerScript NisualizerSceneManagerScript => Instance._nisualizerSceneManagerScript;
         
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
-            _microphoneData = FindFirstObjectByType<MicrophoneData>();
-            _nisualizerSceneManager = GetComponent<NisualizerSceneManager>();
+            _microphoneData = FindFirstObjectByType<MicrophoneDataScript>();
+            _nisualizerSceneManagerScript = GetComponent<NisualizerSceneManagerScript>();
         }
 
 
@@ -56,7 +56,7 @@ namespace Core
         {
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
-            MicrophoneData.InitializeMicrophone();
+            MicrophoneDataScript.InitializeMicrophone();
             
             // Set FPS
             SetFPS();

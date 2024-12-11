@@ -191,7 +191,7 @@ namespace SceneCreator.Editor
         }
 
         /// Takes care of: <br/>
-        /// Adding a <see cref="Core.GameManager"/> instance to the scene <br/>
+        /// Adding a <see cref="GameManagerScript"/> instance to the scene <br/>
         /// Adding a <see cref="SceneManagerScript"/> instance to the scene <br/>
         /// Creating a <see cref="VolumeProfile"/> for the scene
         private static void Stage2()
@@ -352,7 +352,7 @@ namespace Scenes.{_sceneName}
         
         #region Stage2
         
-        /// Adds <see cref="Core.GameManager"/> to the newly created scene
+        /// Adds <see cref="GameManagerScript"/> to the newly created scene
         private static void AddGameManager() => PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath));
 
         /// Adds a newly created scene manager to the scene <br/>

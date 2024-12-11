@@ -5,9 +5,9 @@ using UnityEngine.VFX;
 namespace InteractiveComponents
 {
     [RequireComponent(typeof(VisualEffect))]
-    public class InteractiveVFX : MonoBehaviour
+    public class InteractiveVFXScript : MonoBehaviour
     {
-        private static MicrophoneData MicrophoneData => GameManager.MicrophoneData;
+        private static MicrophoneDataScript MicrophoneDataScript => GameManagerScript.MicrophoneDataScript;
         
         [SerializeField] private VisualEffect _vfx;
     
@@ -24,8 +24,8 @@ namespace InteractiveComponents
 
         private void Update()
         {
-            _vfx.playRate = Mathf.LerpUnclamped(_playRateRange.x, _playRateRange.y, MicrophoneData.Loudness);
-            _vfx.SetFloat(_loudnessPropertyName, MicrophoneData.Loudness);
+            _vfx.playRate = Mathf.LerpUnclamped(_playRateRange.x, _playRateRange.y, MicrophoneDataScript.Loudness);
+            _vfx.SetFloat(_loudnessPropertyName, MicrophoneDataScript.Loudness);
         }
     }
 }
