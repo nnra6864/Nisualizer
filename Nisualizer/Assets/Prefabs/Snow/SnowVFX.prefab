@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6483d37a294bf52cb1b4d78af287681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _microphoneData: {fileID: 0}
   _vfx: {fileID: 5318915596191604993}
   _loudnessPropertyName: Loudness
   _playRateRange: {x: 1, y: 5}
+  _affectPlayRate: 1
