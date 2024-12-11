@@ -72,6 +72,10 @@ namespace Core
             ConfigData.OnLoaded -= SetFPS;
         }
 
-        private static void SetFPS() => Application.targetFrameRate = ConfigData.FPS;
+        private void SetFPS()
+        {
+            Debug.Log(ConfigData.FPS);
+            Application.targetFrameRate = ConfigData.FPS;
+        }
     }
 }
