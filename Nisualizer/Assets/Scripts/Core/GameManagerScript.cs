@@ -1,4 +1,5 @@
 using Config;
+using NnUtils.Scripts;
 using UnityEngine;
 
 namespace Core
@@ -28,14 +29,14 @@ namespace Core
         }
 
         /// Contains all the Config data and logic
-        [SerializeField] private ConfigScript _config;
+        [ReadOnly] [SerializeField] private ConfigScript _config;
         public static ConfigScript ConfigScript => Instance._config;
         private static GeneralConfigData ConfigData => (GeneralConfigData)Instance._config.Data;
         
-        [SerializeField] private MicrophoneDataScript _microphoneData;
+        [ReadOnly] [SerializeField] private MicrophoneDataScript _microphoneData;
         public static MicrophoneDataScript MicrophoneData => Instance._microphoneData;
         
-        [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManager;
+        [ReadOnly] [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManager;
         public static NisualizerSceneManagerScript NisualizerSceneManager => Instance._nisualizerSceneManager;
         
         private void Reset()
