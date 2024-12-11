@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Core
 {
     [RequireComponent(typeof(ConfigScript))]
-    public class SceneScript : MonoBehaviour
+    public class SceneManagerScript : MonoBehaviour
     {
-        public static SceneScript Instance { get; private set; }
+        public static SceneManagerScript Instance { get; private set; }
 
         [SerializeField] protected ConfigScript _config;
         public static ConfigScript Config => Instance._config;

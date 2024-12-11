@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class SceneManager : MonoBehaviour
+    public class NisualizerSceneManager : MonoBehaviour
     {
         private static GeneralConfigData _configData;
         private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManager.ConfigScript.Data;

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Config;
+using Core;
 using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEditor.SceneManagement;
@@ -191,7 +192,7 @@ namespace SceneCreator.Editor
 
         /// Takes care of: <br/>
         /// Adding a <see cref="Core.GameManager"/> instance to the scene <br/>
-        /// Adding a <see cref="Core.SceneScript"/> instance to the scene <br/>
+        /// Adding a <see cref="SceneManagerScript"/> instance to the scene <br/>
         /// Creating a <see cref="VolumeProfile"/> for the scene
         private static void Stage2()
         {
@@ -274,7 +275,7 @@ namespace SceneCreator.Editor
             EditorSceneManager.SaveScene(newScene, _scenePath);
         }
 
-        /// Creates a new scene manager inheriting from the <see cref="Core.SceneScript"/>
+        /// Creates a new scene manager inheriting from the <see cref="SceneManagerScript"/>
         private static void CreateSceneManagerScript()
         {
             var scriptContent = $@"using Core;

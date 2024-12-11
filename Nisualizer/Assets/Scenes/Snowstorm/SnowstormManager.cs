@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Scenes.Snowstorm
 {
-    public class SnowstormManager : SceneScript
+    public class SnowstormManager : SceneManagerScript
     {
         public static SnowstormConfigData ConfigData => (SnowstormConfigData)Config.Data;
 

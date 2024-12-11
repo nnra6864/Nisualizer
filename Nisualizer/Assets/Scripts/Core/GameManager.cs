@@ -5,7 +5,7 @@ namespace Core
 {
     [RequireComponent(typeof(ConfigScript))]
     [RequireComponent(typeof(MicrophoneData))]
-    [RequireComponent(typeof(SceneManager))]
+    [RequireComponent(typeof(NisualizerSceneManager))]
     public class GameManager : MonoBehaviour
     {
         //Simple singleton implementation
@@ -35,14 +35,14 @@ namespace Core
         [SerializeField] private MicrophoneData _microphoneData;
         public static MicrophoneData MicrophoneData => Instance._microphoneData;
         
-        [SerializeField] private SceneManager _sceneManager;
-        public static SceneManager SceneManager => Instance._sceneManager;
+        [SerializeField] private NisualizerSceneManager _nisualizerSceneManager;
+        public static NisualizerSceneManager NisualizerSceneManager => Instance._nisualizerSceneManager;
         
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
             _microphoneData = FindFirstObjectByType<MicrophoneData>();
-            _sceneManager = GetComponent<SceneManager>();
+            _nisualizerSceneManager = GetComponent<NisualizerSceneManager>();
         }
 
 
