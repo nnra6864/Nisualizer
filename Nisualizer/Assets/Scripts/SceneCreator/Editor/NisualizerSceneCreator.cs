@@ -106,7 +106,7 @@ namespace SceneCreator.Editor
         
         #region SceneCreation
 
-        // Starts the scene creation process if it's not already happening
+        /// Starts the scene creation process if it's not already happening
         private static void CreateNisualizerScene()
         {
             // Load the editor data to get the current stage
@@ -115,14 +115,21 @@ namespace SceneCreator.Editor
             // Start the scene creation if it's not already happening
             if (_stage == 0) ExecuteCurrentStage();
         }
-        
-        /// Executes current stage and handles data reloading and saving
+
+        /// Takes care of resuming the execution after reload
         [UnityEditor.Callbacks.DidReloadScripts]
-        private static void ExecuteCurrentStage()
+        private static void HandleReload()
         {
-            // Load the editor data
+            // Load the editor data to get the current stage
             LoadEditorData();
             
+            // Continue execution if it was stopped
+            if (_stage != 0) ExecuteCurrentStage();
+        }
+        
+        /// Executes current stage and handles data reloading and saving
+        private static void ExecuteCurrentStage()
+        {
             // Execute current stage
             Stages[_stage]?.Invoke();
             
