@@ -2,7 +2,7 @@ using Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scenes.Snowstorm
+namespace Scenes.Snowstorm.Scripts
 {
     public class SnowstormManager : SceneManagerScript
     {

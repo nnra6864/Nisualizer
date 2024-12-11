@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Config;
 using Core;
@@ -104,33 +105,55 @@ namespace SceneCreator.Editor
         #endregion
         
         #region SceneCreation
-        
-        /// Starts the scene creation if it's not already happening
+
+        // Starts the scene creation process if it's not already happening
         private static void CreateNisualizerScene()
         {
-            if (_stage == 0) Stage0();
+            // Load the editor data to get the current stage
+            LoadEditorData();
+            
+            // Start the scene creation if it's not already happening
+            if (_stage == 0) ExecuteCurrentStage();
+        }
+        
+        /// Executes current stage and handles data reloading and saving
+        [UnityEditor.Callbacks.DidReloadScripts]
+        private static void ExecuteCurrentStage()
+        {
+            // Load the editor data
+            LoadEditorData();
+            
+            // Execute current stage
+            Stages[_stage]?.Invoke();
+            
+            // Check if this is the last stage
+            if (_stage == Stages.Count - 1)
+            {
+                // Set stage back to 0
+                _stage = 0;
+
+                // Reload and save data
+                Reload();
+                
+                // Reset editor data
+                ResetEditorData();
+
+                return;
+            }
+
+            // Increment stage
+            _stage++;
+            
+            // Save editor data
+            SaveEditorData();
+            
+            // Reload and compile
+            EditorApplication.delayCall += ReloadAndCompile;
         }
 
         /// Gets called after each editor reload and handles all that later stages <br/>
         /// This is needed because some parts of the creation require newly created scripts to be compiled
-        [UnityEditor.Callbacks.DidReloadScripts]
-        private static void PostCreation()
-        {
-            // Load the data saved before the editor reload
-            LoadEditorData();
-            
-            // Return if not working
-            if (_stage == 0) return;
-            
-            // Call the appropriate stage
-            switch (_stage)
-            {
-                case 1: Stage1(); break;
-                case 2: Stage2(); break;
-                case 3: Stage3(); break;
-            }
-        }
-
+        
         /// Saves and reloads assets
         private static void Reload()
         {
@@ -151,10 +174,19 @@ namespace SceneCreator.Editor
             // Compile
             CompilationPipeline.RequestScriptCompilation();
         }
-        
+
         #endregion
         
         #region Stages
+
+        /// Holds all the stages to be executed by the <see cref="ExecuteCurrentStage"/> method
+        private static readonly List<Action> Stages = new()
+        {
+            Stage0,
+            Stage1,
+            Stage2,
+            Stage3
+        };
         
         /// Takes care of: <br/>
         /// Getting the scene data <br/>
@@ -165,9 +197,6 @@ namespace SceneCreator.Editor
         {
             // Get new scene data
             if (!GetSceneData()) return;
-            
-            // Save data to editor prefs
-            SaveEditorData();
 
             // Create scene directory and asset
             if (!CreateSceneDirectory()) return;
@@ -181,10 +210,6 @@ namespace SceneCreator.Editor
             CreateConfigDirectory();
             CreateDefaultConfig();
             CreateConfigDataScript();
-            
-            // Update stage and reload assets so that assets are available for the next stage
-            _stage = 1;
-            EditorApplication.delayCall += ReloadAndCompile;
         }
 
         /// Creates an instance of a config data scriptable object
@@ -192,10 +217,6 @@ namespace SceneCreator.Editor
         {
             // Create an instance of the config SO
             CreateConfigDataSO();
-            
-            // Update stage and reload assets so that assets are available for the next stage
-            _stage = 2;
-            EditorApplication.delayCall += ReloadAndCompile;
         }
 
         /// Takes care of: <br/>
@@ -212,10 +233,6 @@ namespace SceneCreator.Editor
             
             // Create the volume profile for the scene
             CreateVolumeProfile();
-            
-            // Update stage and reload assets so that assets are available for the next stage
-            _stage = 3;
-            EditorApplication.delayCall += ReloadAndCompile;
         }
 
         /// Takes care of: <br/>
@@ -228,10 +245,6 @@ namespace SceneCreator.Editor
             
             // Add the camera
             AddCamera();
-            
-            // Update stage and reset editor data
-            _stage = 0;
-            ResetEditorData();
         }
         
         #endregion
