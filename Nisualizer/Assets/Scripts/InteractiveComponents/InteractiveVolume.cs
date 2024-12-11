@@ -8,7 +8,7 @@ namespace InteractiveComponents
     [RequireComponent(typeof(Volume))]
     public class InteractiveVolume : MonoBehaviour
     {
-        private static MicrophoneDataScript MicrophoneData => GameManager.MicrophoneData;
+        private static MicrophoneData MicrophoneData => GameManager.MicrophoneData;
         
         [SerializeField] private Volume _volume;
     

@@ -7,7 +7,7 @@ namespace InteractiveComponents
     [RequireComponent(typeof(VisualEffect))]
     public class InteractiveVFX : MonoBehaviour
     {
-        private static MicrophoneDataScript MicrophoneData => GameManager.MicrophoneData;
+        private static MicrophoneData MicrophoneData => GameManager.MicrophoneData;
         
         [SerializeField] private VisualEffect _vfx;
     

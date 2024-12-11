@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Core
 {
     [RequireComponent(typeof(ConfigScript))]
-    [RequireComponent(typeof(MicrophoneDataScript))]
+    [RequireComponent(typeof(MicrophoneData))]
     [RequireComponent(typeof(SceneManager))]
     public class GameManager : MonoBehaviour
     {
@@ -32,8 +32,8 @@ namespace Core
         public static ConfigScript ConfigScript => Instance._config;
         private static GeneralConfigData ConfigData => (GeneralConfigData)Instance._config.Data;
         
-        [SerializeField] private MicrophoneDataScript _microphoneData;
-        public static MicrophoneDataScript MicrophoneData => Instance._microphoneData;
+        [SerializeField] private MicrophoneData _microphoneData;
+        public static MicrophoneData MicrophoneData => Instance._microphoneData;
         
         [SerializeField] private SceneManager _sceneManager;
         public static SceneManager SceneManager => Instance._sceneManager;
@@ -41,7 +41,7 @@ namespace Core
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
-            _microphoneData = FindFirstObjectByType<MicrophoneDataScript>();
+            _microphoneData = FindFirstObjectByType<MicrophoneData>();
             _sceneManager = GetComponent<SceneManager>();
         }
 

@@ -7,7 +7,7 @@ namespace InteractiveComponents
     [RequireComponent(typeof(VideoPlayer))]
     public class InteractiveVideoPlayer : MonoBehaviour
     {
-        private static MicrophoneDataScript MicrophoneData => GameManager.MicrophoneData;
+        private static MicrophoneData MicrophoneData => GameManager.MicrophoneData;
 
         [SerializeField] private VideoPlayer _videoPlayer;
         
