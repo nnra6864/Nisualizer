@@ -33,16 +33,16 @@ namespace Core
         private static GeneralConfigData ConfigData => (GeneralConfigData)Instance._config.Data;
         
         [SerializeField] private MicrophoneDataScript _microphoneData;
-        public static MicrophoneDataScript MicrophoneDataScript => Instance._microphoneData;
+        public static MicrophoneDataScript MicrophoneData => Instance._microphoneData;
         
-        [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManagerScript;
-        public static NisualizerSceneManagerScript NisualizerSceneManagerScript => Instance._nisualizerSceneManagerScript;
+        [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManager;
+        public static NisualizerSceneManagerScript NisualizerSceneManager => Instance._nisualizerSceneManager;
         
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
             _microphoneData = FindFirstObjectByType<MicrophoneDataScript>();
-            _nisualizerSceneManagerScript = GetComponent<NisualizerSceneManagerScript>();
+            _nisualizerSceneManager = GetComponent<NisualizerSceneManagerScript>();
         }
 
 
@@ -56,7 +56,7 @@ namespace Core
         {
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
-            MicrophoneDataScript.InitializeMicrophone();
+            MicrophoneData.InitializeMicrophone();
             
             // Set FPS
             SetFPS();
@@ -71,6 +71,6 @@ namespace Core
             ConfigData.OnLoaded -= SetFPS;
         }
 
-        private void SetFPS() => Application.targetFrameRate = ConfigData.FPS;
+        private static void SetFPS() => Application.targetFrameRate = ConfigData.FPS;
     }
 }
