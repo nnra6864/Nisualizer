@@ -37,8 +37,8 @@ namespace SceneCreator.Editor
             EditorPrefs.SetString("SceneName", _sceneName);
             EditorPrefs.SetString("SceneDir", _sceneDir);
             EditorPrefs.SetString("ScenePath", _scenePath);
-            EditorPrefs.SetString("SceneConfigDir", _sceneConfigDir);
             EditorPrefs.SetString("SceneScriptsDir", _sceneScriptsDir);
+            EditorPrefs.SetString("SceneConfigDir", _sceneConfigDir);
             EditorPrefs.SetInt("Stage", _stage);
         }
 
@@ -48,8 +48,8 @@ namespace SceneCreator.Editor
             _sceneName = EditorPrefs.GetString("SceneName", _sceneName);
             _sceneDir = EditorPrefs.GetString("SceneDir", _sceneDir);
             _scenePath = EditorPrefs.GetString("ScenePath", _scenePath);
-            _sceneConfigDir = EditorPrefs.GetString("SceneConfigDir", _sceneConfigDir);
             _sceneScriptsDir = EditorPrefs.GetString("SceneScriptsDir", _sceneScriptsDir);
+            _sceneConfigDir = EditorPrefs.GetString("SceneConfigDir", _sceneConfigDir);
             _stage = EditorPrefs.GetInt("Stage", _stage);
         }
 
@@ -59,8 +59,8 @@ namespace SceneCreator.Editor
             EditorPrefs.SetString("SceneName", "");
             EditorPrefs.SetString("SceneDir", "");
             EditorPrefs.SetString("ScenePath", "");
-            EditorPrefs.SetString("SceneConfigDir", "");
             EditorPrefs.SetString("SceneScriptsDir", "");
+            EditorPrefs.SetString("SceneConfigDir", "");
             EditorPrefs.SetInt("Stage", 0);
         }
         
@@ -248,6 +248,7 @@ namespace SceneCreator.Editor
             _sceneName = _sceneNameField.text;
             _sceneDir = Path.Combine("Assets/Scenes", _sceneName);
             _scenePath = Path.Combine(_sceneDir, _sceneName) + ".unity";
+            _sceneScriptsDir = Path.Combine(_sceneDir, "Scripts");
             _sceneConfigDir = Path.Combine(_sceneDir, "Config");
 
             if (string.IsNullOrEmpty(_sceneName))
@@ -291,8 +292,9 @@ namespace SceneCreator.Editor
         private static void CreateSceneManagerScript()
         {
             var scriptContent = $@"using Core;
+using Scenes.{_sceneName}.Config;
 
-namespace Scenes.{_sceneName}
+namespace Scenes.{_sceneName}.Scripts
 {{
     public class {_sceneName}Manager : SceneManagerScript
     {{
@@ -301,7 +303,7 @@ namespace Scenes.{_sceneName}
 }}
 ";
             
-            var scriptPath = Path.Combine(_sceneDir, $"{_sceneName}Manager.cs");
+            var scriptPath = Path.Combine(_sceneScriptsDir, $"{_sceneName}Manager.cs");
             File.WriteAllText(scriptPath, scriptContent);
         }
         
@@ -311,7 +313,7 @@ namespace Scenes.{_sceneName}
         /// Creates default config for the newly created scene
         private static void CreateDefaultConfig()
         {
-            var configPath = Path.Combine(_sceneDir, $"{_sceneName}Config.json");
+            var configPath = Path.Combine(_sceneConfigDir, $"{_sceneName}Config.json");
             File.WriteAllText(configPath, "{\n\n}");
         }
         
@@ -321,7 +323,7 @@ namespace Scenes.{_sceneName}
             var scriptContent = $@"using Config;
 using UnityEngine;
 
-namespace Scenes.{_sceneName}
+namespace Scenes.{_sceneName}.Config
 {{
     // This class should be a perfect match of your JSON config
     [CreateAssetMenu(fileName = ""{_sceneName}ConfigData"", menuName = ""Config/{_sceneName}ConfigData"")]
@@ -346,7 +348,7 @@ namespace Scenes.{_sceneName}
 }}
 ";
             
-            var scriptPath = Path.Combine(_sceneDir, $"{_sceneName}ConfigData.cs");
+            var scriptPath = Path.Combine(_sceneConfigDir, $"{_sceneName}ConfigData.cs");
             File.WriteAllText(scriptPath, scriptContent);
         }
         
@@ -359,7 +361,7 @@ namespace Scenes.{_sceneName}
         private static void CreateConfigDataSO()
         {
             var so = CreateInstance($"{_sceneName}ConfigData");
-            var soPath = Path.Combine(_sceneDir, $"{_sceneName}ConfigData.asset");
+            var soPath = Path.Combine(_sceneConfigDir, $"{_sceneName}ConfigData.asset");
             AssetDatabase.CreateAsset(so, soPath);
         }
 
@@ -378,13 +380,13 @@ namespace Scenes.{_sceneName}
             GameObject go = new($"{_sceneName}Manager");
             
             // Add the Scene Script to it
-            go.AddComponent(Type.GetType($"Scenes.{_sceneName}.{_sceneName}Manager, Assembly-CSharp"));
+            go.AddComponent(Type.GetType($"Scenes.{_sceneName}.Scripts.{_sceneName}Manager, Assembly-CSharp"));
             
             // Change Config Script values
             var conf = go.GetComponent<ConfigScript>();
             conf.ConfigName = _sceneName;
-            conf.DefaultConfig = AssetDatabase.LoadAssetAtPath<TextAsset>(Path.Combine(_sceneDir, $"{_sceneName}Config.json"));
-            var sm = AssetDatabase.LoadAssetAtPath<ConfigData>(Path.Combine(_sceneDir, $"{_sceneName}ConfigData.asset"));
+            conf.DefaultConfig = AssetDatabase.LoadAssetAtPath<TextAsset>(Path.Combine(_sceneConfigDir, $"{_sceneName}Config.json"));
+            var sm = AssetDatabase.LoadAssetAtPath<ConfigData>(Path.Combine(_sceneConfigDir, $"{_sceneName}ConfigData.asset"));
             conf.Data = sm;
         }
         
