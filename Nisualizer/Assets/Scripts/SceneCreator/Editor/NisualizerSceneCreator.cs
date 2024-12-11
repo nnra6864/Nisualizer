@@ -282,7 +282,7 @@ namespace SceneCreator.Editor
 
 namespace Scenes.{_sceneName}
 {{
-    public class {_sceneName}Manager : SceneScript
+    public class {_sceneName}Manager : SceneManagerScript
     {{
         public static {_sceneName}ConfigData ConfigData => ({_sceneName}ConfigData)Config.Data;
     }}
