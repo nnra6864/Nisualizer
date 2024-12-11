@@ -18,7 +18,7 @@ namespace SceneCreator.Editor
         private static int _stage;
         
         // Scene data
-        private static string _sceneName, _sceneDir, _scenePath, _sceneConfigDir;
+        private static string _sceneName, _sceneDir, _scenePath, _sceneScriptsDir, _sceneConfigDir;
         
         // Storing the path instead of a direct reference to simplify the usage, especially in static functions
         private const string GameManagerPath = "Assets/Prefabs/GameManager.prefab";
@@ -38,6 +38,7 @@ namespace SceneCreator.Editor
             EditorPrefs.SetString("SceneDir", _sceneDir);
             EditorPrefs.SetString("ScenePath", _scenePath);
             EditorPrefs.SetString("SceneConfigDir", _sceneConfigDir);
+            EditorPrefs.SetString("SceneScriptsDir", _sceneScriptsDir);
             EditorPrefs.SetInt("Stage", _stage);
         }
 
@@ -48,6 +49,7 @@ namespace SceneCreator.Editor
             _sceneDir = EditorPrefs.GetString("SceneDir", _sceneDir);
             _scenePath = EditorPrefs.GetString("ScenePath", _scenePath);
             _sceneConfigDir = EditorPrefs.GetString("SceneConfigDir", _sceneConfigDir);
+            _sceneScriptsDir = EditorPrefs.GetString("SceneScriptsDir", _sceneScriptsDir);
             _stage = EditorPrefs.GetInt("Stage", _stage);
         }
 
@@ -58,6 +60,7 @@ namespace SceneCreator.Editor
             EditorPrefs.SetString("SceneDir", "");
             EditorPrefs.SetString("ScenePath", "");
             EditorPrefs.SetString("SceneConfigDir", "");
+            EditorPrefs.SetString("SceneScriptsDir", "");
             EditorPrefs.SetInt("Stage", 0);
         }
         
@@ -170,10 +173,12 @@ namespace SceneCreator.Editor
             if (!CreateSceneDirectory()) return;
             CreateSceneAsset();
             
-            // Create the scene manager
+            // Create the Scripts dir and Scene Manager
+            CreateScriptsDirectory();
             CreateSceneManagerScript();
             
-            // Create config
+            // Create config dir and data
+            CreateConfigDirectory();
             CreateDefaultConfig();
             CreateConfigDataScript();
             
@@ -255,7 +260,7 @@ namespace SceneCreator.Editor
         }
         
         /// <summary>
-        /// Creates the scene directory in Assets/Scenes
+        /// Creates the scene directory in Assets/Scenes/
         /// </summary>
         /// <returns>Whether the scene directory was successfully created</returns>
         private static bool CreateSceneDirectory()
@@ -279,6 +284,9 @@ namespace SceneCreator.Editor
             EditorSceneManager.SaveScene(newScene, _scenePath);
         }
 
+        /// Creates the Config directory in Assets/Scenes/SceneName/
+        private static void CreateScriptsDirectory() => AssetDatabase.CreateFolder(_sceneDir, "Scripts");
+        
         /// Creates a new scene manager inheriting from the <see cref="SceneManagerScript"/>
         private static void CreateSceneManagerScript()
         {
@@ -296,6 +304,9 @@ namespace Scenes.{_sceneName}
             var scriptPath = Path.Combine(_sceneDir, $"{_sceneName}Manager.cs");
             File.WriteAllText(scriptPath, scriptContent);
         }
+        
+        /// Creates the Config directory in Assets/Scenes/SceneName/
+        private static void CreateConfigDirectory() => AssetDatabase.CreateFolder(_sceneDir, "Config");
         
         /// Creates default config for the newly created scene
         private static void CreateDefaultConfig()
