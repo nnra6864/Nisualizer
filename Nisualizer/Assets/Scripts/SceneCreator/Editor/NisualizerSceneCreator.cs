@@ -138,7 +138,7 @@ namespace SceneCreator.Editor
             {
                 // Set stage back to 0
                 _stage = 0;
-
+                
                 // Reload and save data
                 Reload();
                 
@@ -390,7 +390,14 @@ namespace Scenes.{_sceneName}.Config
         #region Stage2
         
         /// Adds <see cref="GameManagerScript"/> to the newly created scene
-        private static void AddGameManager() => PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath));
+        private static void AddGameManager()
+        {
+            // Instantiate GameManager prefab
+            var go = PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath));
+            
+            // Mark the object as dirty so it doesn't get deleted on scene reload
+            EditorUtility.SetDirty(go);
+        }
 
         /// Adds a newly created scene manager to the scene <br/>
         /// Requires created scripts to be compiled, call <see cref="ReloadAndCompile"/> before this function
@@ -406,8 +413,13 @@ namespace Scenes.{_sceneName}.Config
             var conf = go.GetComponent<ConfigScript>();
             conf.ConfigName = _sceneName;
             conf.DefaultConfig = AssetDatabase.LoadAssetAtPath<TextAsset>(Path.Combine(_sceneConfigDir, $"{_sceneName}Config.json"));
+            
+            // Change Scene Manager values
             var sm = AssetDatabase.LoadAssetAtPath<ConfigData>(Path.Combine(_sceneConfigDir, $"{_sceneName}ConfigData.asset"));
             conf.Data = sm;
+            
+            // Mark the object as dirty so it doesn't get deleted on scene reload
+            EditorUtility.SetDirty(go);
         }
         
         /// Creates a new <see cref="UnityEngine.Rendering.VolumeProfile"/> in the scene dir
@@ -430,6 +442,9 @@ namespace Scenes.{_sceneName}.Config
             // Assign the newly created profile to it
             var ass = AssetDatabase.LoadAssetAtPath<VolumeProfile>(Path.Combine(_sceneDir, $"{_sceneName}VolumeProfile.asset"));
             vol.sharedProfile = ass;
+            
+            // Mark the object as dirty so it doesn't get deleted on scene reload
+            EditorUtility.SetDirty(go);
         }
 
         /// Creates a new camera
@@ -451,6 +466,9 @@ namespace Scenes.{_sceneName}.Config
             // Enable post-processing
             var uacd = go.AddComponent<UniversalAdditionalCameraData>();
             uacd.renderPostProcessing = true;
+            
+            // Mark the object as dirty so it doesn't get deleted on scene reload
+            EditorUtility.SetDirty(go);
         }
         
         #endregion
