@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config: {fileID: 6727376568078388782}
   _microphoneData: {fileID: 6463938505050852285}
-  _sceneManager: {fileID: 6851525485944725458}
+  _nisualizerSceneManager: {fileID: 0}
 --- !u!114 &6727376568078388782
 MonoBehaviour:
   m_ObjectHideFlags: 0

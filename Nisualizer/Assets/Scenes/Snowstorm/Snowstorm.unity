@@ -733,17 +733,6 @@ MonoBehaviour:
   _day: {fileID: 1284781451}
   _timeFormat: HH:mm:ss
   _dateFormat: dd/MM/yyyy
---- !u!114 &956113960 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6463938505050852285, guid: 70f2f570f571af807aae8993ab16c130, type: 3}
-  m_PrefabInstance: {fileID: 1490031190}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddc90e14332dae21e8422eb4246542c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1050520316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,18 +1022,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5084887586106314669, guid: 70f2f570f571af807aae8993ab16c130, type: 3}
-      propertyPath: _microphoneData
-      value: 
-      objectReference: {fileID: 956113960}
     - target: {fileID: 5659401107231073253, guid: 70f2f570f571af807aae8993ab16c130, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6727376568078388782, guid: 70f2f570f571af807aae8993ab16c130, type: 3}
-      propertyPath: DefaultConfig
-      value: 
-      objectReference: {fileID: 4900000, guid: 606b8d5d95f544ed965ee13be48514c6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
