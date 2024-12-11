@@ -18,7 +18,7 @@ namespace SceneCreator.Editor
         private static int _stage;
         
         // Scene data
-        private static string _sceneName, _sceneDir, _scenePath;
+        private static string _sceneName, _sceneDir, _scenePath, _sceneConfigDir;
         
         // Storing the path instead of a direct reference to simplify the usage, especially in static functions
         private const string GameManagerPath = "Assets/Prefabs/GameManager.prefab";
@@ -37,6 +37,7 @@ namespace SceneCreator.Editor
             EditorPrefs.SetString("SceneName", _sceneName);
             EditorPrefs.SetString("SceneDir", _sceneDir);
             EditorPrefs.SetString("ScenePath", _scenePath);
+            EditorPrefs.SetString("SceneConfigDir", _sceneConfigDir);
             EditorPrefs.SetInt("Stage", _stage);
         }
 
@@ -46,6 +47,7 @@ namespace SceneCreator.Editor
             _sceneName = EditorPrefs.GetString("SceneName", _sceneName);
             _sceneDir = EditorPrefs.GetString("SceneDir", _sceneDir);
             _scenePath = EditorPrefs.GetString("ScenePath", _scenePath);
+            _sceneConfigDir = EditorPrefs.GetString("SceneConfigDir", _sceneConfigDir);
             _stage = EditorPrefs.GetInt("Stage", _stage);
         }
 
@@ -55,6 +57,7 @@ namespace SceneCreator.Editor
             EditorPrefs.SetString("SceneName", "");
             EditorPrefs.SetString("SceneDir", "");
             EditorPrefs.SetString("ScenePath", "");
+            EditorPrefs.SetString("SceneConfigDir", "");
             EditorPrefs.SetInt("Stage", 0);
         }
         
@@ -240,6 +243,7 @@ namespace SceneCreator.Editor
             _sceneName = _sceneNameField.text;
             _sceneDir = Path.Combine("Assets/Scenes", _sceneName);
             _scenePath = Path.Combine(_sceneDir, _sceneName) + ".unity";
+            _sceneConfigDir = Path.Combine(_sceneDir, "Config");
 
             if (string.IsNullOrEmpty(_sceneName))
             {
