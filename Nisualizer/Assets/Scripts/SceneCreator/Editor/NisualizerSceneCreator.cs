@@ -139,6 +139,9 @@ namespace SceneCreator.Editor
                 // Set stage back to 0
                 _stage = 0;
                 
+                // Save the scene
+                EditorSceneManager.SaveOpenScenes();
+                
                 // Reload and save data
                 Reload();
                 
