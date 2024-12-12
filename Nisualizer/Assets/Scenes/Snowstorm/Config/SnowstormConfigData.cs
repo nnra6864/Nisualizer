@@ -2,7 +2,7 @@ using Config;
 using NnUtils.Scripts;
 using UnityEngine;
 
-namespace Scenes.Snowstorm
+namespace Scenes.Snowstorm.Config
 {
     [CreateAssetMenu(fileName = "SnowstormConfigData", menuName = "Config/SnowstormConfigData")]
     public class SnowstormConfigData : ConfigData

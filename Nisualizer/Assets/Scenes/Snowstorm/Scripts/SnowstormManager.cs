@@ -1,4 +1,5 @@
 using Core;
+using Scenes.Snowstorm.Config;
 using UnityEngine;
 using UnityEngine.UI;
 
