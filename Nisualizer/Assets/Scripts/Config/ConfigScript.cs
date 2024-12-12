@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.IO;
+using Core;
 using NnUtils.Scripts;
 using UnityEngine;
 
@@ -154,7 +156,22 @@ namespace Config
         /// Handles config file being changed
         private void HandleConfigChanged()
         {
-            Debug.Log($"[{ConfigName}] Config changed, reloading");
+            // Store the reload delay from the general config
+            var reloadDelay = ((GeneralConfigData)GameManagerScript.ConfigScript.Data).ReloadDelay;
+            
+            // Notify user about the change and delay
+            Debug.Log($"[{ConfigName}] Config changed, waiting {((GeneralConfigData)Data).ReloadDelay} before reloading");
+            
+            // Stop previous attempts to reload the config and start a new one
+            this.RestartRoutine(ref _configChangedRoutine, ConfigChangedRoutine(reloadDelay));
+        }
+
+        private Coroutine _configChangedRoutine;
+        
+        /// Waits for <see cref="GeneralConfigData.ReloadDelay"/> seconds and loads the new config
+        private IEnumerator ConfigChangedRoutine(float delay)
+        {
+            yield return new WaitForSeconds(delay);
             GenerateDefaultConfigFile();
             LoadConfigFile();
             LoadConfig();
