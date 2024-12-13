@@ -5007,7 +5007,7 @@ MonoBehaviour:
   AlphaComposition: 0
   SampleMode: 0
   Mode: 1
-  ColorMode: 1
+  ColorMode: 3
   channels: 6
 --- !u!114 &8926484042661614979
 MonoBehaviour:

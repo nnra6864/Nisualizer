@@ -11,23 +11,25 @@ namespace Config.Types
     [Serializable]
     public class ConfigGradient
     {
+        // BUG: For some reason, gradient mode doesn't work properly
+        public GradientMode Mode;
         public List<ConfigGradientAlphaKey> AlphaKeys;
         public List<ConfigGradientColorKey> ColorKeys;
-        public GradientMode Mode;
 
         public ConfigGradient()
         {
+            Mode = GradientMode.Blend;
             AlphaKeys = new();
             ColorKeys = new();
-            Mode = GradientMode.Blend;
         }
 
         public ConfigGradient(Gradient gradient)
         {
+            Mode = gradient.mode;
+            
             // Using Select() because it supports implicit conversion
             AlphaKeys = new(gradient.alphaKeys.Select(key => (ConfigGradientAlphaKey)key));
             ColorKeys = new(gradient.colorKeys.Select(key => (ConfigGradientColorKey)key));
-            Mode = gradient.mode;
         }
 
         /// Implicit conversion from <see cref="Gradient"/>
@@ -36,9 +38,9 @@ namespace Config.Types
         /// Implicit conversion to <see cref="Gradient"/>
         public static implicit operator Gradient(ConfigGradient g) => new()
         {
+            mode      = g.Mode,
             alphaKeys = g.AlphaKeys.Select(key => (GradientAlphaKey)key).ToArray(),
-            colorKeys = g.ColorKeys.Select(key => (GradientColorKey)key).ToArray(),
-            mode      = g.Mode
+            colorKeys = g.ColorKeys.Select(key => (GradientColorKey)key).ToArray()
         };
     }
 }
