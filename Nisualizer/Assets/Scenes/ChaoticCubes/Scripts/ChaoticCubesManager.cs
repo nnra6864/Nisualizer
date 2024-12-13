@@ -29,7 +29,7 @@ namespace Scenes.ChaoticCubes.Scripts
 
         private void UpdateChaoticCubesVFX()
         {
-            _chaoticCubesVFX.SetGradient("ColorOverLife", ConfigData.CubeColorOverLife);
+            _chaoticCubesVFX.SetGradient("ColorOverLife", ConfigData.VFX.CubeColorOverLife);
         }
     }
 }

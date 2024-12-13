@@ -8,13 +8,12 @@ namespace Scenes.ChaoticCubes.Config
     [CreateAssetMenu(fileName = "ChaoticCubesConfigData", menuName = "Config/ChaoticCubesConfigData")]
     public class ChaoticCubesConfigData : ConfigData
     {
-        [SerializeField] [GradientUsage(true)] public Gradient DefaultCubeColorOverLife;
-        public ConfigGradient CubeColorOverLife;
+        public ChaoticCubesVFXData VFX;
         
         public override void Load()
         {
             // Assign the default color over life if still null after reload
-            CubeColorOverLife ??= DefaultCubeColorOverLife;
+            VFX.CubeColorOverLife ??= VFX.DefaultCubeColorOverLife;
 
             base.Load();
         }
@@ -22,7 +21,7 @@ namespace Scenes.ChaoticCubes.Config
         public override void ResetToDefault(bool silent = false)
         {
             // Assign null in Reset so that appropriate value can be loaded in Load
-            CubeColorOverLife = null;
+            VFX.CubeColorOverLife = null;
             
             base.ResetToDefault(silent);
         }
