@@ -61,7 +61,7 @@ namespace Core
             
             // Set FPS
             SetFPS();
-            ConfigData.OnLoaded += SetFPS;
+            ConfigData.OnLoaded += OnConfigLoaded;
         }
 
         private void OnDestroy()
@@ -69,9 +69,18 @@ namespace Core
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
             if (ConfigScript?.Data == null) return;
             
-            ConfigData.OnLoaded -= SetFPS;
+            ConfigData.OnLoaded -= OnConfigLoaded;
+            
+        }
+
+        private void OnConfigLoaded()
+        {
+            SetFPS();
+            SetWindowMode();
         }
 
         private void SetFPS() => Application.targetFrameRate = ConfigData.FPS;
+
+        private void SetWindowMode() => Screen.fullScreenMode = ConfigData.WindowMode;
     }
 }
