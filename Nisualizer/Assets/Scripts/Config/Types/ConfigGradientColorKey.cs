@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Config.Types
 {
+    [Serializable]
     public class ConfigGradientColorKey
     {
         public ConfigColor Color;
