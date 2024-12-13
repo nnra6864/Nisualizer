@@ -1,4 +1,5 @@
 using Config;
+using Newtonsoft.Json;
 using NnUtils.Scripts;
 using UnityEngine;
 
@@ -7,10 +8,10 @@ namespace Scenes.Snowstorm.Config
     [CreateAssetMenu(fileName = "SnowstormConfigData", menuName = "Config/SnowstormConfigData")]
     public class SnowstormConfigData : ConfigData
     {
-        public string DefaultBackground = "";
+        [JsonIgnore] public string DefaultBackground = "";
         [ReadOnly] public string Background;
 
-        public Sprite DefaultBackgroundSprite;
+        [JsonIgnore] public Sprite DefaultBackgroundSprite;
         [ReadOnly] public Sprite BackgroundSprite;
 
         public override void Load()
