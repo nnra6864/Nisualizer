@@ -30,7 +30,7 @@ namespace Scenes.ChaoticCubes.Scripts
         private void UpdateChaoticCubesVFX()
         {
             _chaoticCubesVFX.SetVector2("SpawnRateRange", ConfigData.VFX.SpawnRateRange);
-            _chaoticCubesVFX.SetGradient("ColorOverLife", ConfigData.VFX.CubeColorOverLife);
+            _chaoticCubesVFX.SetGradient("ColorOverLife", ConfigData.VFX.ColorOverLife);
         }
     }
 }

@@ -11,21 +11,21 @@ namespace Scenes.ChaoticCubes.Config
         [JsonIgnore] [SerializeField] public Vector2 DefaultSpawnRateRange = new(100, 1000);
         public ConfigVector2 SpawnRateRange;
         
-        [JsonIgnore] [SerializeField] [GradientUsage(true)] public Gradient DefaultCubeColorOverLife;
-        public ConfigGradient CubeColorOverLife;
+        [JsonIgnore] [SerializeField] [GradientUsage(true)] public Gradient DefaultColorOverLife;
+        public ConfigGradient ColorOverLife;
 
         public void Load()
         {
             // Assign default values if still null after reload
-            SpawnRateRange    ??= DefaultSpawnRateRange;
-            CubeColorOverLife ??= DefaultCubeColorOverLife;
+            SpawnRateRange ??= DefaultSpawnRateRange;
+            ColorOverLife  ??= DefaultColorOverLife;
         }
-        
+
         public void ResetToDefault()
         {
             // Assign null in Reset so that appropriate values can be loaded in Load
-            SpawnRateRange    = null;
-            CubeColorOverLife = null;
+            SpawnRateRange = null;
+            ColorOverLife  = null;
         }
     }
 }
