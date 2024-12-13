@@ -22,7 +22,7 @@ namespace Scenes.ChaoticCubes.Config
         public override void ResetToDefault(bool silent = false)
         {
             // Assign null in Reset so that appropriate value can be loaded in Load
-            CubeColorOverLife = null;
+            CubeColorOverLife = DefaultCubeColorOverLife;
             
             base.ResetToDefault(silent);
         }
