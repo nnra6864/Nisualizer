@@ -160,7 +160,7 @@ namespace Config
             var reloadDelay = ((GeneralConfigData)GameManagerScript.ConfigScript.Data).ReloadDelay;
             
             // Notify user about the change and delay
-            Debug.Log($"[{ConfigName}] Config changed, waiting {((GeneralConfigData)Data).ReloadDelay} before reloading");
+            Debug.Log($"[{ConfigName}] Config changed, waiting {reloadDelay} before reloading");
             
             // Stop previous attempts to reload the config and start a new one
             this.RestartRoutine(ref _configChangedRoutine, ConfigChangedRoutine(reloadDelay));

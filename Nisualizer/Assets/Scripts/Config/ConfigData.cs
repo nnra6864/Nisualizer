@@ -8,14 +8,13 @@ namespace Config
     {
         public Action OnLoaded;
 
-        /// <summary>
-        /// Call base.Load() at the end of overriden functions to trigger the OnConfigLoaded event
-        /// </summary>
+        /// Call base.Load() at the end of overriden functions to trigger the <see cref="OnLoaded"/> event
         public virtual void Load()
         {
             OnLoaded?.Invoke();
         }
         
+        /// Call base.Reset() at the end of overriden functions to trigger the <see cref="OnLoaded"/> event
         public virtual void ResetToDefault(bool silent = false)
         {
             if (!silent) OnLoaded?.Invoke();
