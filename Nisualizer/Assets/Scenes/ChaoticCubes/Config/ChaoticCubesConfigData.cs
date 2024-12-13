@@ -12,16 +12,14 @@ namespace Scenes.ChaoticCubes.Config
         
         public override void Load()
         {
-            // Assign the default color over life if still null after reload
-            VFX.CubeColorOverLife ??= VFX.DefaultCubeColorOverLife;
+            VFX.Load();
 
             base.Load();
         }
         
         public override void ResetToDefault(bool silent = false)
         {
-            // Assign null in Reset so that appropriate value can be loaded in Load
-            VFX.CubeColorOverLife = null;
+            VFX.ResetToDefault();
             
             base.ResetToDefault(silent);
         }

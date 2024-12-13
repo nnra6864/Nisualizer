@@ -33,7 +33,7 @@ MonoBehaviour:
   stickyNoteInfos: []
   categories:
   - name: Turbulence
-    collapsed: 1
+    collapsed: 0
   - name: Mesh
     collapsed: 0
   uiBounds:
@@ -114,8 +114,8 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: ParticleSpawnRateRange
-    path: ParticleSpawnRateRange
+  - name: SpawnRateRange
+    path: SpawnRateRange
     tooltip: 
     space: -1
     spaceable: 0
@@ -2470,7 +2470,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614860}
-  m_ExposedName: ParticleSpawnRateRange
+  m_ExposedName: SpawnRateRange
   m_Exposed: 1
   m_Order: 1
   m_Category: 
