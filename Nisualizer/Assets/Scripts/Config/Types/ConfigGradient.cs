@@ -16,8 +16,8 @@ namespace Config.Types
 
         public ConfigGradient()
         {
-            AlphaKeys      = null;
-            ColorKeys      = null;
+            AlphaKeys      = new();
+            ColorKeys      = new();
         }
 
         public ConfigGradient(Gradient gradient)

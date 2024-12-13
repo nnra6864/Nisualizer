@@ -4,6 +4,7 @@ using System.IO;
 using Core;
 using NnUtils.Scripts;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace Config
 {
@@ -118,7 +119,7 @@ namespace Config
             Debug.Log(debugPrefix + "Reset to default config");
 
             // Reload the config
-            JsonUtility.FromJsonOverwrite(_configText, Data);
+            JsonConvert.PopulateObject(_configText, Data);
             Data.Load();
             Debug.Log(debugPrefix + $"Loaded config from {_configPath}");
         }
