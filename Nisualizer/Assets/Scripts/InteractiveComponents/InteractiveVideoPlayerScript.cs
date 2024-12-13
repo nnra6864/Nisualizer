@@ -7,7 +7,7 @@ namespace InteractiveComponents
     [RequireComponent(typeof(VideoPlayer))]
     public class InteractiveVideoPlayerScript : MonoBehaviour
     {
-        private static MicrophoneDataScript MicrophoneData => GameManagerScript.MicrophoneData;
+        private static AudioDataScript AudioData => GameManagerScript.AudioData;
 
         [SerializeField] private VideoPlayer _videoPlayer;
         
@@ -21,7 +21,7 @@ namespace InteractiveComponents
 
         private void Update()
         {
-            _videoPlayer.playbackSpeed = Mathf.LerpUnclamped(_playbackSpeedRange.x, _playbackSpeedRange.y, MicrophoneData.Loudness);
+            _videoPlayer.playbackSpeed = Mathf.LerpUnclamped(_playbackSpeedRange.x, _playbackSpeedRange.y, AudioData.Loudness);
         }
     }
 }

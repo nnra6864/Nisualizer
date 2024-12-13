@@ -7,7 +7,7 @@ namespace InteractiveComponents
     [RequireComponent(typeof(VisualEffect))]
     public class InteractiveVFXScript : MonoBehaviour
     {
-        private static MicrophoneDataScript MicrophoneData => GameManagerScript.MicrophoneData;
+        private static AudioDataScript AudioData => GameManagerScript.AudioData;
         
         [SerializeField] private VisualEffect _vfx;
     
@@ -27,8 +27,8 @@ namespace InteractiveComponents
 
         private void Update()
         {
-            _vfx.SetFloat(_loudnessPropertyName, MicrophoneData.Loudness);
-            if (_affectPlayRate) _vfx.playRate = Mathf.LerpUnclamped(_playRateRange.x, _playRateRange.y, MicrophoneData.Loudness);
+            _vfx.SetFloat(_loudnessPropertyName, AudioData.Loudness);
+            if (_affectPlayRate) _vfx.playRate = Mathf.LerpUnclamped(_playRateRange.x, _playRateRange.y, AudioData.Loudness);
         }
     }
 }

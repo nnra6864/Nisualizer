@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class MicrophoneDataScript : MonoBehaviour
+    public class AudioDataScript : MonoBehaviour
     {
         private static GeneralConfigData _configData;
         private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManagerScript.ConfigScript.Data;

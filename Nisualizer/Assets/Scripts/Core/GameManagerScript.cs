@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Core
 {
     [RequireComponent(typeof(ConfigScript))]
-    [RequireComponent(typeof(MicrophoneDataScript))]
+    [RequireComponent(typeof(AudioDataScript))]
     [RequireComponent(typeof(NisualizerSceneManagerScript))]
     public class GameManagerScript : MonoBehaviour
     {
@@ -33,8 +33,8 @@ namespace Core
         public static ConfigScript ConfigScript => Instance._config;
         private static GeneralConfigData ConfigData => (GeneralConfigData)Instance._config.Data;
         
-        [ReadOnly] [SerializeField] private MicrophoneDataScript _microphoneData;
-        public static MicrophoneDataScript MicrophoneData => Instance._microphoneData;
+        [ReadOnly] [SerializeField] private AudioDataScript _audioData;
+        public static AudioDataScript AudioData => Instance._audioData;
         
         [ReadOnly] [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManager;
         public static NisualizerSceneManagerScript NisualizerSceneManager => Instance._nisualizerSceneManager;
@@ -42,7 +42,7 @@ namespace Core
         private void Reset()
         {
             _config = GetComponent<ConfigScript>();
-            _microphoneData = FindFirstObjectByType<MicrophoneDataScript>();
+            _audioData = GetComponent<AudioDataScript>();
             _nisualizerSceneManager = GetComponent<NisualizerSceneManagerScript>();
         }
 
@@ -57,7 +57,7 @@ namespace Core
         {
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
-            MicrophoneData.InitializeMicrophone();
+            AudioData.InitializeMicrophone();
             
             // Set FPS
             SetFPS();
