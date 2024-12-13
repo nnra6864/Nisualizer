@@ -1,8 +1,6 @@
 {
   "CubeColorOverLife": {
-    "AlphaKeys": [
-      { "Alpha": 1.0, "Time": 0.0 }
-    ],
+    "Mode": 2,
     "ColorKeys": [
       { "Color": { "G": 0.4, "B": 1.0 }, "Time": 0.25 },
       { "Color": { "R": 1.0, "G": 1.0 }, "Time": 1.0 }

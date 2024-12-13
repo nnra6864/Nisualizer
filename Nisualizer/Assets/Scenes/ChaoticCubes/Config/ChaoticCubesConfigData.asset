@@ -38,19 +38,17 @@ MonoBehaviour:
     atime5: 0
     atime6: 0
     atime7: 0
-    m_Mode: 0
+    m_Mode: 2
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   CubeColorOverLife:
-    AlphaKeys:
-    - Alpha: 1
-      Time: 0
+    AlphaKeys: []
     ColorKeys:
     - Color:
         R: 0
-        G: 1
-        B: 0
+        G: 0.4
+        B: 1
         A: 1
         I: 1
       Time: 0.25
@@ -61,3 +59,4 @@ MonoBehaviour:
         A: 1
         I: 1
       Time: 1
+    Mode: 0
