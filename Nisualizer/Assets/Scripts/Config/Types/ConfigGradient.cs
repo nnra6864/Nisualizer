@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using UnityEngine;
 
 namespace Config.Types
@@ -12,6 +14,7 @@ namespace Config.Types
     public class ConfigGradient
     {
         // BUG: For some reason, gradient mode doesn't work properly
+        [JsonConverter(typeof(StringEnumConverter))]
         public GradientMode Mode;
         public List<ConfigGradientAlphaKey> AlphaKeys;
         public List<ConfigGradientColorKey> ColorKeys;
