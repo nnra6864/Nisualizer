@@ -13,6 +13,7 @@ namespace Scenes.ChaoticCubes.Scripts
         
         private void Start()
         {
+            UpdateChaoticCubesVFX();
             ConfigData.OnLoaded += OnConfigLoaded;
         }
 
@@ -23,7 +24,7 @@ namespace Scenes.ChaoticCubes.Scripts
 
         private void OnConfigLoaded()
         {
-            
+            UpdateChaoticCubesVFX();
         }
 
         private void UpdateChaoticCubesVFX()

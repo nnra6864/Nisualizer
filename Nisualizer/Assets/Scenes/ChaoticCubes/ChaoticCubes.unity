@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 439902190}
+  _chaoticCubesVFX: {fileID: 451001115}
 --- !u!114 &439902190
 MonoBehaviour:
   m_ObjectHideFlags: 0

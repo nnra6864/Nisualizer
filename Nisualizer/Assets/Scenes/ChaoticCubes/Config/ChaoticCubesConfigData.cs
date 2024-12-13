@@ -12,9 +12,18 @@ namespace Scenes.ChaoticCubes.Config
         [SerializeField] [GradientUsage(true)] public Gradient DefaultCubeColorOverLife;
         [ReadOnly] public ConfigGradient CubeColorOverLife;
 
+        public override void Load()
+        {
+            // Assign the default color over life if still null after reload
+            CubeColorOverLife ??= DefaultCubeColorOverLife;
+
+            base.Load();
+        }
+        
         public override void ResetToDefault(bool silent = false)
         {
-            CubeColorOverLife = DefaultCubeColorOverLife;
+            // Assign null in Reset so that appropriate value can be loaded in Load
+            CubeColorOverLife = null;
             
             base.ResetToDefault(silent);
         }

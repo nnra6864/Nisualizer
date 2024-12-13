@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Config.Types
 {
+    /// This class is used as a bridge between <see cref="Color"/> and JSON <br/>
+    /// When used in <see cref="ConfigData"/>, make sure to assign null in <see cref="ConfigData.ResetToDefault"/> and default value in <see cref="ConfigData.Load"/> if the value is still null <br/>
+    /// This approach prevents data stacking in case not all data is defined in the config
     [Serializable]
     public class ConfigColor
     {
@@ -19,11 +22,11 @@ namespace Config.Types
 
         public ConfigColor()
         {
-            R = 1;
-            G = 1;
-            B = 1;
+            R = 0;
+            G = 0;
+            B = 0;
             A = 1;
-            I = 0;
+            I = 1;
         }
         
         public ConfigColor(ConfigColor c)
@@ -41,7 +44,7 @@ namespace Config.Types
             G = c.g;
             B = c.b;
             A = c.a;
-            I = 0;
+            I = 1;
         }
 
         /// Implicit conversion from <see cref="UnityEngine.Color"/>
