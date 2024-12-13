@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultCubeColorOverLife:
     serializedVersion: 2
-    key0: {r: 0.0065359417, g: 0, b: 0.019607844, a: 1}
-    key1: {r: 0, g: 0, b: 0.011764706, a: 1}
+    key0: {r: 0, g: 0.4, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
+    ctime0: 16384
     ctime1: 65535
     ctime2: 0
     ctime3: 0
@@ -43,5 +43,21 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   CubeColorOverLife:
-    AlphaKeys: []
-    ColorKeys: []
+    AlphaKeys:
+    - Alpha: 1
+      Time: 0
+    ColorKeys:
+    - Color:
+        R: 0
+        G: 1
+        B: 0
+        A: 1
+        I: 1
+      Time: 0.25
+    - Color:
+        R: 1
+        G: 1
+        B: 0
+        A: 1
+        I: 1
+      Time: 1

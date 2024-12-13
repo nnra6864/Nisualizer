@@ -1,6 +1,5 @@
 using Config;
 using Config.Types;
-using NnUtils.Scripts;
 using UnityEngine;
 
 namespace Scenes.ChaoticCubes.Config
@@ -10,8 +9,8 @@ namespace Scenes.ChaoticCubes.Config
     public class ChaoticCubesConfigData : ConfigData
     {
         [SerializeField] [GradientUsage(true)] public Gradient DefaultCubeColorOverLife;
-        [ReadOnly] public ConfigGradient CubeColorOverLife;
-
+        public ConfigGradient CubeColorOverLife;
+        
         public override void Load()
         {
             // Assign the default color over life if still null after reload
