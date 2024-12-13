@@ -35,7 +35,7 @@ MonoBehaviour:
   - name: Turbulence
     collapsed: 0
   - name: Mesh
-    collapsed: 0
+    collapsed: 1
   uiBounds:
     serializedVersion: 2
     x: -166
@@ -92,6 +92,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615078}
   - {fileID: 8926484042661615082}
   - {fileID: 8926484042661615086}
+  - {fileID: 8926484042661615095}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
@@ -130,6 +131,22 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
+  - name: SpawnRadius
+    path: SpawnRadius
+    tooltip: 
+    space: -1
+    spaceable: 0
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0.03
+    min: -Infinity
+    max: Infinity
+    enumValues: []
+    descendantCount: 0
   - name: LifetimeRange
     path: LifetimeRange
     tooltip: 
@@ -146,8 +163,8 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: SpeeedRange
-    path: SpeeedRange
+  - name: SpeedRange
+    path: SpeedRange
     tooltip: 
     space: -1
     spaceable: 0
@@ -193,8 +210,8 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: TurbulenceRougness
-    path: TurbulenceRougness
+  - name: TurbulenceRoughness
+    path: TurbulenceRoughness
     tooltip: 
     space: -1
     spaceable: 0
@@ -2273,7 +2290,8 @@ MonoBehaviour:
       m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
-  m_LinkedSlots: []
+  m_LinkedSlots:
+  - {fileID: 8926484042661615096}
 --- !u!114 &8926484042661614851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2947,9 +2965,9 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614906}
-  m_ExposedName: SpeeedRange
+  m_ExposedName: SpeedRange
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 5
   m_Category: 
   m_Min:
     m_Type:
@@ -3785,7 +3803,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614931}
   m_ExposedName: TurbulenceRotationSpeed
   m_Exposed: 1
-  m_Order: 15
+  m_Order: 16
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4062,7 +4080,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614955}
   m_ExposedName: TurbulenceFrequency
   m_Exposed: 1
-  m_Order: 10
+  m_Order: 11
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4141,9 +4159,9 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614957}
-  m_ExposedName: TurbulenceRougness
+  m_ExposedName: TurbulenceRoughness
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 8
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4226,7 +4244,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614959}
   m_ExposedName: TurbulenceOctaves
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 10
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4309,7 +4327,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614961}
   m_ExposedName: TurbulenceLacunarity
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 7
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4674,7 +4692,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614971}
   m_ExposedName: Smoothness
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 4
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -4757,7 +4775,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614973}
   m_ExposedName: Metallic
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 6
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -4840,7 +4858,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614975}
   m_ExposedName: BaseColorMap
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 9
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -4921,7 +4939,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614977}
   m_ExposedName: Mesh
   m_Exposed: 1
-  m_Order: 11
+  m_Order: 12
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -5094,14 +5112,14 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614982}
   m_ExposedName: ColorOverLife
   m_Exposed: 1
-  m_Order: 13
+  m_Order: 14
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -5279,7 +5297,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614999}
   m_ExposedName: SizeOverLife
   m_Exposed: 1
-  m_Order: 17
+  m_Order: 18
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -5544,7 +5562,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615007}
   m_ExposedName: Size
   m_Exposed: 1
-  m_Order: 16
+  m_Order: 17
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -6105,7 +6123,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615041}
   m_ExposedName: TurbulenceIntensityRange
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 15
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -6429,7 +6447,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615050}
   m_ExposedName: TurbulenceDragRange
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 13
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -7362,3 +7380,84 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 1
   m_LinkedSlots: []
+--- !u!114 &8926484042661615095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330e0fca1717dde4aaa144f48232aa64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UIIgnoredErrors: []
+  m_Parent: {fileID: 114350483966674976}
+  m_Children: []
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_InputSlots: []
+  m_OutputSlots:
+  - {fileID: 8926484042661615096}
+  m_ExposedName: SpawnRadius
+  m_Exposed: 1
+  m_Order: 2
+  m_Category: 
+  m_Min:
+    m_Type:
+      m_SerializableType: 
+    m_SerializableObject: 
+  m_Max:
+    m_Type:
+      m_SerializableType: 
+    m_SerializableObject: 
+  m_IsOutput: 0
+  m_EnumValues: []
+  m_ValueFilter: 0
+  m_Tooltip: 
+  m_Nodes:
+  - m_Id: 0
+    linkedSlots:
+    - outputSlot: {fileID: 8926484042661615096}
+      inputSlot: {fileID: 8926484042661614850}
+    position: {x: 678, y: -670}
+    expandedSlots: []
+    expanded: 1
+    supecollapsed: 0
+--- !u!114 &8926484042661615096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f780aa281814f9842a7c076d436932e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UIIgnoredErrors: []
+  m_Parent: {fileID: 0}
+  m_Children: []
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661615096}
+  m_MasterData:
+    m_Owner: {fileID: 8926484042661615095}
+    m_Value:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0.03
+    m_Space: -1
+  m_Property:
+    name: o
+    m_serializedType:
+      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+  m_Direction: 1
+  m_LinkedSlots:
+  - {fileID: 8926484042661614850}

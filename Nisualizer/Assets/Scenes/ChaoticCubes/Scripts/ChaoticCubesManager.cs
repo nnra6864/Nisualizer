@@ -29,7 +29,20 @@ namespace Scenes.ChaoticCubes.Scripts
 
         private void UpdateChaoticCubesVFX()
         {
-            _chaoticCubesVFX.SetVector2("SpawnRateRange", ConfigData.VFX.SpawnRateRange);
+            var vfx = ConfigData.VFX;
+            
+            _chaoticCubesVFX.SetVector2("SpawnRateRange", vfx.SpawnRateRange);
+            _chaoticCubesVFX.SetVector2("LifetimeRange", vfx.LifetimeRange);
+            _chaoticCubesVFX.SetVector2("SpeedRange", vfx.SpeedRange);
+            
+            _chaoticCubesVFX.SetFloat("TurbulenceRotationSpeed", vfx.Turbulence.RotationSpeed);
+            _chaoticCubesVFX.SetVector2("TurbulenceIntensityRange", vfx.Turbulence.IntensityRange);
+            _chaoticCubesVFX.SetVector2("TurbulenceDragRange", vfx.Turbulence.DragRange);
+            _chaoticCubesVFX.SetFloat("TurbulenceFrequency", vfx.Turbulence.Frequency);
+            _chaoticCubesVFX.SetInt("TurbulenceOctaves", vfx.Turbulence.Octaves);
+            _chaoticCubesVFX.SetFloat("TurbulenceRoughness", vfx.Turbulence.Roughness);
+            _chaoticCubesVFX.SetFloat("TurbulenceLacunarity", vfx.Turbulence.Lacunarity);
+            
             _chaoticCubesVFX.SetGradient("ColorOverLife", ConfigData.VFX.ColorOverLife);
         }
     }

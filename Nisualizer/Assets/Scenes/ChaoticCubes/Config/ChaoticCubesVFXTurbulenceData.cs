@@ -1,0 +1,52 @@
+using System;
+using Config.Types;
+using Newtonsoft.Json;
+using NnUtils.Scripts;
+using UnityEngine;
+
+namespace Scenes.ChaoticCubes.Config
+{
+    [Serializable]
+    public class ChaoticCubesVFXTurbulenceData
+    {
+        [JsonIgnore] public float DefaultRotationSpeed = 30;
+        [ReadOnly] public float RotationSpeed;
+        
+        [JsonIgnore] public Vector2 DefaultIntensityRange = new(5, 10);
+        [ReadOnly] public ConfigVector2 IntensityRange;
+        
+        [JsonIgnore] public Vector2 DefaultDragRange = new(0.5f, 2);
+        [ReadOnly] public ConfigVector2 DragRange;
+        
+        [JsonIgnore] public float DefaultFrequency = 0.5f;
+        [ReadOnly] public float Frequency;
+        
+        [JsonIgnore] public int DefaultOctaves = 4;
+        [ReadOnly] public int Octaves;
+
+        [JsonIgnore] public float DefaultRoughness = 0.5f;
+        [ReadOnly] public float Roughness;
+        
+        [JsonIgnore] public float DefaultLacunarity = 0.5f;
+        [ReadOnly] public float Lacunarity;
+
+        public void Load()
+        {
+            IntensityRange ??= DefaultIntensityRange;
+            DragRange      ??= DefaultDragRange;
+        }
+
+        public void ResetToDefault()
+        {
+            RotationSpeed = DefaultRotationSpeed;
+
+            // Assign null in Reset so that appropriate values can be loaded in Load
+            IntensityRange = null;
+            DragRange      = null;
+            Frequency      = DefaultFrequency;
+            Octaves        = DefaultOctaves;
+            Roughness       = DefaultRoughness;
+            Lacunarity     = DefaultLacunarity;
+        }
+    }
+}
