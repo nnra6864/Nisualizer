@@ -1,4 +1,5 @@
 using Config;
+using Config.Types;
 using UnityEngine;
 
 namespace Scenes.ChaoticCubes.Config
