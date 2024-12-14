@@ -11,9 +11,6 @@ namespace Scenes.Snowstorm.Config
         [JsonIgnore] public string DefaultBackground = "";
         [ReadOnly] public string Background;
 
-        [JsonIgnore] public Sprite DefaultBackgroundSprite;
-        [ReadOnly] public Sprite BackgroundSprite;
-
         public override void Load()
         {
             base.Load();
@@ -22,7 +19,6 @@ namespace Scenes.Snowstorm.Config
         public override void ResetToDefault(bool silent = false)
         {
             Background       = DefaultBackground;
-            BackgroundSprite = DefaultBackgroundSprite;
             
             base.ResetToDefault(silent);
         }
