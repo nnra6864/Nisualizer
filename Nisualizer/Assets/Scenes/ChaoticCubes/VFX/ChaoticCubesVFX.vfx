@@ -33,15 +33,15 @@ MonoBehaviour:
   stickyNoteInfos: []
   categories:
   - name: Turbulence
-    collapsed: 0
+    collapsed: 1
   - name: Mesh
     collapsed: 1
   uiBounds:
     serializedVersion: 2
     x: -166
-    y: -1433
-    width: 1492
-    height: 2648
+    y: -1374
+    width: 1467
+    height: 2589
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3803,7 +3803,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614931}
   m_ExposedName: TurbulenceRotationSpeed
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 6
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4080,7 +4080,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614955}
   m_ExposedName: TurbulenceFrequency
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 11
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4161,7 +4161,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614957}
   m_ExposedName: TurbulenceRoughness
   m_Exposed: 1
-  m_Order: 11
+  m_Order: 14
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4244,7 +4244,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614959}
   m_ExposedName: TurbulenceOctaves
   m_Exposed: 1
-  m_Order: 10
+  m_Order: 13
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4327,7 +4327,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614961}
   m_ExposedName: TurbulenceLacunarity
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 7
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -4692,7 +4692,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614971}
   m_ExposedName: MeshSmoothness
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 5
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -4775,7 +4775,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614973}
   m_ExposedName: MeshMetallic
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 8
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -4858,7 +4858,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614975}
   m_ExposedName: BaseColorMap
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 12
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -4939,7 +4939,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614977}
   m_ExposedName: Mesh
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 15
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -5119,7 +5119,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614982}
   m_ExposedName: ColorOverLife
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 16
   m_Category: Mesh
   m_Min:
     m_Type:
@@ -6123,7 +6123,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615041}
   m_ExposedName: TurbulenceIntensityRange
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 9
   m_Category: Turbulence
   m_Min:
     m_Type:
@@ -6447,7 +6447,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615050}
   m_ExposedName: TurbulenceDragRange
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 10
   m_Category: Turbulence
   m_Min:
     m_Type:
