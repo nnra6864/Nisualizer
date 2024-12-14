@@ -12,10 +12,8 @@ namespace Scenes.Snowstorm.Scripts
 
         [SerializeField] private InteractiveImageScript _background;
 
-        protected new void Awake()
+        private void Start()
         {
-            base.Awake();
-            
             // Load the background and listen for changes
             UpdateBackground();
             ConfigData.OnLoaded += UpdateBackground;
