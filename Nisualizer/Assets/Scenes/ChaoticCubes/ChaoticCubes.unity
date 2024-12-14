@@ -345,6 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config: {fileID: 439902190}
   _chaoticCubesVFX: {fileID: 451001115}
+  _camera: {fileID: 343560725}
+  _directionalLight: {fileID: 877832444}
 --- !u!114 &439902190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,10 +461,28 @@ VisualEffect:
       - m_Value: 1
         m_Name: Loudness
         m_Overridden: 1
+      - m_Value: 0.25
+        m_Name: TurbulenceLacunarity
+        m_Overridden: 1
+      - m_Value: 20
+        m_Name: TurbulenceRotationSpeed
+        m_Overridden: 1
     m_Vector2f:
       m_Array:
       - m_Value: {x: 1, y: 3}
         m_Name: SpeeedRange
+        m_Overridden: 1
+      - m_Value: {x: 1000, y: 10000}
+        m_Name: SpawnRateRange
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 2.5}
+        m_Name: LifetimeRange
+        m_Overridden: 1
+      - m_Value: {x: 1.5, y: 2}
+        m_Name: TurbulenceDragRange
+        m_Overridden: 1
+      - m_Value: {x: 5, y: 7}
+        m_Name: TurbulenceIntensityRange
         m_Overridden: 1
     m_Vector3f:
       m_Array: []
@@ -480,18 +500,18 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0, g: 0.25, b: 1, a: 1}
-          key1: {r: 0, g: 0.5, b: 0.5, a: 1}
-          key2: {r: 0.5, g: 0.5, b: 0.1, a: 0}
-          key3: {r: 1, g: 1, b: 0.1, a: 0}
+          key0: {r: 0, g: 0.4, b: 1, a: 1}
+          key1: {r: 1, g: 0, b: 1, a: 1}
+          key2: {r: 0, g: 0, b: 0, a: 0}
+          key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
-          ctime0: 13107
-          ctime1: 26214
-          ctime2: 39321
-          ctime3: 52428
+          ctime0: 16384
+          ctime1: 65535
+          ctime2: 0
+          ctime3: 0
           ctime4: 0
           ctime5: 0
           ctime6: 0
@@ -506,7 +526,7 @@ VisualEffect:
           atime7: 0
           m_Mode: 0
           m_ColorSpace: -1
-          m_NumColorKeys: 4
+          m_NumColorKeys: 2
           m_NumAlphaKeys: 2
         m_Name: ColorOverLife
         m_Overridden: 1
@@ -597,7 +617,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

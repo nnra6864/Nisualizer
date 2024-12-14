@@ -12,36 +12,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b43721babacfaa55ba5bc4e6176138f, type: 3}
   m_Name: ChaoticCubesConfigData
   m_EditorClassIdentifier: 
+  DefaultCameraDistance: 10
+  CameraDistance: 10
+  DefaultCameraClippingPlanes: {x: 1, y: 1000}
+  CameraClippingPlanes:
+    X: 1
+    Y: 1000
+  DefaultDirectionalLightIntensity: 1
+  DirectionalLightIntensity: 1
   VFX:
-    DefaultSpawnRateRange: {x: 100, y: 1000}
+    DefaultSpawnRateRange: {x: 1000, y: 10000}
     SpawnRateRange:
-      X: 100
-      Y: 1000
-    DefaultLifetimeRange: {x: 2, y: 4}
+      X: 5000
+      Y: 30000
+    DefaultSpawnRadius: 0.03
+    SpawnRadius: 0.5
+    DefaultLifetimeRange: {x: 1, y: 2.5}
     LifetimeRange:
-      X: 2
-      Y: 4
+      X: 1
+      Y: 2.5
     DefaultSpeedRange: {x: 1, y: 3}
     SpeedRange:
       X: 1
       Y: 3
-    DefaultRotationSpeed: 30
-    TurbulenceRotationSpeed: 0
-    DefaultTurbulenceIntensityRange: {x: 5, y: 10}
+    Turbulence:
+      DefaultRotationSpeed: 20
+      RotationSpeed: 20
+      DefaultIntensityRange: {x: 5, y: 7}
+      IntensityRange:
+        X: 5
+        Y: 7
+      DefaultDragRange: {x: 1.5, y: 2}
+      DragRange:
+        X: 1.5
+        Y: 2
+      DefaultFrequency: 0.5
+      Frequency: 0.5
+      DefaultOctaves: 4
+      Octaves: 4
+      DefaultRoughness: 0.5
+      Roughness: 0.5
+      DefaultLacunarity: 0.25
+      Lacunarity: 0.25
+    DefaultMeshSmoothness: 0.5
+    MeshSmoothness: 0.5
+    DefaultMeshMetallic: 1
+    MeshMetallic: 1
+    DefaultMeshSize: 0.1
+    MeshSize: 0.025
     DefaultColorOverLife:
       serializedVersion: 2
-      key0: {r: 0, g: 0.25, b: 1, a: 1}
-      key1: {r: 0, g: 0.5, b: 0.5, a: 1}
-      key2: {r: 0.5, g: 0.5, b: 0.1, a: 0}
-      key3: {r: 1, g: 1, b: 0.1, a: 0}
+      key0: {r: 0, g: 0.4, b: 1, a: 1}
+      key1: {r: 1, g: 0, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 13107
-      ctime1: 26214
-      ctime2: 39321
-      ctime3: 52428
+      ctime0: 16384
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
       ctime4: 0
       ctime5: 0
       ctime6: 0
@@ -56,26 +88,22 @@ MonoBehaviour:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: -1
-      m_NumColorKeys: 4
+      m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     ColorOverLife:
       Mode: 0
-      AlphaKeys:
-      - Alpha: 1
-        Time: 0
-      - Alpha: 1
-        Time: 1
+      AlphaKeys: []
       ColorKeys:
       - Color:
-          R: 1
-          G: 1
+          R: 0
+          G: 0.4
           B: 1
           A: 1
           I: 1
-        Time: 0
+        Time: 0.25
       - Color:
           R: 1
-          G: 1
+          G: 0
           B: 1
           A: 1
           I: 1

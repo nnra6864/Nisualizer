@@ -1,10 +1,32 @@
 {
-  "ColorOverLife": {
-    "ColorKeys": [
-      { "Color": { "R": 0.0, "G": 0.25, "B": 1.0 }, "Time": 0.2 },
-      { "Color": { "R": 0.0, "G": 0.5, "B": 0.5 }, "Time": 0.4 },
-      { "Color": { "R": 0.5, "G": 0.5, "B": 0.1 }, "Time": 0.6 },
-      { "Color": { "R": 1.0, "G": 1.0, "B": 0.1 }, "Time": 0.8 }
-    ]
+  "CameraDistance": 10.0,
+  "CameraClippingPlanes": { "X": 1.0, "Y": 1000.0 },
+  "DirectionalLightIntensity": 1.0,
+
+  "VFX": {
+    "SpawnRateRange": { "X": 1000, "Y": 10000 },
+    "SpawnRadius": 0.03,
+    "LifetimeRange": { "X": 1.0, "Y": 2.5 },
+    "SpeedRange": { "X": 1.0, "Y": 3.0 },
+
+    "Turbulence": {
+      "RotationSpeed": 20.0,
+      "IntensityRange": { "X": 5.0, "Y": 7.0 },
+      "DragRange": { "X": 1.5, "Y": 2.0 },
+      "Frequency": 0.5,
+      "Octaves": 4,
+      "Roughness": 0.5,
+      "Lacunarity": 0.25
+    },
+    
+    "MeshSmoothness": 0.5,
+    "MeshMetallic": 1.0,
+    "MeshSize": 0.1,
+    "ColorOverLife": {
+      "ColorKeys": [
+        { "Color": { "R": 0.0, "G": 0.4, "B": 1.0 }, "Time": 0.25 },
+        { "Color": { "R": 1.0, "G": 0.0, "B": 1.0 }, "Time": 1.0 }
+      ]
+    }
   }
 }

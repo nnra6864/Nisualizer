@@ -11,23 +11,32 @@ namespace Scenes.ChaoticCubes.Config
     {
         [Header("General")]
         
-        [JsonIgnore] public Vector2 DefaultSpawnRateRange = new(100, 1000);
+        [JsonIgnore] public Vector2 DefaultSpawnRateRange = new(1000, 10000);
         [ReadOnly] public ConfigVector2 SpawnRateRange;
 
         [JsonIgnore] public float DefaultSpawnRadius = 0.03f;
         [ReadOnly] public float SpawnRadius;
 
-        [JsonIgnore] public Vector2 DefaultLifetimeRange = new(2, 4);
+        [JsonIgnore] public Vector2 DefaultLifetimeRange = new(1, 2.5f);
         [ReadOnly] public ConfigVector2 LifetimeRange;
 
-        [JsonIgnore] public Vector2 DefaultSpeedRange = new(1, 3);
+        [JsonIgnore] public Vector2 DefaultSpeedRange = new(1, 2.5f);
         [ReadOnly] public ConfigVector2 SpeedRange;
         
         [Header("Turbulence")]
         
-        [ReadOnly] public ChaoticCubesVFXTurbulenceData Turbulence;
+        public ChaoticCubesVFXTurbulenceData Turbulence;
         
         [Header("Mesh")]
+
+        [JsonIgnore] public float DefaultMeshSmoothness = 0.5f;
+        [ReadOnly] public float MeshSmoothness;
+
+        [JsonIgnore] public float DefaultMeshMetallic = 1f;
+        [ReadOnly] public float MeshMetallic;
+        
+        [JsonIgnore] public float DefaultMeshSize = 0.1f;
+        [ReadOnly] public float MeshSize;
         
         [JsonIgnore] [GradientUsage(true)] public Gradient DefaultColorOverLife;
         public ConfigGradient ColorOverLife;
@@ -50,14 +59,17 @@ namespace Scenes.ChaoticCubes.Config
         {
             // General
             SpawnRateRange = null;
-            SpawnRadius    = 0;
+            SpawnRadius    = DefaultSpawnRadius;
             LifetimeRange  = null;
             SpeedRange     = null;
-            
+
             // Turbulence
             Turbulence.ResetToDefault();
-            
+
             // Mesh
+            MeshSmoothness = DefaultMeshSmoothness;
+            MeshMetallic   = DefaultMeshMetallic;
+            MeshSize       = DefaultMeshSize;
             ColorOverLife  = null;
         }
     }
