@@ -16,8 +16,6 @@ namespace Scenes.Snowstorm.Config
 
         public override void Load()
         {
-            BackgroundSprite = string.IsNullOrEmpty(Background) ? DefaultBackgroundSprite : Misc.SpriteFromFile(Background);
-            
             base.Load();
         }
         

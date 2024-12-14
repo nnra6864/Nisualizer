@@ -1,4 +1,5 @@
 using Core;
+using InteractiveComponents;
 using Scenes.Snowstorm.Config;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ namespace Scenes.Snowstorm.Scripts
     {
         public static SnowstormConfigData ConfigData => (SnowstormConfigData)Config.Data;
 
-        [SerializeField] private Image _background;
+        [SerializeField] private InteractiveImageScript _background;
 
         protected new void Awake()
         {
@@ -25,6 +26,6 @@ namespace Scenes.Snowstorm.Scripts
             ConfigData.OnLoaded -= UpdateBackground;
         }
         
-        private void UpdateBackground() => _background.sprite = ConfigData.BackgroundSprite;
+        private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
     }
 }
