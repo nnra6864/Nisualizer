@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Linq;
 using Config;
+using Core;
 using NnUtils.Scripts;
 using UnityEngine;
 
-namespace Core
+namespace Audio
 {
     public class AudioDataScript : MonoBehaviour
     {
@@ -32,7 +33,7 @@ namespace Core
         /// Called after initializing config in the <see cref="GameManagerScript"/><br/>
         /// Should also be called on <see cref="Config.ConfigData.OnLoaded"/>
         /// </summary>
-        public void InitializeMicrophone()
+        public void Initialize()
         {
             if (string.IsNullOrEmpty(InputName) || !Microphone.devices.Contains(InputName))
             {
@@ -44,7 +45,7 @@ namespace Core
 
         private void Start()
         {
-            ConfigData.OnLoaded += InitializeMicrophone;
+            ConfigData.OnLoaded += Initialize;
         }
 
         private void Update()
@@ -54,7 +55,7 @@ namespace Core
 
         private void OnDestroy()
         {
-            ConfigData.OnLoaded -= InitializeMicrophone;
+            ConfigData.OnLoaded -= Initialize;
         }
 
         //Returns the total loudness of microphone audio

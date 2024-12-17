@@ -143,7 +143,6 @@ namespace Config
                 NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size
             };
             
-            // BUG: Renamed event gets triggered after editing the file(with nvim at least)
             _configWatcher.Changed             += MarkDirty;
             _configWatcher.Renamed             += MarkDirty;
             _configWatcher.Deleted             += MarkDirty;

@@ -1,3 +1,4 @@
+using Audio;
 using Config;
 using NnUtils.Scripts;
 using UnityEngine;
@@ -57,7 +58,7 @@ namespace Core
         {
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
-            AudioData.InitializeMicrophone();
+            AudioData.Initialize();
             
             // Set FPS
             SetFPS();
