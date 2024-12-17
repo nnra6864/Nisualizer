@@ -13,4 +13,25 @@ MonoBehaviour:
   m_Name: SnowstormConfigData
   m_EditorClassIdentifier: 
   DefaultBackground: Snowstorm
-  Background: 
+  Background: Snowstorm
+  VFX:
+    DefaultSnowLifetime: 10
+    SnowLifetime: 10
+    DefaultSnowDensityRange: {x: 50, y: 150}
+    SnowDensityRange:
+      X: 50
+      Y: 150
+    DefaultSnowSizeRange: {x: 0.01, y: 0.25}
+    SnowSizeRange:
+      X: 0.01
+      Y: 0.25
+    DefaultSnowSpeedRange: {x: 1, y: 5}
+    SnowSpeedRange:
+      X: -3
+      Y: -8
+    DefaultWindSpeed: 1
+    WindSpeed: 1
+    DefaultWindStrengthRange: {x: 10, y: 50}
+    WindStrengthRange:
+      X: 20
+      Y: 40

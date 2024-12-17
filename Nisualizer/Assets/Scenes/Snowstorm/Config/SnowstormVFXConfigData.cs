@@ -20,12 +20,12 @@ namespace Scenes.Snowstorm.Config
         [JsonIgnore] public Vector2 DefaultSnowSizeRange = new(0.01f, 0.25f);
         [ReadOnly] public ConfigVector2 SnowSizeRange;
         
-        [JsonIgnore] public Vector2 DefaultSnowSpeedRange = new(-1, -3);
+        [JsonIgnore] public Vector2 DefaultSnowSpeedRange = new(1, 5);
         [ReadOnly] public ConfigVector2 SnowSpeedRange;
 
         [Header("Wind")]
         
-        [JsonIgnore] public float DefaultWindSpeed = -1;
+        [JsonIgnore] public float DefaultWindSpeed = 1;
         [ReadOnly] public float WindSpeed;
 
         [JsonIgnore] public Vector2 DefaultWindStrengthRange = new(10, 50);
