@@ -43,9 +43,9 @@ MonoBehaviour:
     collapsed: 1
   uiBounds:
     serializedVersion: 2
-    x: -817
+    x: -1219
     y: -1433
-    width: 2143
+    width: 2545
     height: 2317
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: SnowVFX
+  m_Name: SnowstormVFX
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -125,6 +125,38 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
+  - name: SnowLifetime
+    path: SnowLifetime
+    tooltip: Lifetime of the snow
+    space: -1
+    spaceable: 0
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 10
+    min: -Infinity
+    max: Infinity
+    enumValues: []
+    descendantCount: 0
+  - name: SnowDensityRange
+    path: SnowDensityRange
+    tooltip: Spawn rate range of snow particles
+    space: -1
+    spaceable: 0
+    sheetType: m_Vector2f
+    realType: Vector2
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"x":100.0,"y":500.0}'
+    min: -Infinity
+    max: Infinity
+    enumValues: []
+    descendantCount: 0
   - name: SnowSizeRange
     path: SnowSizeRange
     tooltip: Spawn rate range of snow particles
@@ -184,38 +216,6 @@ MonoBehaviour:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
       m_SerializableObject: '{"x":0.0,"y":-8.0,"z":0.0}'
-    min: -Infinity
-    max: Infinity
-    enumValues: []
-    descendantCount: 0
-  - name: SnowDensityRange
-    path: SnowDensityRange
-    tooltip: Spawn rate range of snow particles
-    space: -1
-    spaceable: 0
-    sheetType: m_Vector2f
-    realType: Vector2
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":100.0,"y":500.0}'
-    min: -Infinity
-    max: Infinity
-    enumValues: []
-    descendantCount: 0
-  - name: SnowLifetime
-    path: SnowLifetime
-    tooltip: Lifetime of the snow
-    space: -1
-    spaceable: 0
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 10
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -403,7 +403,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SnowVFX
+  m_Name: SnowstormVFX
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -2580,6 +2580,12 @@ MonoBehaviour:
     - {fileID: 8926484042661615213}
     expanded: 1
     supecollapsed: 0
+  - m_Id: 1
+    linkedSlots: []
+    position: {x: -1218.6921, y: -1220.8049}
+    expandedSlots: []
+    expanded: 1
+    supecollapsed: 0
 --- !u!114 &8926484042661615213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2707,7 +2713,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615217}
   m_ExposedName: WindStrengthRange
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 1
   m_Category: Wind
   m_Min:
     m_Type:
@@ -3030,7 +3036,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615286}
   m_ExposedName: WindSpeed
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 4
   m_Category: Wind
   m_Min:
     m_Type:
@@ -3111,7 +3117,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615325}
   m_ExposedName: SnowSpeedRange
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 6
   m_Category: Snow
   m_Min:
     m_Type:
@@ -3136,6 +3142,12 @@ MonoBehaviour:
     expandedSlots:
     - {fileID: 8926484042661615325}
     expanded: 0
+    supecollapsed: 0
+  - m_Id: 1
+    linkedSlots: []
+    position: {x: -1218.6921, y: -1260.8049}
+    expandedSlots: []
+    expanded: 1
     supecollapsed: 0
 --- !u!114 &8926484042661615325
 MonoBehaviour:
@@ -3775,7 +3787,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615379}
   m_ExposedName: Bounds
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 7
   m_Category: Bounds
   m_Min:
     m_Type:
@@ -4617,7 +4629,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615413}
   m_ExposedName: SnowLifetime
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 2
   m_Category: Snow
   m_Min:
     m_Type:
@@ -4637,6 +4649,12 @@ MonoBehaviour:
     - outputSlot: {fileID: 8926484042661615413}
       inputSlot: {fileID: 8926484042661614853}
     position: {x: 675, y: -868}
+    expandedSlots: []
+    expanded: 1
+    supecollapsed: 0
+  - m_Id: 1
+    linkedSlots: []
+    position: {x: -1218.6921, y: -1180.8049}
     expandedSlots: []
     expanded: 1
     supecollapsed: 0
@@ -5103,7 +5121,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615456}
   m_ExposedName: SnowSizeRange
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 5
   m_Category: Snow
   m_Min:
     m_Type:
@@ -5128,6 +5146,12 @@ MonoBehaviour:
     expandedSlots:
     - {fileID: 8926484042661615456}
     expanded: 0
+    supecollapsed: 0
+  - m_Id: 1
+    linkedSlots: []
+    position: {x: -1218.6921, y: -1300.8049}
+    expandedSlots: []
+    expanded: 1
     supecollapsed: 0
 --- !u!114 &8926484042661615456
 MonoBehaviour:
@@ -6465,7 +6489,7 @@ MonoBehaviour:
   m_Description: Current position of the wind noise
   m_AttributeName: WindNoisePos
   m_Type: 2
-  m_IsExpanded: 1
+  m_IsExpanded: 0
 --- !u!114 &8926484042661615578
 MonoBehaviour:
   m_ObjectHideFlags: 0
