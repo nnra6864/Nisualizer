@@ -16,7 +16,7 @@ namespace InteractiveComponents
         [SerializeField] private string _loudnessPropertyName = "Loudness";
     
         [Tooltip("Set to 1, 1 for no effect")]
-        [SerializeField] private Vector2 _playRateRange = new(1, 1);
+        [SerializeField] private Vector2 _playRateRange = new(1, 2);
 
         [Tooltip("Whether the play rate of the VFX will be affected")]
         [SerializeField] private bool _affectPlayRate = true;

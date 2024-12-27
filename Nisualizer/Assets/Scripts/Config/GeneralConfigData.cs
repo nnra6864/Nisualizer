@@ -36,6 +36,10 @@ namespace Config
         // Name of the scene being used
         [JsonIgnore] public string DefaultScene = "Snowstorm";
         [ReadOnly] public string Scene;
+        
+        // Shell to be used
+        [JsonIgnore] public string DefaultShell = "/bin/bash";
+        [ReadOnly] public string Shell;
 
         /// Resets all the fields to their default values
         public override void ResetToDefault(bool silent = false)
@@ -47,6 +51,7 @@ namespace Config
             InputName   = DefaultInputName;
             Font        = DefaultFont;
             Scene       = DefaultScene;
+            Shell       = DefaultShell;
 
             base.ResetToDefault(silent);
         }

@@ -13,7 +13,7 @@ namespace InteractiveComponents
         [SerializeField] private VideoPlayer _videoPlayer;
         
         [Tooltip("Set to 1, 1 for no effect")]
-        [SerializeField] private Vector2 _playbackSpeedRange = new(1, 1);
+        [SerializeField] private Vector2 _playbackSpeedRange = new(1, 2);
         
         private void Reset()
         {
