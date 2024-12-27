@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Config;
 using Core;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace InteractiveComponents.Text
 {
@@ -17,8 +18,7 @@ namespace InteractiveComponents.Text
         
         // Used to find custom properties within config text, e.g. {sh()}
         private const string TextRegexString = @"(?<!\\)\{(\w+)\((.*?)\)(?:,\s*(\d*\.?\d+))?\}";
-        private static Regex _textRegex;
-        private static readonly Regex TextRegex = _textRegex ??= new(TextRegexString);
+        private static readonly Regex TextRegex = new(TextRegexString);
 
         /// Returns a list containing all the dynamic text instances
         public static List<DynamicText> GetDynamicText(string text) =>
@@ -47,7 +47,7 @@ namespace InteractiveComponents.Text
         /// Replaces all instances of dynamic text with proper values
         public static string ReplaceWithDynamicText(string text, Queue<DynamicText> dynamicText) =>
             TextRegex.Replace(text, _ => dynamicText.Dequeue().Text);
-        
+
         /// Executes a shell command
         private static string ExecuteShellCommand(string cmd)
         {

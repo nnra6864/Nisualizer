@@ -77,7 +77,9 @@ namespace InteractiveComponents.Text
                 // If interval is null, assign the value once and return
                 if (_dynamicText[i].Interval == null)
                 {
+                    // TODO: Maybe make async like in routine
                     _dynamicText[i].Text = _dynamicText[i].Func();
+                    SetText(InteractiveTextProcessing.ReplaceWithDynamicText(_text, new(_dynamicText)));
                     continue;
                 }
 

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,12 @@ namespace InteractiveComponents.Text
     public class InteractiveTMPText : InteractiveTextScript
     {
         [SerializeField] private TMP_Text _tmpText;
+        [SerializeField] private string _textE;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) UpdateData(_textE);
+        }
 
         private void Reset()
         {
@@ -23,7 +30,7 @@ namespace InteractiveComponents.Text
 
         protected override void SetText(string text)
         {
-            _tmpText.text = _text;
+            _tmpText.text = text;
         }
     }
 }
