@@ -142,7 +142,8 @@ namespace Config
                 Filter = Path.GetFileName(_configPath),
                 NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size
             };
-            
+
+            _configWatcher.Created             += MarkDirty;
             _configWatcher.Changed             += MarkDirty;
             _configWatcher.Renamed             += MarkDirty;
             _configWatcher.Deleted             += MarkDirty;
