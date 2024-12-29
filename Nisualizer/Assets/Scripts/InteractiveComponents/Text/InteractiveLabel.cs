@@ -15,7 +15,7 @@ namespace InteractiveComponents.Text
             _label       = _rootElement.Q<Label>();
         }
         
-        //protected override void UpdateDefaultFont() => _defaultFont = _label.style.unityFontDefinition.value.fontAsset;
+        //protected override void UpdateDefaultFont() => _defaultFont = _label.style.unityFontDefinition.value.fontAsset = //The font asset;
 
         //protected override void UpdateFont()
         //{
