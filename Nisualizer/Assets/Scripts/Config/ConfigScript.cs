@@ -31,6 +31,12 @@ namespace Config
             LoadConfig();
         }
 
+        public void Update()
+        {
+            // Check whether the config changed, and if yes, handle it
+            ConfigChangeCheck();
+        }
+        
         #region ConfigFile
 
         // Has to be public so that it can be set via SceneCreator script
@@ -67,7 +73,7 @@ namespace Config
         private bool GenerateDefaultConfigFile()
         {
             var debugPrefix = $"[{ConfigName}] GenerateDefaultConfig: ";
-            
+
             //Return if config already exists
             if (File.Exists(_configPath))
             {
@@ -118,26 +124,42 @@ namespace Config
         #endregion
         
         #region LiveConfigReload
-
+        
+        /// Used to monitor files
         private FileSystemMonitor _fsm;
 
-        private void InitializeFSM()
+        private bool _hasChanged;
+
+        private void InitializeFSM() => _fsm = new(path: _configPath, () => _hasChanged = true);
+
+        /// Checks whether the config has changed and restarts the <see cref="HandleConfigChangedRoutine"/> <br/>
+        /// Should be used in <see cref="Update"/>
+        private void ConfigChangeCheck()
         {
-            _fsm = new(path: _configPath, HandleConfigChanged, reloadDelay: GameManagerScript.ConfigData.ReloadDelay);
+            if (!_hasChanged) return;
+            _hasChanged = false;
+            this.RestartRoutine(ref _handleConfigChangedRoutine, HandleConfigChangedRoutine());
         }
+
+        /// Used to store the <see cref="HandleConfigChangedRoutine"/>
+        private Coroutine _handleConfigChangedRoutine;
         
-        private void HandleConfigChanged()
+        /// Runs following functions: <br/>
+        /// <see cref="GenerateDefaultConfigFile"/>
+        /// <see cref="LoadConfigFile"/>
+        /// <see cref="LoadConfig"/>
+        private IEnumerator HandleConfigChangedRoutine()
         {
+            yield return new WaitForSecondsRealtime(GameManagerScript.ConfigData.ReloadDelay);
             GenerateDefaultConfigFile();
             LoadConfigFile();
             LoadConfig();
         }
-
+        
         #endregion
-
+        
         private void OnDestroy()
         {
-            // Dispose of FSM
             _fsm?.Dispose();
         }
     }
