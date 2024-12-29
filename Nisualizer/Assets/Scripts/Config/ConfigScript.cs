@@ -10,33 +10,24 @@ namespace Config
 {
     public class ConfigScript : MonoBehaviour
     {
-        private bool _configChanged;
-        
-        public void Update()
-        {
-            if (!_configChanged) return;
-            _configChanged = false;
-            HandleConfigChanged();
-        }
-
         public void Init()
         {
-            //Set config path
+            // Set config path
             _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $".config/Nisualizer/{ConfigName}.json");
                 
-            //Getting text directly because storing it as a text asset and not a string causes some code to not execute later :/
+            // Getting text directly because storing it as a text asset and not a string causes some code to not execute later :/
             _defaultConfigText = DefaultConfig.text;
             
-            //Generate the default config if it doesn't exist
+            // Generate the default config if it doesn't exist
             GenerateDefaultConfigFile();
             
-            //Load the config file
+            // Load the config file
             LoadConfigFile();
             
-            //Watch for changes in the config file
-            WatchForConfigChanges();
+            // Watch for config file changes
+            InitializeFSM();
             
-            //Load config values
+            // Load config values
             LoadConfig();
         }
 
@@ -128,51 +119,15 @@ namespace Config
         
         #region LiveConfigReload
 
-        /// Used to detect file changes
-        private FileSystemWatcher _configWatcher;
-        
-        /// Sets up the FileSystemWatcher to monitor changes to the config file
-        private void WatchForConfigChanges()
+        private FileSystemMonitor _fsm;
+
+        private void InitializeFSM()
         {
-            var debugPrefix = $"[{ConfigName}] WatchForConfigChanges: ";
-            
-            _configWatcher = new()
-            {
-                Path = Path.GetDirectoryName(_configPath),
-                Filter = Path.GetFileName(_configPath),
-                NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size
-            };
-
-            _configWatcher.Created             += MarkDirty;
-            _configWatcher.Changed             += MarkDirty;
-            _configWatcher.Renamed             += MarkDirty;
-            _configWatcher.Deleted             += MarkDirty;
-            _configWatcher.EnableRaisingEvents =  true;
-            
-            Debug.Log(debugPrefix + $"Config watcher for {_configPath} set up");
+            _fsm = new(path: _configPath, HandleConfigChanged, reloadDelay: GameManagerScript.ConfigData.ReloadDelay);
         }
-
-        private void MarkDirty(object sender, FileSystemEventArgs args) => _configChanged = true;
         
-        /// Handles config file being changed
         private void HandleConfigChanged()
         {
-            // Store the reload delay from the general config
-            var reloadDelay = ((GeneralConfigData)GameManagerScript.ConfigScript.Data).ReloadDelay;
-            
-            // Notify user about the change and delay
-            Debug.Log($"[{ConfigName}] Config changed, waiting {reloadDelay} before reloading");
-            
-            // Stop previous attempts to reload the config and start a new one
-            this.RestartRoutine(ref _configChangedRoutine, ConfigChangedRoutine(reloadDelay));
-        }
-
-        private Coroutine _configChangedRoutine;
-        
-        /// Waits for <see cref="GeneralConfigData.ReloadDelay"/> seconds and loads the new config
-        private IEnumerator ConfigChangedRoutine(float delay)
-        {
-            yield return new WaitForSeconds(delay);
             GenerateDefaultConfigFile();
             LoadConfigFile();
             LoadConfig();
@@ -182,11 +137,8 @@ namespace Config
 
         private void OnDestroy()
         {
-            if (_configWatcher == null) return;
-            _configWatcher.Changed -= MarkDirty;
-            _configWatcher.Renamed -= MarkDirty;
-            _configWatcher.Deleted -= MarkDirty;
-            _configWatcher.EnableRaisingEvents = false;
+            // Dispose of FSM
+            _fsm?.Dispose();
         }
     }
 }

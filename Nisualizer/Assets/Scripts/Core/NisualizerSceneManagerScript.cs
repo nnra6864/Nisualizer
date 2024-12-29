@@ -6,7 +6,7 @@ namespace Core
     public class NisualizerSceneManagerScript : MonoBehaviour
     {
         private static GeneralConfigData _configData;
-        private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManagerScript.ConfigScript.Data;
+        private static GeneralConfigData ConfigData => _configData ??= GameManagerScript.ConfigData;
         
         private string _currentScene;
 

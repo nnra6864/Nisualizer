@@ -32,7 +32,9 @@ namespace Core
         /// Contains all the Config data and logic
         [ReadOnly] [SerializeField] private ConfigScript _config;
         public static ConfigScript ConfigScript => Instance._config;
-        private static GeneralConfigData ConfigData => (GeneralConfigData)Instance._config.Data;
+
+        [ReadOnly] [SerializeField] private GeneralConfigData _configData;
+        public static GeneralConfigData ConfigData => Instance._configData ??= (GeneralConfigData)Instance._config.Data;
         
         [ReadOnly] [SerializeField] private AudioDataScript _audioData;
         public static AudioDataScript AudioData => Instance._audioData;
@@ -42,8 +44,9 @@ namespace Core
         
         private void Reset()
         {
-            _config = GetComponent<ConfigScript>();
-            _audioData = GetComponent<AudioDataScript>();
+            _config                 = GetComponent<ConfigScript>();
+            _configData             = (GeneralConfigData)_config.Data;
+            _audioData              = GetComponent<AudioDataScript>();
             _nisualizerSceneManager = GetComponent<NisualizerSceneManagerScript>();
         }
 
