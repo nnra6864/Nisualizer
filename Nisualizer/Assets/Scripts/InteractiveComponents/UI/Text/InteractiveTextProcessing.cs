@@ -71,7 +71,7 @@ namespace InteractiveComponents.UI.Text
                 process.Close();
                 
                 // Return the result
-                return output;
+                return output.Trim();
             }
             catch (Exception ex)
             {

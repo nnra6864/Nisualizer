@@ -1,32 +1,39 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace InteractiveComponents.UI.Text
 {
+    [RequireComponent(typeof(UIDocument))]
     public class InteractiveLabel : InteractiveTextScript
     {
-        [SerializeField] private VisualElement _rootElement;
-        [SerializeField] private List<Label> _labels;
+        private VisualElement _rootElement;
+        private List<Label> _labels;
 
-        private void Reset()
+        private void Awake()
         {
             // Get the root VisualElement and Label components from the UI Document
             _rootElement = GetComponent<UIDocument>().rootVisualElement;
             _labels      = _rootElement.Query<Label>().ToList();
+            
+            // Update all the label elements text
+            UpdateData(_labels.Select(x => x.text).ToList());
         }
         
-        //protected override void UpdateDefaultFont() => _defaultFont = _label.style.unityFontDefinition.value.fontAsset = //The font asset;
+        protected override void UpdateDefaultFont()
+        {
+            
+        }
 
         protected override void UpdateFont()
         {
-            base.UpdateFont();
-            //_tmpText.font = _font;
+            
         }
 
-        protected override void SetText(string text)
+        protected override void SetText(string text, int index)
         {
-            //_label.text = _text;
+            _labels[index].text = text;
         }
     }
 }
