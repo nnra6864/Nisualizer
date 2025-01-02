@@ -7,7 +7,7 @@ using NnUtils.Scripts;
 using TMPro;
 using UnityEngine;
 
-namespace InteractiveComponents.Text
+namespace InteractiveComponents.UI.Text
 {
     public class InteractiveTextScript : MonoBehaviour
     {

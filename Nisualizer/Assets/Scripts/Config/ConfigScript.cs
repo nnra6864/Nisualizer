@@ -34,7 +34,7 @@ namespace Config
         public void Update()
         {
             // Check whether the config changed, and if yes, handle it
-            ConfigChangeCheck();
+            HandleConfigChanged();
         }
         
         #region ConfigFile
@@ -134,7 +134,7 @@ namespace Config
 
         /// Checks whether the config has changed and restarts the <see cref="HandleConfigChangedRoutine"/> <br/>
         /// Should be used in <see cref="Update"/>
-        private void ConfigChangeCheck()
+        private void HandleConfigChanged()
         {
             if (!_hasChanged) return;
             _hasChanged = false;

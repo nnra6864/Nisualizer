@@ -1,8 +1,7 @@
-using System;
 using TMPro;
 using UnityEngine;
 
-namespace InteractiveComponents.Text
+namespace InteractiveComponents.UI.Text
 {
     [RequireComponent(typeof(TMP_Text))]
     public class InteractiveTMPText : InteractiveTextScript

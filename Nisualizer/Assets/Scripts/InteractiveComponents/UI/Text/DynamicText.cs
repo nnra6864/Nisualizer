@@ -1,6 +1,6 @@
 using System;
 
-namespace InteractiveComponents.Text
+namespace InteractiveComponents.UI.Text
 {
     public class DynamicText
     {

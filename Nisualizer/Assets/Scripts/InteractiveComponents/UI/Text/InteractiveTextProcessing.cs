@@ -6,9 +6,8 @@ using System.Text.RegularExpressions;
 using Config;
 using Core;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
-namespace InteractiveComponents.Text
+namespace InteractiveComponents.UI.Text
 {
     public class InteractiveTextProcessing : MonoBehaviour
     {

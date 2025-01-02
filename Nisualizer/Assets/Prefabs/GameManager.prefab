@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 6727376568078388782}
+  _configData: {fileID: 11400000, guid: ac17013b988d6e81baf1f5fc58a00e8a, type: 2}
   _audioData: {fileID: 6463938505050852285}
   _nisualizerSceneManager: {fileID: 6851525485944725458}
 --- !u!114 &6727376568078388782
