@@ -15,7 +15,17 @@ namespace InteractiveComponents.UI.Text
         {
             // Get the root VisualElement and Label components from the UI Document
             _rootElement = GetComponent<UIDocument>().rootVisualElement;
+
+            // Return if no root was found
+            if (_rootElement == null) return;
+            
+            // Get all the labels
             _labels      = _rootElement.Query<Label>().ToList();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
             
             // Update all the label elements text
             UpdateData(_labels.Select(x => x.text).ToList());

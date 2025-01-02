@@ -365,7 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textElements:
   - {fileID: 359044982}
-  _textE: 'Test: {dt(HH:mm:ss)}, Test2: {sh(date)}'
+  _textE: 'Test: {dt(HH:mm:ss), 0.5}, Test2: {sh(date), 0.5}'
 --- !u!114 &359044982
 MonoBehaviour:
   m_ObjectHideFlags: 0

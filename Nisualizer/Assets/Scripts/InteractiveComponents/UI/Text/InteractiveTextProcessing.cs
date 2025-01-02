@@ -17,7 +17,7 @@ namespace InteractiveComponents.UI.Text
         
         // Used to find custom properties within config text, e.g. {sh()}
         private const string TextRegexString = @"(?<!\\)\{(\w+)\((.*?)\)(?:,\s*(\d*\.?\d+))?\}";
-        private static readonly Regex TextRegex = new(TextRegexString);
+        private static readonly Regex TextRegex = new(TextRegexString, RegexOptions.Compiled);
 
         /// Returns a list containing all the dynamic text instances
         public static List<DynamicText> GetDynamicText(string text) =>
