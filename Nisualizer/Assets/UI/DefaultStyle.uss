@@ -1,4 +1,4 @@
 Label{
     color: white;
-    font-size: 32;
+    font-size: 24;
 }

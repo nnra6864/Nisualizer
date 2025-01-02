@@ -9,16 +9,16 @@ namespace InteractiveComponents.UI.Text
     public class InteractiveTMPText : InteractiveTextScript
     {
         [SerializeField] private List<TMP_Text> _textElements;
-        [SerializeField] private string _textE;
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) UpdateData(new(){_textE});
-        }
 
         private void Reset()
         {
             _textElements = GetComponents<TMP_Text>().ToList();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            UpdateData(_textElements.Select(x => x.text).ToList());
         }
 
         protected override void UpdateDefaultFont()

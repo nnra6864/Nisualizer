@@ -1,3 +1,4 @@
+using System;
 using Audio;
 using Config;
 using NnUtils.Scripts;
@@ -29,6 +30,9 @@ namespace Core
             }
         }
 
+        /// To be used in multithreaded functions
+        public static float DeltaTime { get; private set; }
+        
         /// Contains all the Config data and logic
         [ReadOnly] [SerializeField] private ConfigScript _config;
         public static ConfigScript ConfigScript => Instance._config;
@@ -68,6 +72,11 @@ namespace Core
             ConfigData.OnLoaded += OnConfigLoaded;
         }
 
+        private void Update()
+        {
+            DeltaTime = Time.deltaTime;
+        }
+
         private void OnDestroy()
         {
             // Trust me, this if check is highly needed because you'll end up with major fuckery where the singleton just disappears on the next play, just trust me
@@ -82,9 +91,9 @@ namespace Core
             SetFPS();
             SetWindowMode();
         }
-
+        
         private void SetFPS() => Application.targetFrameRate = ConfigData.FPS;
-
+        
         private void SetWindowMode() => Screen.fullScreenMode = ConfigData.WindowMode;
     }
 }

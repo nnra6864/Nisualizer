@@ -15,8 +15,8 @@ namespace InteractiveComponents.UI.Text
         private static GeneralConfigData _configData;
         private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManagerScript.ConfigScript.Data;
         
-        // Used to find custom properties within config text, e.g. {sh()}
-        private const string TextRegexString = @"(?<!\\)\{(\w+)\((.*?)\)(?:,\s*(\d*\.?\d+))?\}";
+        // Used to find custom properties within config text, e.g. {sh()}, thanks gpt/claude, I have 0 clue what's going on here o_0
+        private const string TextRegexString = @"\{(\w+)\((.*?)\\\)(?:,\s*(\d*\.?\d+))?\}";
         private static readonly Regex TextRegex = new(TextRegexString, RegexOptions.Compiled);
 
         /// Returns a list containing all the dynamic text instances
@@ -33,6 +33,7 @@ namespace InteractiveComponents.UI.Text
             {
                 "sh" => () => ExecuteShellCommand(param),
                 "dt" => () => DateTime.Now.ToString(param),
+                "fps" => () => (1 / GameManagerScript.DeltaTime).ToString(param),
                 _ => () => $"Invalid command: {cmd}"
             };
 
@@ -64,14 +65,17 @@ namespace InteractiveComponents.UI.Text
                     CreateNoWindow         = true
                 };
 
-                // Start the process, get output and close the process
+                // Start the process and get output and error
                 process.Start();
                 var output = process.StandardOutput.ReadToEnd();
+                var error = process.StandardError.ReadToEnd();
+                
+                // Wait for the process to finish and close it
                 process.WaitForExit();
                 process.Close();
                 
                 // Return the result
-                return output.Trim();
+                return (string.IsNullOrEmpty(output) ? error : output).Trim();
             }
             catch (Exception ex)
             {

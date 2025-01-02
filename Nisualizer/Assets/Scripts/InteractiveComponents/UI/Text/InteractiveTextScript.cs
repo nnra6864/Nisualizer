@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Config;
 using Core;
@@ -92,7 +93,7 @@ namespace InteractiveComponents.UI.Text
         private IEnumerator UpdateDynamicTextRoutine(int i, int o)
         {
             var dt = _dynamicText[i][o];
-    
+        
             while (true)
             {
                 // Store the start time
