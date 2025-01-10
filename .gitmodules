@@ -4,3 +4,6 @@
 [submodule "Nisualizer/Assets/UnityMainThreadDispatcher"]
 	path = Nisualizer/Assets/UnityMainThreadDispatcher
 	url = https://github.com/nnra6864/UnityMainThreadDispatcher
+[submodule "Nisualizer/Assets/UserDefinedUI"]
+	path = Nisualizer/Assets/UserDefinedUI
+	url = https://github.com/nnra6864/UserDefinedUI

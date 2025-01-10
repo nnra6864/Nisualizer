@@ -2,5 +2,6 @@
     <Style src="project://database/Assets/UI/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=c00cf2a8deb7a3f8faf733a7df0e35f8&amp;type=3#DefaultStyle" />
     <ui:Label text="Packages: {sh(paru -Q | wc -l\)}" />
     <ui:Label text="Time: {dt(HH:mm:ss\), 1}" />
+    <ui:Label text="Temperature: {sh(curl -s 'wttr.in/?format=%t' | sed 's/^+//'\), 60}" />
     <ui:Label text="FPS: {fps(f0\), 0.1}" />
 </ui:UXML>
