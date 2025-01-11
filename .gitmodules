@@ -7,3 +7,6 @@
 [submodule "Nisualizer/Assets/UserDefinedUI"]
 	path = Nisualizer/Assets/UserDefinedUI
 	url = https://github.com/nnra6864/UserDefinedUI
+[submodule "Nisualizer/Assets/UnityJSONUtils"]
+	path = Nisualizer/Assets/UnityJSONUtils
+	url = https://github.com/nnra6864/UnityJSONUtils
