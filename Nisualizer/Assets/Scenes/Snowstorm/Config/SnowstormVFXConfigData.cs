@@ -1,8 +1,8 @@
 using System;
-using Config.Types;
 using Newtonsoft.Json;
 using NnUtils.Scripts;
 using UnityEngine;
+using UnityJSONUtils.Scripts.Types;
 
 namespace Scenes.Snowstorm.Config
 {

@@ -1,8 +1,9 @@
 using Config;
-using Config.Types;
 using Newtonsoft.Json;
 using NnUtils.Scripts;
 using UnityEngine;
+using UnityJSONUtils.Scripts.Types;
+using UnityJSONUtils.Scripts.Types.Components;
 
 namespace Scenes.ChaoticCubes.Config
 {
@@ -21,12 +22,16 @@ namespace Scenes.ChaoticCubes.Config
         [JsonIgnore] public float DefaultDirectionalLightIntensity = 1;
         [ReadOnly] public float DirectionalLightIntensity;
         
-        public ChaoticCubesVFXData VFX;
+        [JsonIgnore] public ConfigGameObject DefaultGameObject;
+        [ReadOnly] public ConfigGameObject GameObject;
         
+        public ChaoticCubesVFXData VFX;
+
         public override void Load()
         {
             CameraClippingPlanes ??= DefaultCameraClippingPlanes;
-            
+            GameObject ??= DefaultGameObject;
+
             VFX.Load();
 
             base.Load();
@@ -40,6 +45,7 @@ namespace Scenes.ChaoticCubes.Config
             CameraDistance            = DefaultCameraDistance;
             CameraClippingPlanes      = null;
             DirectionalLightIntensity = DefaultDirectionalLightIntensity;
+            GameObject                = null;
 
             base.ResetToDefault(silent);
         }

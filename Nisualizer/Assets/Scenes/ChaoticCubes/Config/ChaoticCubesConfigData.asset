@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b43721babacfaa55ba5bc4e6176138f, type: 3}
   m_Name: ChaoticCubesConfigData
   m_EditorClassIdentifier: 
+  DefaultBackground: 
+  Background: 
   DefaultCameraDistance: 10
   CameraDistance: 10
   DefaultCameraClippingPlanes: {x: 1, y: 1000}
@@ -20,6 +22,12 @@ MonoBehaviour:
     Y: 1000
   DefaultDirectionalLightIntensity: 1
   DirectionalLightIntensity: 1
+  DefaultGameObject:
+    Name: Test
+    Children: []
+  GameObject:
+    Name: 
+    Children: []
   VFX:
     DefaultSpawnRateRange: {x: 1000, y: 10000}
     SpawnRateRange:
@@ -30,14 +38,14 @@ MonoBehaviour:
     DefaultLifetimeRange: {x: 1, y: 2.5}
     LifetimeRange:
       X: 1
-      Y: 2.5
+      Y: 3
     DefaultSpeedRange: {x: 1, y: 3}
     SpeedRange:
       X: 1
       Y: 3
     Turbulence:
       DefaultRotationSpeed: 20
-      RotationSpeed: 20
+      RotationSpeed: 30
       DefaultIntensityRange: {x: 5, y: 7}
       IntensityRange:
         X: 5

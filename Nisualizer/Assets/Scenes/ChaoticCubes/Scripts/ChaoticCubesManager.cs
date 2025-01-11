@@ -10,6 +10,8 @@ namespace Scenes.ChaoticCubes.Scripts
     {
         public static ChaoticCubesConfigData ConfigData => (ChaoticCubesConfigData)Config.Data;
 
+        private GameObject _ui;
+
         [SerializeField] private InteractiveImageScript _background;
         [SerializeField] private Camera _camera;
         [SerializeField] private Light _directionalLight;
@@ -32,6 +34,10 @@ namespace Scenes.ChaoticCubes.Scripts
             UpdateCamera();
             UpdateLight();
             UpdateChaoticCubesVFX();
+            
+            Destroy(_ui);
+            _ui = new();
+            ConfigData.GameObject.Initialize(_ui);
         }
 
         private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
