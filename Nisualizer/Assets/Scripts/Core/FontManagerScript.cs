@@ -1,7 +1,7 @@
 using System;
 using Config;
 using NnUtils.Scripts;
-using NnUtils.TextUtils.Scripts;
+using NnUtils.Modules.TextUtils.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

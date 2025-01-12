@@ -1,7 +1,7 @@
 using Config;
 using Newtonsoft.Json;
-using NnUtils.JSONUtils.Scripts.Types;
-using NnUtils.JSONUtils.Scripts.Types.Components;
+using NnUtils.Modules.JSONUtils.Scripts.Types;
+using NnUtils.Modules.JSONUtils.Scripts.Types.Components;
 using NnUtils.Scripts;
 using UnityEngine;
 

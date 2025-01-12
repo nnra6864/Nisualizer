@@ -1,6 +1,6 @@
 using System;
 using Newtonsoft.Json;
-using NnUtils.JSONUtils.Scripts.Types;
+using NnUtils.Modules.JSONUtils.Scripts.Types;
 using NnUtils.Scripts;
 using UnityEngine;
 
