@@ -7,3 +7,9 @@
 [submodule "Nisualizer/Assets/UnityJSONUtils"]
 	path = Nisualizer/Assets/UnityJSONUtils
 	url = https://github.com/nnra6864/UnityJSONUtils
+[submodule "TextUtils"]
+	path = TextUtils
+	url = https://github.com/nnra6864/TextUtils
+[submodule "Nisualizer/Assets/NnUtils"]
+	path = Nisualizer/Assets/NnUtils
+	url = https://github.com/nnra6864/NnUtils
