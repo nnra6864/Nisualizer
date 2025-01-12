@@ -477,7 +477,8 @@ namespace Scenes.{_sceneName}.Config
             GameObject go = new("Camera")
             {
                 // Adjust the camera position
-                transform = { position = new(0, 0, -10) }
+                transform = { position = new(0, 0, -10) },
+                tag = "MainCamera"
             };
 
             // Add the camera component
