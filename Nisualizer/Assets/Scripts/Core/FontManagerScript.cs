@@ -1,6 +1,5 @@
 using System;
 using Config;
-using NnUtils.Scripts;
 using NnUtils.Modules.TextUtils.Scripts;
 using TMPro;
 using UnityEngine;
@@ -31,13 +30,13 @@ namespace Core
         {
             UpdateFont();
             ConfigData.OnLoaded                                  += UpdateFont;
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += UpdateFontOnSceneLoad;
+            SceneManager.sceneLoaded += UpdateFontOnSceneLoad;
         }
 
         private void OnDestroy()
         {
             ConfigData.OnLoaded -= UpdateFont;
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= UpdateFontOnSceneLoad;
+            SceneManager.sceneLoaded -= UpdateFontOnSceneLoad;
         }
 
         public void UpdateFont()
