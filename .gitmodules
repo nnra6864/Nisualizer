@@ -1,6 +1,3 @@
-[submodule "Nisualizer/Assets/NnUtils"]
-	path = Nisualizer/Assets/NnUtils
-	url = https://github.com/nnra6864/NnUtils.git
 [submodule "Nisualizer/Assets/UnityMainThreadDispatcher"]
 	path = Nisualizer/Assets/UnityMainThreadDispatcher
 	url = https://github.com/nnra6864/UnityMainThreadDispatcher
