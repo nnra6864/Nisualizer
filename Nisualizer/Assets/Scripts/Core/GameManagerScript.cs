@@ -1,6 +1,7 @@
 using System;
 using Audio;
 using Config;
+using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
 using NnUtils.Scripts;
 using UnityEngine;
 
@@ -65,7 +66,12 @@ namespace Core
         {
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
+            
+            // Initialize AudioData
             AudioData.Initialize();
+            
+            // Set DefaultFont for ConfigText
+            ConfigText.DefaultFont = ConfigData.Font;
             
             // Set FPS
             SetFPS();
@@ -83,11 +89,11 @@ namespace Core
             if (ConfigScript?.Data == null) return;
             
             ConfigData.OnLoaded -= OnConfigLoaded;
-            
         }
 
         private void OnConfigLoaded()
         {
+            ConfigText.DefaultFont = ConfigData.Font;
             SetFPS();
             SetWindowMode();
         }
