@@ -1,6 +1,7 @@
 using System;
 using Config;
 using NnUtils.Scripts;
+using NnUtils.TextUtils.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -42,7 +43,7 @@ namespace Core
         public void UpdateFont()
         {
             var font = ConfigData.Font;
-            FontAsset = font == "Default" ? _defaultFont : SystemTMP.GenerateFontFromName(ConfigData.Font);
+            FontAsset = font == "Default" ? _defaultFont : SystemFont.GenerateFontFromName(ConfigData.Font);
             
             foreach (var tmpText in FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None))
                 tmpText.font = FontAsset;
