@@ -11,11 +11,14 @@ namespace Scenes.Snowstorm.Scripts
     {
         public static SnowstormConfigData ConfigData => (SnowstormConfigData)Config.Data;
 
+        private GameObject _objects;
+
         [SerializeField] private InteractiveImageScript _background;
         [SerializeField] private VisualEffect _snowstormVFX;
 
         private void Start()
         {
+            _objects = new("Objects");
             OnConfigLoaded();
             ConfigData.OnLoaded += OnConfigLoaded;
         }
@@ -29,6 +32,7 @@ namespace Scenes.Snowstorm.Scripts
         {
             UpdateBackground();
             UpdateSnowstormVFX();
+            AddObjects();
         }
         
         private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
@@ -47,6 +51,20 @@ namespace Scenes.Snowstorm.Scripts
             // Wind
             _snowstormVFX.SetFloat("WindSpeed", vfx.WindSpeed);
             _snowstormVFX.SetVector2("WindStrengthRange", vfx.WindStrengthRange);
+        }
+
+        private void AddObjects()
+        {
+            // Destroy all existing objects
+            foreach (Transform child in _objects.transform) Destroy(child.gameObject);
+            
+            // Add new objects
+            foreach (var configDataObject in ConfigData.Objects)
+            {
+                GameObject child = new();
+                child.transform.SetParent(_objects.transform);
+                configDataObject.Initialize(child);
+            }
         }
     }
 }

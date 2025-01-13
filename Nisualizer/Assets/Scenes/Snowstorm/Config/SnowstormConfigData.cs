@@ -1,5 +1,6 @@
 using Config;
 using Newtonsoft.Json;
+using NnUtils.Modules.JSONUtils.Scripts.Types.Components;
 using NnUtils.Scripts;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace Scenes.Snowstorm.Config
 
         public SnowstormVFXConfigData VFX;
 
+        public ConfigGameObject[] Objects;
+
         public override void Load()
         {
             VFX.Load();
@@ -25,6 +28,8 @@ namespace Scenes.Snowstorm.Config
             Background = DefaultBackground;
             
             VFX.ResetToDefault();
+
+            Objects = null;
             
             base.ResetToDefault(silent);
         }

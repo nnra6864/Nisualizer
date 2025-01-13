@@ -22,15 +22,13 @@ namespace Scenes.ChaoticCubes.Config
         [JsonIgnore] public float DefaultDirectionalLightIntensity = 1;
         [ReadOnly] public float DirectionalLightIntensity;
         
-        [JsonIgnore] public ConfigGameObject DefaultGameObject;
-        [ReadOnly] public ConfigGameObject GameObject;
+        public ConfigGameObject GameObject;
         
         public ChaoticCubesVFXData VFX;
 
         public override void Load()
         {
             CameraClippingPlanes ??= DefaultCameraClippingPlanes;
-            GameObject ??= DefaultGameObject;
 
             VFX.Load();
 
