@@ -116,7 +116,6 @@ namespace Config
             Debug.Log(debugPrefix + $"Loaded config file from: {_configPath}");
         }
 
-        // TODO: Implement file watchers for all of these
         /// <summary>
         /// Sources all the files found in the config
         /// </summary>
