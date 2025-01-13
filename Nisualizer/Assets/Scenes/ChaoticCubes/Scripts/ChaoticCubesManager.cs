@@ -10,7 +10,7 @@ namespace Scenes.ChaoticCubes.Scripts
     {
         public static ChaoticCubesConfigData ConfigData => (ChaoticCubesConfigData)Config.Data;
 
-        private GameObject _ui;
+        private GameObject _objects;
 
         [SerializeField] private InteractiveImageScript _background;
         [SerializeField] private Camera _camera;
@@ -19,6 +19,7 @@ namespace Scenes.ChaoticCubes.Scripts
         
         private void Start()
         {
+            _objects = new("Objects");
             OnConfigLoaded();
             ConfigData.OnLoaded += OnConfigLoaded;
         }
@@ -34,10 +35,7 @@ namespace Scenes.ChaoticCubes.Scripts
             UpdateCamera();
             UpdateLight();
             UpdateChaoticCubesVFX();
-            
-            Destroy(_ui);
-            _ui = new();
-            ConfigData.GameObject.Initialize(_ui);
+            UpdateObjects();
         }
 
         private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
@@ -77,6 +75,20 @@ namespace Scenes.ChaoticCubes.Scripts
             _chaoticCubesVFX.SetFloat("MeshMetallic", vfx.MeshMetallic);
             _chaoticCubesVFX.SetFloat("MeshSize", vfx.MeshSize);
             _chaoticCubesVFX.SetGradient("ColorOverLife", ConfigData.VFX.ColorOverLife);
+        }
+        
+        private void UpdateObjects()
+        {
+            // Destroy all existing objects
+            foreach (Transform child in _objects.transform) Destroy(child.gameObject);
+            
+            // Add new objects
+            foreach (var configDataObject in ConfigData.Objects)
+            {
+                GameObject child = new();
+                child.transform.SetParent(_objects.transform);
+                configDataObject.Initialize(child);
+            }
         }
     }
 }

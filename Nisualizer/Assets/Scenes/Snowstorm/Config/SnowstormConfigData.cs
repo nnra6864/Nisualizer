@@ -26,10 +26,8 @@ namespace Scenes.Snowstorm.Config
         public override void ResetToDefault(bool silent = false)
         {
             Background = DefaultBackground;
-            
             VFX.ResetToDefault();
-
-            Objects = null;
+            Objects = new ConfigGameObject[] { };
             
             base.ResetToDefault(silent);
         }

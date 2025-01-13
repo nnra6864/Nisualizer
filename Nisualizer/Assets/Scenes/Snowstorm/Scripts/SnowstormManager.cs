@@ -32,7 +32,7 @@ namespace Scenes.Snowstorm.Scripts
         {
             UpdateBackground();
             UpdateSnowstormVFX();
-            AddObjects();
+            UpdateObjects();
         }
         
         private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
@@ -53,7 +53,7 @@ namespace Scenes.Snowstorm.Scripts
             _snowstormVFX.SetVector2("WindStrengthRange", vfx.WindStrengthRange);
         }
 
-        private void AddObjects()
+        private void UpdateObjects()
         {
             // Destroy all existing objects
             foreach (Transform child in _objects.transform) Destroy(child.gameObject);
