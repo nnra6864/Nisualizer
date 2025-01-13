@@ -23,12 +23,9 @@ A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 - [x] Multiple Scenes
 - [x] Per Scene Config
 - [x] Automatic Scene Creation
-- [ ] Weather(via [Metro](https://open-meteo.com/))
-- [ ] Async Config Reload
-- [ ] Modular UI
-- [ ] System Info
-- [ ] System Usage
-- [ ] Media Info(via [Player CTL](https://github.com/altdesktop/playerctl))
+- [x] Dynamic Text(Weather, DateTime, FPS, Shell etc.)
+- [x] Modular UI
+- [x] Media Info(via [Player CTL](https://github.com/altdesktop/playerctl))
 
 # Usage
 Nisualizer is ready to use out of the box with very little setup, and the option of cloning/forking and making your own scecnes.</br>
