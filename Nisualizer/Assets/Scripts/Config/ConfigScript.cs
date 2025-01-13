@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -14,10 +13,12 @@ namespace Config
         private const string SourcingRegexString = @"(?i)""source""\s*:\s*""([^\\""]*)""";
         private static readonly Regex TextRegex = new(SourcingRegexString, RegexOptions.Compiled);
         
+        private static string ConfigDir => GameManagerScript.ConfigDirectory;
+        
         public void Init()
         {
-            // Set config path
-            _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $".config/Nisualizer/{ConfigName}.json");
+            // Set config dir and path
+            _configPath = Path.Combine(ConfigDir, $"{ConfigName}.json");
                 
             // Getting text directly because storing it as a text asset and not a string causes some code to not execute later :/
             _defaultConfigText = DefaultConfig.text;
@@ -28,17 +29,23 @@ namespace Config
             // Load the config file
             LoadConfigFile();
             
-            // Watch for config file changes
-            InitializeFSM();
+            // Handle config changes
+            GameManagerScript.LiveConfigReload.OnChanged += OnConfigChanged;
             
             // Load config values
             LoadConfig();
         }
-
-        public void Update()
+        
+        private void OnConfigChanged()
         {
-            // Check whether the config changed, and if yes, handle it
-            HandleConfigChanged();
+            GenerateDefaultConfigFile();
+            LoadConfigFile();
+            LoadConfig();
+        }
+        
+        private void OnDestroy()
+        {
+            GameManagerScript.LiveConfigReload.OnChanged -= OnConfigChanged;
         }
         
         #region ConfigFile
@@ -46,6 +53,7 @@ namespace Config
         // Has to be public so that it can be set via SceneCreator script
         [Tooltip("Name of the config file. Use / to store in a subdirectory, e.g. path/to/config.")]
         public string ConfigName = "Config";
+        
         
         [Tooltip("Path to the config")]
         [ReadOnly] [SerializeField] private string _configPath;
@@ -86,12 +94,11 @@ namespace Config
             }
 
             //Generate parent directories if they don't exist
-            var configDir = Path.GetDirectoryName(_configPath);
-            var dirExists = Directory.Exists(configDir);
-            if (!dirExists) Directory.CreateDirectory(configDir!);
+            var dirExists = Directory.Exists(ConfigDir);
+            if (!dirExists) Directory.CreateDirectory(ConfigDir!);
             Debug.Log(debugPrefix + (dirExists ?
-                $"Config directory already exists at {configDir}" :
-                $"Generated config directory at {configDir}"));
+                $"Config directory already exists at {ConfigDir}" :
+                $"Generated config directory at {ConfigDir}"));
             
             //Write the contents to the target config path
             File.WriteAllText(_configPath, _defaultConfigText);
@@ -118,7 +125,7 @@ namespace Config
             TextRegex.Replace(config, match =>
             {
                 // Initialize result
-                string result = "";
+                string result;
                 
                 // Get path from config
                 var path = match.Groups[1].Value;
@@ -135,8 +142,7 @@ namespace Config
                 // Check if file exists relative to config path and assign it
                 if (File.Exists(cfgPath))
                 {
-                    var cfgDir = Path.GetDirectoryName(Path.GetFullPath(_configPath))!;
-                    var relativePath = Path.Combine(cfgDir, path);
+                    var relativePath = Path.Combine(ConfigDir, path);
                     if (File.Exists(relativePath)) result = File.ReadAllText(relativePath);
                 }
                 
@@ -165,45 +171,5 @@ namespace Config
         }
         
         #endregion
-        
-        #region LiveConfigReload
-        
-        /// Used to monitor files
-        private FileSystemMonitor _fsm;
-
-        private bool _hasChanged;
-
-        private void InitializeFSM() => _fsm = new(path: _configPath, () => _hasChanged = true);
-
-        /// Checks whether the config has changed and restarts the <see cref="HandleConfigChangedRoutine"/> <br/>
-        /// Should be used in <see cref="Update"/>
-        private void HandleConfigChanged()
-        {
-            if (!_hasChanged) return;
-            _hasChanged = false;
-            this.RestartRoutine(ref _handleConfigChangedRoutine, HandleConfigChangedRoutine());
-        }
-
-        /// Used to store the <see cref="HandleConfigChangedRoutine"/>
-        private Coroutine _handleConfigChangedRoutine;
-        
-        /// Runs following functions: <br/>
-        /// <see cref="GenerateDefaultConfigFile"/>
-        /// <see cref="LoadConfigFile"/>
-        /// <see cref="LoadConfig"/>
-        private IEnumerator HandleConfigChangedRoutine()
-        {
-            yield return new WaitForSecondsRealtime(GameManagerScript.ConfigData.ReloadDelay);
-            GenerateDefaultConfigFile();
-            LoadConfigFile();
-            LoadConfig();
-        }
-        
-        #endregion
-        
-        private void OnDestroy()
-        {
-            _fsm?.Dispose();
-        }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Audio;
 using Config;
 using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
@@ -7,6 +9,7 @@ using UnityEngine;
 namespace Core
 {
     [RequireComponent(typeof(ConfigScript))]
+    [RequireComponent(typeof(LiveConfigReload))]
     [RequireComponent(typeof(AudioDataScript))]
     [RequireComponent(typeof(NisualizerSceneManagerScript))]
     public class GameManagerScript : MonoBehaviour
@@ -33,12 +36,21 @@ namespace Core
         /// To be used in multithreaded functions
         public static float DeltaTime { get; private set; }
         
-        /// Contains all the Config data and logic
+        /// Contains all the Config logic
         [ReadOnly] [SerializeField] private ConfigScript _config;
         public static ConfigScript ConfigScript => Instance._config;
 
+        /// Contains all the Config data
         [ReadOnly] [SerializeField] private GeneralConfigData _configData;
         public static GeneralConfigData ConfigData => Instance._configData ??= (GeneralConfigData)Instance._config.Data;
+        
+        /// Handles config edits
+        [ReadOnly] [SerializeField] private LiveConfigReload _liveConfigReload;
+        public static LiveConfigReload LiveConfigReload => _instance._liveConfigReload;
+        
+        /// Directory for configs
+        // Trust me, / at the end is needed or file system monitor dies o_0
+        public static readonly string ConfigDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/Nisualizer/");
         
         [ReadOnly] [SerializeField] private AudioDataScript _audioData;
         public static AudioDataScript AudioData => Instance._audioData;
@@ -50,6 +62,7 @@ namespace Core
         {
             _config                 = GetComponent<ConfigScript>();
             _configData             = (GeneralConfigData)_config.Data;
+            _liveConfigReload       = GetComponent<LiveConfigReload>();
             _audioData              = GetComponent<AudioDataScript>();
             _nisualizerSceneManager = GetComponent<NisualizerSceneManagerScript>();
         }
@@ -65,6 +78,9 @@ namespace Core
         {
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
+            
+            // Load the Live Config Reload
+            LiveConfigReload.Init();
             
             // Initialize AudioData
             AudioData.Initialize();
