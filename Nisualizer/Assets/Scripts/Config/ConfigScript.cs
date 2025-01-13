@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Text.RegularExpressions;
 using Core;
 using NnUtils.Scripts;
 using UnityEngine;
@@ -10,6 +11,9 @@ namespace Config
 {
     public class ConfigScript : MonoBehaviour
     {
+        private const string SourcingRegexString = @"(?i)""source""\s*:\s*""([^\\""]*)""";
+        private static readonly Regex TextRegex = new(SourcingRegexString, RegexOptions.Compiled);
+        
         public void Init()
         {
             // Set config path
@@ -101,10 +105,48 @@ namespace Config
             var debugPrefix = $"[{ConfigName}] LoadConfigFile: ";
             
             Debug.Assert(File.Exists(_configPath), $"{_configPath} not found");
-            _configText = File.ReadAllText(_configPath);
+            _configText = SourceConfig(File.ReadAllText(_configPath));
             Debug.Log(debugPrefix + $"Loaded config file from: {_configPath}");
         }
-        
+
+        /// <summary>
+        /// Sources all the files found in the config
+        /// </summary>
+        /// <returns>Sourced config</returns>
+        private string SourceConfig(string config) =>
+            TextRegex.Replace(config, match =>
+            {
+                // Initialize result
+                string result = "";
+                
+                // Get path from config
+                var path = match.Groups[1].Value;
+
+                // Return an empty string if not set to avoid weird behaviour
+                if (string.IsNullOrEmpty(path)) return string.Empty;
+                
+                // Check if config exists and assign it
+                result = File.Exists(path) ? File.ReadAllText(Path.GetFullPath(path)) : string.Empty;
+
+                // Get config relative part
+                var cfgPath = GameManagerScript.ConfigScript._configPath;
+
+                // Check if file exists relative to config path and assign it
+                if (File.Exists(cfgPath))
+                {
+                    var cfgDir = Path.GetDirectoryName(Path.GetFullPath(_configPath))!;
+                    var relativePath = Path.Combine(cfgDir, path);
+                    if (File.Exists(relativePath)) result = File.ReadAllText(relativePath);
+                }
+                
+                // Remove {} from result if they exists
+                result = result.Trim();
+                if (result.StartsWith("{") && result.EndsWith("}"))
+                    result = result.Substring(1, result.Length - 2).Trim();
+                
+                return result;
+            });
+
         /// Loads config values into a new Config object
         private void LoadConfig()
         {
