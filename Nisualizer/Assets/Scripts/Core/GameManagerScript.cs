@@ -3,6 +3,7 @@ using System.IO;
 using Audio;
 using Config;
 using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
+using NnUtils.Modules.TextUtils.Scripts.InteractiveText;
 using NnUtils.Scripts;
 using UnityEngine;
 
@@ -76,6 +77,9 @@ namespace Core
 
         private void Start()
         {
+            // Add the fps command to functions
+            InteractiveTextProcessing.Functions["fps"] = param => (1 / DeltaTime).ToString(param);
+            
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
             
