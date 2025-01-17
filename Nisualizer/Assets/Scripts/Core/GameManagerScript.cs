@@ -94,7 +94,8 @@ namespace Core
             
             // Set FPS
             SetFPS();
-            ConfigData.OnLoaded += OnConfigLoaded;
+            ConfigData.OnLoaded             += OnConfigLoaded;
+            InteractiveTextProcessing.Shell =  ConfigData.Shell;
         }
 
         private void Update()
@@ -113,6 +114,7 @@ namespace Core
         private void OnConfigLoaded()
         {
             ConfigText.DefaultFont = ConfigData.Font;
+            InteractiveTextProcessing.Shell =  ConfigData.Shell;
             SetFPS();
             SetWindowMode();
         }
