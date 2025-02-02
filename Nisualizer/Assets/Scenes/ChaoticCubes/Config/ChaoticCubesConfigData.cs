@@ -22,9 +22,8 @@ namespace Scenes.ChaoticCubes.Config
         [JsonIgnore] public float DefaultDirectionalLightIntensity = 1;
         [JsonProperty] public float DirectionalLightIntensity;
         
-        [JsonProperty] public ConfigGameObject[] Objects;
-        
         [JsonProperty] public ChaoticCubesVFXData VFX;
+        [JsonProperty] public ConfigGameObject[] Objects;
 
         public override void Load()
         {
@@ -39,8 +38,8 @@ namespace Scenes.ChaoticCubes.Config
             CameraDistance            = DefaultCameraDistance;
             CameraClippingPlanes      = DefaultCameraClippingPlanes;
             DirectionalLightIntensity = DefaultDirectionalLightIntensity;
-            Objects                   = new ConfigGameObject[] { };
             VFX.ResetToDefault();
+            Objects = new ConfigGameObject[] { };
             base.ResetToDefault(silent);
         }
     }

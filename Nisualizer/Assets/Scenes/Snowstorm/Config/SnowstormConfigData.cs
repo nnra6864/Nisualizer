@@ -10,16 +10,14 @@ namespace Scenes.Snowstorm.Config
     public class SnowstormConfigData : ConfigData
     {
         [JsonIgnore] public string DefaultBackground = "";
-        [ReadOnly] public string Background;
-
-        public SnowstormVFXConfigData VFX;
-
-        public ConfigGameObject[] Objects;
+        [JsonProperty] public string Background;
+        
+        [JsonProperty] public SnowstormVFXConfigData VFX;
+        [JsonProperty] public ConfigGameObject[] Objects;
 
         public override void Load()
         {
             VFX.Load();
-            
             base.Load();
         }
         
@@ -28,7 +26,6 @@ namespace Scenes.Snowstorm.Config
             Background = DefaultBackground;
             VFX.ResetToDefault();
             Objects = new ConfigGameObject[] { };
-            
             base.ResetToDefault(silent);
         }
     }
