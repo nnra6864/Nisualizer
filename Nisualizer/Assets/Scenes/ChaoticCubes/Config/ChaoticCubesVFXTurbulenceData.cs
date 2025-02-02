@@ -10,42 +10,39 @@ namespace Scenes.ChaoticCubes.Config
     public class ChaoticCubesVFXTurbulenceData
     {
         [JsonIgnore] public float DefaultRotationSpeed = 20;
-        [ReadOnly] public float RotationSpeed;
+        [JsonProperty] public float RotationSpeed;
         
-        [JsonIgnore] public Vector2 DefaultIntensityRange = new(5, 7);
-        [ReadOnly] public ConfigVector2 IntensityRange;
+        [JsonIgnore] public ConfigVector2 DefaultIntensityRange = new(5, 7);
+        [JsonProperty] public ConfigVector2 IntensityRange;
         
-        [JsonIgnore] public Vector2 DefaultDragRange = new(1.5f, 2);
-        [ReadOnly] public ConfigVector2 DragRange;
+        [JsonIgnore] public ConfigVector2 DefaultDragRange = new(1.5f, 2);
+        [JsonProperty] public ConfigVector2 DragRange;
         
         [JsonIgnore] public float DefaultFrequency = 0.5f;
-        [ReadOnly] public float Frequency;
+        [JsonProperty] public float Frequency;
         
         [JsonIgnore] public int DefaultOctaves = 4;
-        [ReadOnly] public int Octaves;
+        [JsonProperty] public int Octaves;
 
         [JsonIgnore] public float DefaultRoughness = 0.5f;
-        [ReadOnly] public float Roughness;
+        [JsonProperty] public float Roughness;
         
         [JsonIgnore] public float DefaultLacunarity = 0.25f;
-        [ReadOnly] public float Lacunarity;
+        [JsonProperty] public float Lacunarity;
 
         public void Load()
         {
-            IntensityRange ??= DefaultIntensityRange;
-            DragRange      ??= DefaultDragRange;
+            
         }
 
         public void ResetToDefault()
         {
-            RotationSpeed = DefaultRotationSpeed;
-
-            // Assign null in Reset so that appropriate values can be loaded in Load
-            IntensityRange = null;
-            DragRange      = null;
+            RotationSpeed  = DefaultRotationSpeed;
+            IntensityRange = DefaultIntensityRange;
+            DragRange      = DefaultDragRange;
             Frequency      = DefaultFrequency;
             Octaves        = DefaultOctaves;
-            Roughness       = DefaultRoughness;
+            Roughness      = DefaultRoughness;
             Lacunarity     = DefaultLacunarity;
         }
     }

@@ -11,17 +11,17 @@ namespace Scenes.ChaoticCubes.Config
     {
         [Header("General")]
         
-        [JsonIgnore] public Vector2 DefaultSpawnRateRange = new(1000, 10000);
-        [ReadOnly] public ConfigVector2 SpawnRateRange;
+        [JsonIgnore] public ConfigVector2 DefaultSpawnRateRange = new(1000, 10000);
+        [JsonProperty] public ConfigVector2 SpawnRateRange;
 
         [JsonIgnore] public float DefaultSpawnRadius = 0.03f;
-        [ReadOnly] public float SpawnRadius;
+        [JsonProperty] public float SpawnRadius;
 
-        [JsonIgnore] public Vector2 DefaultLifetimeRange = new(1, 2.5f);
-        [ReadOnly] public ConfigVector2 LifetimeRange;
+        [JsonIgnore] public ConfigVector2 DefaultLifetimeRange = new(1, 2.5f);
+        [JsonProperty] public ConfigVector2 LifetimeRange;
 
-        [JsonIgnore] public Vector2 DefaultSpeedRange = new(1, 2.5f);
-        [ReadOnly] public ConfigVector2 SpeedRange;
+        [JsonIgnore] public ConfigVector2 DefaultSpeedRange = new(1, 2.5f);
+        [JsonProperty] public ConfigVector2 SpeedRange;
         
         [Header("Turbulence")]
         
@@ -30,38 +30,29 @@ namespace Scenes.ChaoticCubes.Config
         [Header("Mesh")]
 
         [JsonIgnore] public float DefaultMeshSmoothness = 0.5f;
-        [ReadOnly] public float MeshSmoothness;
+        [JsonProperty] public float MeshSmoothness;
 
         [JsonIgnore] public float DefaultMeshMetallic = 1f;
-        [ReadOnly] public float MeshMetallic;
+        [JsonProperty] public float MeshMetallic;
         
         [JsonIgnore] public float DefaultMeshSize = 0.1f;
-        [ReadOnly] public float MeshSize;
+        [JsonProperty] public float MeshSize;
         
-        [JsonIgnore] [GradientUsage(true)] public Gradient DefaultColorOverLife;
+        [JsonIgnore] [GradientUsage(true)] public ConfigGradient DefaultColorOverLife;
         public ConfigGradient ColorOverLife;
 
         public void Load()
         {
-            // General
-            SpawnRateRange ??= DefaultSpawnRateRange;
-            LifetimeRange  ??= DefaultLifetimeRange;
-            SpeedRange     ??= DefaultSpeedRange;
-            
-            // Turbulence
             Turbulence.Load();
-            
-            // Mesh
-            //ColorOverLife  ??= DefaultColorOverLife;
         }
 
         public void ResetToDefault()
         {
             // General
-            SpawnRateRange = null;
+            SpawnRateRange = DefaultSpawnRateRange;
             SpawnRadius    = DefaultSpawnRadius;
-            LifetimeRange  = null;
-            SpeedRange     = null;
+            LifetimeRange  = DefaultLifetimeRange;
+            SpeedRange     = DefaultSpeedRange;
 
             // Turbulence
             Turbulence.ResetToDefault();
@@ -70,8 +61,7 @@ namespace Scenes.ChaoticCubes.Config
             MeshSmoothness = DefaultMeshSmoothness;
             MeshMetallic   = DefaultMeshMetallic;
             MeshSize       = DefaultMeshSize;
-            //ColorOverLife  = null;
-            ColorOverLife = DefaultColorOverLife;
+            ColorOverLife  = DefaultColorOverLife;
         }
     }
 }
