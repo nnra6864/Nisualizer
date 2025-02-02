@@ -52,7 +52,7 @@ namespace Scenes.ChaoticCubes.Config
             Turbulence.Load();
             
             // Mesh
-            ColorOverLife  ??= DefaultColorOverLife;
+            //ColorOverLife  ??= DefaultColorOverLife;
         }
 
         public void ResetToDefault()
@@ -70,7 +70,8 @@ namespace Scenes.ChaoticCubes.Config
             MeshSmoothness = DefaultMeshSmoothness;
             MeshMetallic   = DefaultMeshMetallic;
             MeshSize       = DefaultMeshSize;
-            ColorOverLife  = null;
+            //ColorOverLife  = null;
+            ColorOverLife = DefaultColorOverLife;
         }
     }
 }
