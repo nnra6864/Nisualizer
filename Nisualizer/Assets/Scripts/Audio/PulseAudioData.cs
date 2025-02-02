@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Audio
+namespace Scripts.Audio
 {
     public class PulseAudioData : AudioData
     {

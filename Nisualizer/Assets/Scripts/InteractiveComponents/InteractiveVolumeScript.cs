@@ -1,10 +1,10 @@
-using Audio;
-using Core;
+using Scripts.Audio;
+using Scripts.Core;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace InteractiveComponents
+namespace Scripts.InteractiveComponents
 {
     [RequireComponent(typeof(Volume))]
     public class InteractiveVolumeScript : MonoBehaviour

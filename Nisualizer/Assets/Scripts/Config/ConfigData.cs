@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Config
+namespace Scripts.Config
 {
     [CreateAssetMenu(fileName = "ConfigData", menuName = "Config/ConfigData", order = -201)]
     public class ConfigData : ScriptableObject

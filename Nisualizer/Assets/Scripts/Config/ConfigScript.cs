@@ -1,12 +1,11 @@
-using System.Collections;
 using System.IO;
 using System.Text.RegularExpressions;
-using Core;
-using NnUtils.Scripts;
-using UnityEngine;
 using Newtonsoft.Json;
+using NnUtils.Scripts;
+using Scripts.Core;
+using UnityEngine;
 
-namespace Config
+namespace Scripts.Config
 {
     public class ConfigScript : MonoBehaviour
     {

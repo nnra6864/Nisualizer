@@ -3,7 +3,7 @@ using NnUtils.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace InteractiveComponents
+namespace Scripts.InteractiveComponents
 {
     public class InteractiveImageScript : MonoBehaviour
     {

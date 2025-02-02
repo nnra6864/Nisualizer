@@ -1,13 +1,13 @@
 using System;
 using System.IO;
-using Audio;
-using Config;
 using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
 using NnUtils.Modules.TextUtils.Scripts.InteractiveText;
 using NnUtils.Scripts;
+using Scripts.Audio;
+using Scripts.Config;
 using UnityEngine;
 
-namespace Core
+namespace Scripts.Core
 {
     [RequireComponent(typeof(ConfigScript))]
     [RequireComponent(typeof(LiveConfigReload))]

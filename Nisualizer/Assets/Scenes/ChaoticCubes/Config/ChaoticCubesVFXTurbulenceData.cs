@@ -1,8 +1,6 @@
 using System;
 using Newtonsoft.Json;
 using NnUtils.Modules.JSONUtils.Scripts.Types;
-using NnUtils.Scripts;
-using UnityEngine;
 
 namespace Scenes.ChaoticCubes.Config
 {

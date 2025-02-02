@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Core;
 using NnUtils.Scripts;
+using Scripts.Core;
 using UnityEngine;
 
-namespace Config
+namespace Scripts.Config
 {
     public class LiveConfigReload : MonoBehaviour
     {

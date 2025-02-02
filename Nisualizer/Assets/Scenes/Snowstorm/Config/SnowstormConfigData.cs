@@ -1,7 +1,6 @@
-using Config;
 using Newtonsoft.Json;
 using NnUtils.Modules.JSONUtils.Scripts.Types.Components;
-using NnUtils.Scripts;
+using Scripts.Config;
 using UnityEngine;
 
 namespace Scenes.Snowstorm.Config

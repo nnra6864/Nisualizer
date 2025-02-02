@@ -1,8 +1,8 @@
-using Audio;
-using Core;
+using Scripts.Audio;
+using Scripts.Core;
 using UnityEngine;
 
-namespace InteractiveComponents
+namespace Scripts.InteractiveComponents
 {
     [RequireComponent(typeof(ParticleSystem))]
     public class InteractiveParticleSystemScript : MonoBehaviour

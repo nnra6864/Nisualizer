@@ -1,9 +1,9 @@
-using Audio;
-using Core;
+using Scripts.Audio;
+using Scripts.Core;
 using UnityEngine;
 using UnityEngine.Video;
 
-namespace InteractiveComponents
+namespace Scripts.InteractiveComponents
 {
     [RequireComponent(typeof(VideoPlayer))]
     public class InteractiveVideoPlayerScript : MonoBehaviour

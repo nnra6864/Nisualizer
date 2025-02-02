@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Config;
-using Core;
+using Scripts.Config;
+using Scripts.Core;
 using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEditor.SceneManagement;
@@ -11,7 +11,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
-namespace SceneCreator.Editor
+namespace Scripts.SceneCreator.Editor
 {
     public class NisualizerSceneCreator : EditorWindow
     {

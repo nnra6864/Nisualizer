@@ -1,7 +1,7 @@
-using Config;
+using Scripts.Config;
 using UnityEngine;
 
-namespace Core
+namespace Scripts.Core
 {
     public class NisualizerSceneManagerScript : MonoBehaviour
     {

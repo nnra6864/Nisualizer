@@ -1,9 +1,9 @@
-using Audio;
-using Core;
+using Scripts.Audio;
+using Scripts.Core;
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace InteractiveComponents
+namespace Scripts.InteractiveComponents
 {
     [RequireComponent(typeof(VisualEffect))]
     public class InteractiveVFXScript : MonoBehaviour

@@ -1,8 +1,7 @@
-using Core;
-using InteractiveComponents;
 using Scenes.Snowstorm.Config;
+using Scripts.Core;
+using Scripts.InteractiveComponents;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.VFX;
 
 namespace Scenes.Snowstorm.Scripts

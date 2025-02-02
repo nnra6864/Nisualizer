@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Linq;
-using Config;
-using Core;
 using NnUtils.Scripts;
+using Scripts.Config;
+using Scripts.Core;
 using UnityEngine;
 
-namespace Audio
+namespace Scripts.Audio
 {
     public class AudioDataScript : MonoBehaviour
     {

@@ -1,11 +1,11 @@
 using System;
-using Config;
 using NnUtils.Modules.TextUtils.Scripts;
+using Scripts.Config;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Core
+namespace Scripts.Core
 {
     public class FontManagerScript : MonoBehaviour
     {

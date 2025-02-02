@@ -1,4 +1,4 @@
-namespace Audio
+namespace Scripts.Audio
 {
     public class AudioData
     {

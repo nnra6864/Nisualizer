@@ -1,6 +1,6 @@
-using Core;
-using InteractiveComponents;
 using Scenes.ChaoticCubes.Config;
+using Scripts.Core;
+using Scripts.InteractiveComponents;
 using UnityEngine;
 using UnityEngine.VFX;
 

@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 using NnUtils.Scripts;
 using UnityEngine;
 
-namespace Config
+namespace Scripts.Config
 {
     [CreateAssetMenu(fileName = "GeneralConfigData", menuName = "Config/GeneralConfigData")]
     public class GeneralConfigData : ConfigData

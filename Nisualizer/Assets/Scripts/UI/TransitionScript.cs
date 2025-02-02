@@ -3,7 +3,7 @@ using NnUtils.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace Scripts.UI
 {
     [RequireComponent(typeof(Image))]
     public class TransitionScript : MonoBehaviour
