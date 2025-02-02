@@ -16,31 +16,33 @@ MonoBehaviour:
   Background: 
   DefaultCameraDistance: 10
   CameraDistance: 10
-  DefaultCameraClippingPlanes: {x: 1, y: 1000}
+  DefaultCameraClippingPlanes:
+    UseDataDefaults: 0
+    X: 1
+    Y: 1000
   CameraClippingPlanes:
+    UseDataDefaults: 1
     X: 1
     Y: 1000
   DefaultDirectionalLightIntensity: 1
   DirectionalLightIntensity: 1
-  DefaultGameObject:
-    Name: Test
-    Children: []
-  GameObject:
-    Name: 
-    Children: []
+  Objects: []
   VFX:
     DefaultSpawnRateRange: {x: 1000, y: 10000}
     SpawnRateRange:
+      UseDataDefaults: 1
       X: 5000
       Y: 30000
     DefaultSpawnRadius: 0.03
     SpawnRadius: 0.5
     DefaultLifetimeRange: {x: 1, y: 2.5}
     LifetimeRange:
+      UseDataDefaults: 1
       X: 1
       Y: 3
     DefaultSpeedRange: {x: 1, y: 3}
     SpeedRange:
+      UseDataDefaults: 1
       X: 1
       Y: 3
     Turbulence:
@@ -48,10 +50,12 @@ MonoBehaviour:
       RotationSpeed: 30
       DefaultIntensityRange: {x: 5, y: 7}
       IntensityRange:
+        UseDataDefaults: 1
         X: 5
         Y: 7
       DefaultDragRange: {x: 1.5, y: 2}
       DragRange:
+        UseDataDefaults: 1
         X: 1.5
         Y: 2
       DefaultFrequency: 0.5
@@ -99,17 +103,22 @@ MonoBehaviour:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     ColorOverLife:
+      UseDataDefaults: 1
       Mode: 0
       AlphaKeys: []
       ColorKeys:
-      - Color:
+      - UseDataDefaults: 1
+        Color:
+          UseDataDefaults: 1
           R: 0
           G: 0.4
           B: 1
           A: 1
           I: 1
         Time: 0.25
-      - Color:
+      - UseDataDefaults: 1
+        Color:
+          UseDataDefaults: 1
           R: 1
           G: 0
           B: 1

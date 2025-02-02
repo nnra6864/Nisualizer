@@ -16,7 +16,7 @@ namespace Scenes.ChaoticCubes.Config
         [JsonIgnore] public float DefaultCameraDistance = 10;
         [ReadOnly] public float CameraDistance;
 
-        [JsonIgnore] public Vector2 DefaultCameraClippingPlanes = new(1, 1000);
+        [JsonIgnore] public ConfigVector2 DefaultCameraClippingPlanes = new(1, 1000);
         [ReadOnly] public ConfigVector2 CameraClippingPlanes;
 
         [JsonIgnore] public float DefaultDirectionalLightIntensity = 1;
@@ -28,8 +28,6 @@ namespace Scenes.ChaoticCubes.Config
 
         public override void Load()
         {
-            CameraClippingPlanes ??= DefaultCameraClippingPlanes;
-
             VFX.Load();
 
             base.Load();
@@ -41,7 +39,7 @@ namespace Scenes.ChaoticCubes.Config
 
             Background                = DefaultBackground;
             CameraDistance            = DefaultCameraDistance;
-            CameraClippingPlanes      = null;
+            CameraClippingPlanes      = DefaultCameraClippingPlanes;
             DirectionalLightIntensity = DefaultDirectionalLightIntensity;
             Objects                   = new ConfigGameObject[]{};
 
