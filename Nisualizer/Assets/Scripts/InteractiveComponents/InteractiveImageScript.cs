@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
 using NnUtils.Scripts;
+using NnUtils.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,9 +21,21 @@ namespace Scripts.InteractiveComponents
 
         public void LoadData(ConfigImage img)
         {
-            if (_configImage != null && img != null && img.Equals(_configImage)) return;
+            // Store whether ConfigImages are null
+            var cfgNull = img == null;
+            var currNull = _configImage == null;
+            
+            // Check if already using the same image and return
+            if (cfgNull && currNull) return;
+            if (!cfgNull && !currNull && img.Equals(_configImage)) return;
+            
             _configImage = img;
-            // TODO: Implement image loading and transitioning
+
+            // Return if the new ConfigImage is null
+            if (cfgNull) return;
+            
+            
+            img.UpdateImage(img.Envelope ? gameObject.AddComponent<EnvelopedImage>() : gameObject.AddComponent<Image>());
         }
 
         public void LoadImage(string image)
