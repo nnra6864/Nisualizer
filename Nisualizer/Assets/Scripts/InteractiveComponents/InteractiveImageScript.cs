@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
 using NnUtils.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,22 +8,25 @@ namespace Scripts.InteractiveComponents
 {
     public class InteractiveImageScript : MonoBehaviour
     {
-        private readonly List<Image> _images = new();
-        
+        private List<Image> _images = new();
         private AspectRatioFitter _systemImageARF;
-        [SerializeField] private Image _systemImage;
+        private ConfigImage _configImage;
 
         private void Awake()
         {
-            _systemImageARF = _systemImage.GetComponent<AspectRatioFitter>();
+            //_systemImageARF = _systemImage.GetComponent<AspectRatioFitter>();
             _images.AddRange(GetComponentsInChildren<Image>(true));
+        }
+
+        public void LoadData(ConfigImage img)
+        {
+            if (_configImage != null && img != null && img.Equals(_configImage)) return;
+            _configImage = img;
+            // TODO: Implement image loading and transitioning
         }
 
         public void LoadImage(string image)
         {
-            // Disable all the images
-            DisableAll();
-            
             // Return if image string is empty
             if (string.IsNullOrEmpty(image)) return;
             
@@ -31,14 +35,14 @@ namespace Scripts.InteractiveComponents
             if (systemSprite != null)
             {
                 // Load the image and store rect
-                _systemImage.sprite = systemSprite;
+                //_systemImage.sprite = systemSprite;
                 var rect = systemSprite.rect;
                 
                 // Set aspect ratio
                 _systemImageARF.aspectRatio = rect.width / rect.height;
                 
                 // Enable the object and return
-                _systemImage.gameObject.SetActive(true);
+                //_systemImage.gameObject.SetActive(true);
                 return;
             }
             

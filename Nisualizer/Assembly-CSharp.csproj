@@ -108,6 +108,8 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigColor.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Easings.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/RadioNuttonManager.cs" />
+    <Compile Include="Assets\NnUtils\Modules\JSONUtils\Scripts\Types\Components\UI\ConfigImage.cs" />
+    <Compile Include="Assets\NnUtils\Modules\JSONUtils\Scripts\Types\ConfigVector4.cs" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
     <None Include="Assets/Scripts/Config/GeneralConfig.json" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />

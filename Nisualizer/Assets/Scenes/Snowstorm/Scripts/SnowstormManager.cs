@@ -34,7 +34,7 @@ namespace Scenes.Snowstorm.Scripts
             UpdateObjects();
         }
         
-        private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
+        private void UpdateBackground() => _background.LoadData(ConfigData.Background);
 
         private void UpdateSnowstormVFX()
         {

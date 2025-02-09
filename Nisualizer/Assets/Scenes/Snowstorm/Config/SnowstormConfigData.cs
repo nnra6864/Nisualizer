@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using NnUtils.Modules.JSONUtils.Scripts.Types.Components;
+using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
 using Scripts.Config;
 using UnityEngine;
 
@@ -8,8 +10,8 @@ namespace Scenes.Snowstorm.Config
     [CreateAssetMenu(fileName = "SnowstormConfigData", menuName = "Config/SnowstormConfigData")]
     public class SnowstormConfigData : ConfigData
     {
-        [JsonIgnore] public string DefaultBackground = "";
-        [JsonProperty] public string Background;
+        [JsonIgnore] public ConfigImage DefaultBackground;
+        [JsonProperty] public ConfigImage Background;
         
         [JsonProperty] public SnowstormVFXConfigData VFX;
         [JsonProperty] public ConfigGameObject[] Objects;
