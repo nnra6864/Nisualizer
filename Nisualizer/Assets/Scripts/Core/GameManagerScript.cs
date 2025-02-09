@@ -58,7 +58,7 @@ namespace Scripts.Core
         
         [ReadOnly] [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManager;
         public static NisualizerSceneManagerScript NisualizerSceneManager => Instance._nisualizerSceneManager;
-        
+
         private void Reset()
         {
             _config                 = GetComponent<ConfigScript>();
@@ -67,8 +67,7 @@ namespace Scripts.Core
             _audioData              = GetComponent<AudioDataScript>();
             _nisualizerSceneManager = GetComponent<NisualizerSceneManagerScript>();
         }
-
-
+        
         private void Awake()
         {
             //Set Instance

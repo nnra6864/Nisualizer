@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using NnUtils.Modules.JSONUtils.Scripts.Types.Components;
-using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
+using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI.Image;
 using Scripts.Config;
 using UnityEngine;
 

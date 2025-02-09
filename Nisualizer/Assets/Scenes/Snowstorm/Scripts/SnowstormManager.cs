@@ -1,3 +1,4 @@
+using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI.Image;
 using Scenes.Snowstorm.Config;
 using Scripts.Core;
 using Scripts.InteractiveComponents;
@@ -34,7 +35,7 @@ namespace Scenes.Snowstorm.Scripts
             UpdateObjects();
         }
         
-        private void UpdateBackground() => _background.LoadData(ConfigData.Background);
+        private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
 
         private void UpdateSnowstormVFX()
         {

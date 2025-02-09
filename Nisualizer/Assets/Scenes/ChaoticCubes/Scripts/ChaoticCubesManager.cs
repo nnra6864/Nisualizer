@@ -1,3 +1,4 @@
+using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI.Image;
 using Scenes.ChaoticCubes.Config;
 using Scripts.Core;
 using Scripts.InteractiveComponents;
@@ -31,14 +32,14 @@ namespace Scenes.ChaoticCubes.Scripts
 
         private void OnConfigLoaded()
         {
-            UpdateBackground();
+            //UpdateBackground();
             UpdateCamera();
             UpdateLight();
             UpdateChaoticCubesVFX();
             UpdateObjects();
         }
 
-        private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
+        //private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
         
         private void UpdateCamera()
         {
