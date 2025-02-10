@@ -10,9 +10,6 @@ namespace Scenes.ChaoticCubes.Config
     [CreateAssetMenu(fileName = "ChaoticCubesConfigData", menuName = "Config/ChaoticCubesConfigData")]
     public class ChaoticCubesConfigData : ConfigData
     {
-        [JsonIgnore] public string DefaultBackground = "";
-        [JsonProperty] public string Background;
-        
         [JsonIgnore] public float DefaultCameraDistance = 10;
         [JsonProperty] public float CameraDistance;
 
@@ -34,7 +31,6 @@ namespace Scenes.ChaoticCubes.Config
 
         public override void ResetToDefault(bool silent = false)
         {
-            Background                = DefaultBackground;
             CameraDistance            = DefaultCameraDistance;
             CameraClippingPlanes      = DefaultCameraClippingPlanes;
             DirectionalLightIntensity = DefaultDirectionalLightIntensity;

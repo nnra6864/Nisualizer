@@ -12,8 +12,7 @@ namespace Scenes.Snowstorm.Scripts
         public static SnowstormConfigData ConfigData => (SnowstormConfigData)Config.Data;
 
         private GameObject _objects;
-
-        [SerializeField] private InteractiveImageScript _background;
+        
         [SerializeField] private VisualEffect _snowstormVFX;
 
         private void Start()
@@ -30,12 +29,9 @@ namespace Scenes.Snowstorm.Scripts
 
         private void OnConfigLoaded()
         {
-            UpdateBackground();
             UpdateSnowstormVFX();
             UpdateObjects();
         }
-        
-        private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
 
         private void UpdateSnowstormVFX()
         {

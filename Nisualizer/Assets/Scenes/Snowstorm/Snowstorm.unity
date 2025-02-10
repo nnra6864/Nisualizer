@@ -583,6 +583,63 @@ MonoBehaviour:
   _bloomScatterRange: {x: 0.5, y: 0.6}
   _lensDistortionRange: {x: 0, y: -0.1}
   _vignetteRange: {x: 0.25, y: 0.3}
+--- !u!1001 &1031643610
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770041011734121973, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852287808075662936, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
+      propertyPath: m_Name
+      value: NnManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1dcd41580ebe2594197460c35fa2cef0, type: 3}
 --- !u!1 &1908701082
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 1908701084}
-  _background: {fileID: 3134715362744276671}
   _snowstormVFX: {fileID: 1333527962898521588}
 --- !u!114 &1908701084
 MonoBehaviour:
@@ -963,6 +1019,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 342057068}
+  - {fileID: 1031643610}
   - {fileID: 1908701085}
   - {fileID: 832575519}
   - {fileID: 330585546}

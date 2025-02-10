@@ -13,7 +13,6 @@ namespace Scenes.ChaoticCubes.Scripts
 
         private GameObject _objects;
 
-        [SerializeField] private InteractiveImageScript _background;
         [SerializeField] private Camera _camera;
         [SerializeField] private Light _directionalLight;
         [SerializeField] private VisualEffect _chaoticCubesVFX;
@@ -32,14 +31,11 @@ namespace Scenes.ChaoticCubes.Scripts
 
         private void OnConfigLoaded()
         {
-            //UpdateBackground();
             UpdateCamera();
             UpdateLight();
             UpdateChaoticCubesVFX();
             UpdateObjects();
         }
-
-        //private void UpdateBackground() => _background.LoadImage(ConfigData.Background);
         
         private void UpdateCamera()
         {

@@ -9,9 +9,6 @@ namespace Scenes.Snowstorm.Config
     [CreateAssetMenu(fileName = "SnowstormConfigData", menuName = "Config/SnowstormConfigData")]
     public class SnowstormConfigData : ConfigData
     {
-        [JsonIgnore] public ConfigImage DefaultBackground;
-        [JsonProperty] public ConfigImage Background;
-        
         [JsonProperty] public SnowstormVFXConfigData VFX;
         [JsonProperty] public ConfigGameObject[] Objects;
 
@@ -23,7 +20,6 @@ namespace Scenes.Snowstorm.Config
         
         public override void ResetToDefault(bool silent = false)
         {
-            Background = DefaultBackground;
             VFX.ResetToDefault();
             Objects = new ConfigGameObject[] { };
             base.ResetToDefault(silent);
