@@ -238,6 +238,9 @@ namespace Scripts.SceneCreator.Editor
             // Add GameManager to the scene
             AddGameManager();
             
+            // Add NnManager to the scene
+            AddNnManager();
+            
             // Add SceneManager to the scene
             AddSceneManager();
             
@@ -314,7 +317,7 @@ namespace Scripts.SceneCreator.Editor
         /// Creates a new scene manager inheriting from the <see cref="SceneManagerScript"/>
         private static void CreateSceneManagerScript()
         {
-            var scriptContent = $@"using Core;
+            var scriptContent = $@"using Scripts.Core;
 using Scenes.{_sceneName}.Config;
 
 namespace Scenes.{_sceneName}.Scripts
@@ -363,7 +366,7 @@ namespace Scenes.{_sceneName}.Scripts
         /// Creates a new script inheriting from the <see cref="ConfigData"/>
         private static void CreateConfigDataScript()
         {
-            var scriptContent = $@"using Config;
+            var scriptContent = $@"using Scripts.Config;
 using UnityEngine;
 
 namespace Scenes.{_sceneName}.Config
@@ -417,6 +420,16 @@ namespace Scenes.{_sceneName}.Config
         {
             // Instantiate GameManager prefab
             var go = PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(GameManagerPath));
+            
+            // Mark the object as dirty so it doesn't get deleted on scene reload
+            EditorUtility.SetDirty(go);
+        }
+
+        /// Adds <see cref="NnUtils.Scripts.NnManager"/> to the newly created scene
+        private static void AddNnManager()
+        {
+            // Instantiate NnManager prefab
+            var go = PrefabUtility.InstantiatePrefab(Resources.Load<GameObject>("NnManager"));
             
             // Mark the object as dirty so it doesn't get deleted on scene reload
             EditorUtility.SetDirty(go);

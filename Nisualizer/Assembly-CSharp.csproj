@@ -50,10 +50,12 @@
     <Compile Include="Assets/Scenes/Snowstorm/Config/SnowstormConfigData.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/DynamicText.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolumeComponent.cs" />
+    <Compile Include="Assets/Scenes/Test/Config/TestConfigData.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradientAlphaKey.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradientColorKey.cs" />
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesConfigData.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ProjectImage.cs" />
+    <Compile Include="Assets/Scenes/Test/Scripts/TestManager.cs" />
     <Compile Include="Assets/NnUtils/Scripts/TimeManager.cs" />
     <Compile Include="Assets/Scripts/Config/ConfigData.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveParticleSystemScript.cs" />
@@ -119,6 +121,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
     <None Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesConfig.json" />
+    <None Include="Assets/Scenes/Test/Config/TestConfig.json" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
