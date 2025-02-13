@@ -49,7 +49,9 @@
     <Compile Include="Assets/Scripts/Core/SceneManagerScript.cs" />
     <Compile Include="Assets/Scenes/Snowstorm/Config/SnowstormConfigData.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/DynamicText.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/Slideshow.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolumeComponent.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowTransitionType.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradientAlphaKey.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradientColorKey.cs" />
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesConfigData.cs" />
@@ -66,7 +68,6 @@
     <Compile Include="Assets/Scripts/Audio/PulseAudioInterop.cs" />
     <Compile Include="Assets/NnUtils/Scripts/NnManager.cs" />
     <Compile Include="Assets/Scenes/Snowstorm/Config/SnowstormVFXConfigData.cs" />
-    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/InteractiveImageScript.cs" />
     <Compile Include="Assets/Scripts/Audio/AudioData.cs" />
     <Compile Include="Assets/Scripts/Core/NisualizerSceneManagerScript.cs" />
     <Compile Include="Assets/Scripts/Core/FontManagerScript.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveVolumeScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/NBar.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigCanvasScaler.cs" />
-    <Compile Include="Assets/NnUtils/Scripts/UI/EnvelopedImage.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigImage.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshow.cs" />
     <Compile Include="Assets/NnUtils/Scripts/WaitForSecondsWhileNot.cs" />
@@ -93,6 +93,7 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolumeProfile.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolume.cs" />
     <Compile Include="Assets/Scripts/Audio/AudioDataScript.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowTransition.cs" />
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesVFXTurbulenceData.cs" />
     <Compile Include="Assets/Scripts/UI/TransitionScript.cs" />
     <Compile Include="Assets/Scenes/Snowstorm/Scripts/SnowstormManager.cs" />
@@ -102,9 +103,9 @@
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveVFXScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/ReadOnlyAttribute.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigTransform.cs" />
-    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/SlideshowTransitionType.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshowTransition.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigRectTransform.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/InteractiveImageScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Color.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector3.cs" />
     <Compile Include="Assets/Scripts/Config/GeneralConfigData.cs" />
