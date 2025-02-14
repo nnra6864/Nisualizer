@@ -52,6 +52,7 @@
     <Compile Include="Assets/NnUtils/Scripts/UI/Editor/NliderEditor.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Editor/MultiObjectRename.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Editor/InteractiveImageScriptEditor.cs" />
     <None Include="Assets/Scripts/SceneCreator/Editor/Nisualizer Scene Creator.uss" />
     <None Include="Assets/Scripts/SceneCreator/Editor/Nisualizer Scene Creator.uxml" />
     <None Include="Assets/NnUtils/Scripts/Editor/NnScriptTemplate.txt" />

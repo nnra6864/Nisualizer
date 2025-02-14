@@ -57,6 +57,7 @@
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesConfigData.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ProjectImage.cs" />
     <Compile Include="Assets/NnUtils/Scripts/TimeManager.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/ColorUtils.cs" />
     <Compile Include="Assets/Scripts/Config/ConfigData.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveParticleSystemScript.cs" />
     <Compile Include="Assets/Scripts/Audio/PulseAudioData.cs" />
@@ -106,7 +107,6 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshowTransition.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigRectTransform.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/InteractiveImageScript.cs" />
-    <Compile Include="Assets/NnUtils/Scripts/Color.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector3.cs" />
     <Compile Include="Assets/Scripts/Config/GeneralConfigData.cs" />
     <Compile Include="Assets/Scenes/ChaoticCubes/Scripts/ChaoticCubesManager.cs" />
