@@ -8,10 +8,10 @@ namespace Scenes.ChaoticCubes.Config
     [Serializable]
     public class ChaoticCubesVFXTurbulenceData
     {
-        [JsonIgnore] public Vector3 DefaultShiftSpeed = new(0.001f, 0.0025f, 0.005f);
+        [JsonIgnore] public Vector3 DefaultShiftSpeed = new(0.001f, 0.001f, 0.001f);
         [JsonProperty] public ConfigVector3 ShiftSpeed;
         
-        [JsonIgnore] public Vector3 DefaultRotationSpeed = new(10, 5, 2.5f);
+        [JsonIgnore] public Vector3 DefaultRotationSpeed = new(30, 25, 20);
         [JsonProperty] public ConfigVector3 RotationSpeed;
         
         [JsonIgnore] public ConfigVector2 DefaultIntensityRange = new(5, 7);
