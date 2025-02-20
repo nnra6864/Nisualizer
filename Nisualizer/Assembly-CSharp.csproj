@@ -55,7 +55,6 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradientAlphaKey.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradientColorKey.cs" />
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesConfigData.cs" />
-    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ProjectImage.cs" />
     <Compile Include="Assets/NnUtils/Scripts/TimeManager.cs" />
     <Compile Include="Assets/NnUtils/Scripts/ColorUtils.cs" />
     <Compile Include="Assets/Scripts/Config/ConfigData.cs" />
@@ -74,6 +73,7 @@
     <Compile Include="Assets/Scripts/Core/FontManagerScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Misc.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveVideoPlayerScript.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshowImage.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigText.cs" />
     <Compile Include="Assets/NnUtils/Scripts/NashSet.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector2.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigCanvasScaler.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigImage.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshow.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowImage.cs" />
     <Compile Include="Assets/NnUtils/Scripts/WaitForSecondsWhileNot.cs" />
     <Compile Include="Assets/Scripts/Config/ConfigScript.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigCanvas.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigComponent.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveLabel.cs" />
     <Compile Include="Assets/NnUtils/Scripts/FileSystemMonitor.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/ProjectImage.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolumeProfile.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolume.cs" />
     <Compile Include="Assets/Scripts/Audio/AudioDataScript.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesVFXData.cs" />
     <Compile Include="Assets/Scripts/Config/LiveConfigReload.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveVFXScript.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/ProjectImageManagerScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/ReadOnlyAttribute.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigTransform.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshowTransition.cs" />
@@ -112,7 +115,6 @@
     <Compile Include="Assets/Scenes/ChaoticCubes/Scripts/ChaoticCubesManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTextProcessing.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigVerticalLayoutGroup.cs" />
-    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ProjectImageManagerScript.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigColor.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Easings.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/RadioNuttonManager.cs" />

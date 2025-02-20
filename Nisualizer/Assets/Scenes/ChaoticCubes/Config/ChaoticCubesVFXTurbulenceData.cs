@@ -1,14 +1,18 @@
 using System;
 using Newtonsoft.Json;
 using NnUtils.Modules.JSONUtils.Scripts.Types;
+using UnityEngine;
 
 namespace Scenes.ChaoticCubes.Config
 {
     [Serializable]
     public class ChaoticCubesVFXTurbulenceData
     {
-        [JsonIgnore] public float DefaultRotationSpeed = 20;
-        [JsonProperty] public float RotationSpeed;
+        [JsonIgnore] public Vector3 DefaultShiftSpeed = new(0.001f, 0.0025f, 0.005f);
+        [JsonProperty] public ConfigVector3 ShiftSpeed;
+        
+        [JsonIgnore] public Vector3 DefaultRotationSpeed = new(10, 5, 2.5f);
+        [JsonProperty] public ConfigVector3 RotationSpeed;
         
         [JsonIgnore] public ConfigVector2 DefaultIntensityRange = new(5, 7);
         [JsonProperty] public ConfigVector2 IntensityRange;
@@ -35,6 +39,7 @@ namespace Scenes.ChaoticCubes.Config
 
         public void ResetToDefault()
         {
+            ShiftSpeed     = DefaultShiftSpeed;
             RotationSpeed  = DefaultRotationSpeed;
             IntensityRange = DefaultIntensityRange;
             DragRange      = DefaultDragRange;

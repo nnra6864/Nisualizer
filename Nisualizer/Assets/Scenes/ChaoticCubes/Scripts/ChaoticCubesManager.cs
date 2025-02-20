@@ -57,7 +57,8 @@ namespace Scenes.ChaoticCubes.Scripts
             _chaoticCubesVFX.SetVector2("SpeedRange", vfx.SpeedRange);
             
             // Update turbulence properties
-            _chaoticCubesVFX.SetFloat("TurbulenceRotationSpeed", vfx.Turbulence.RotationSpeed);
+            _chaoticCubesVFX.SetVector3("TurbulenceShiftSpeed", vfx.Turbulence.ShiftSpeed);
+            _chaoticCubesVFX.SetVector3("TurbulenceRotationSpeed", vfx.Turbulence.RotationSpeed);
             _chaoticCubesVFX.SetVector2("TurbulenceIntensityRange", vfx.Turbulence.IntensityRange);
             _chaoticCubesVFX.SetVector2("TurbulenceDragRange", vfx.Turbulence.DragRange);
             _chaoticCubesVFX.SetFloat("TurbulenceFrequency", vfx.Turbulence.Frequency);
