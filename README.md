@@ -13,6 +13,8 @@ A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 
 # Roadmap
 
+- [ ] Picking up system audio on Windows
+- [ ] Picking up system audio on Linux
 - [x] Music Reactive Particle System
 - [x] Music Reactive VFX Graph
 - [x] Music Reactive Volume
