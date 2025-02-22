@@ -58,6 +58,7 @@
     <Compile Include="Assets/NnUtils/Scripts/TimeManager.cs" />
     <Compile Include="Assets/NnUtils/Scripts/ColorUtils.cs" />
     <Compile Include="Assets/Scripts/Config/ConfigData.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/PulseAudioMonitor.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveParticleSystemScript.cs" />
     <Compile Include="Assets/Scripts/Audio/PulseAudioData.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigGameObject.cs" />

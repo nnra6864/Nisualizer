@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using NnUtils.Modules.SystemAudioMonitor;
 using NnUtils.Scripts;
 using Scripts.Config;
 using Scripts.Core;
@@ -13,7 +14,7 @@ namespace Scripts.Audio
         private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManagerScript.ConfigScript.Data;
         
         //Higher values lead to a smoother appearance but also add more delay
-        private const int SampleWindow = 64;
+        private int _bufferSize = 128;
     
         //Name of the input device that's being used
         private static string InputName => ConfigData.InputName;
@@ -29,18 +30,37 @@ namespace Scripts.Audio
         [Tooltip("Easing applied to the Loudness transition.")]
         [SerializeField] private Easings.Type _transitionEasing = Easings.Type.CubicOut;
 
+        private PulseAudioMonitor _monitor;
+
         /// <summary>
         /// Called after initializing config in the <see cref="GameManagerScript"/><br/>
         /// Should also be called on <see cref="Config.ConfigData.OnLoaded"/>
         /// </summary>
         public void Initialize()
         {
+            _bufferSize = ConfigData.BufferSize;
+            InitializeAudioMonitor();
+
+            return;
             if (string.IsNullOrEmpty(InputName) || !Microphone.devices.Contains(InputName))
             {
                 Debug.LogWarning($"Input named {InputName} doesn't exist, returning");
                 return;
             }
+
             _microphoneClip = Microphone.Start(InputName, true, 20, AudioSettings.outputSampleRate);
+        }
+
+        private async void InitializeAudioMonitor()
+        {
+            // Stop an already existing monitor
+            _monitor?.StopMonitoring();
+
+            // Create a new Monitor
+            _monitor = new();
+
+            // Start Monitoring
+            await _monitor.StartMonitoring("Nisualizer", bufferSize: _bufferSize);
         }
 
         private void Start()
@@ -50,28 +70,30 @@ namespace Scripts.Audio
 
         private void Update()
         {
-            TweenMicrophoneLoudness(GetLoudness() * ConfigData.Sensitivity);
+            //TweenMicrophoneLoudness(GetLoudness() * ConfigData.Sensitivity);
+            if (_monitor != null) TweenMicrophoneLoudness(_monitor.Loudness * ConfigData.Sensitivity);
         }
 
         private void OnDestroy()
         {
             ConfigData.OnLoaded -= Initialize;
+            _monitor?.StopMonitoring();
         }
 
         //Returns the total loudness of microphone audio
         private float GetLoudness()
         {
             //Get microphone clip position and return 0 if negative
-            var pos = Microphone.GetPosition(InputName) - SampleWindow;
+            var pos = Microphone.GetPosition(InputName) - _bufferSize;
             if (pos < 0) return 0;
         
             //Get wave data from the microphone clip
-            var waveData = new float[SampleWindow];
+            var waveData = new float[_bufferSize];
             _microphoneClip.GetData(waveData, pos);
         
             //Calculate loudness
             float loudness = 0;
-            for (int i = 0; i < SampleWindow; i++)
+            for (int i = 0; i < _bufferSize; i++)
                 loudness += Mathf.Abs(waveData[i]);
 
             return loudness;
@@ -80,6 +102,7 @@ namespace Scripts.Audio
         //Tweens the loudness for a smoother look
         private void TweenMicrophoneLoudness(float loudness)
         {
+            Debug.Log("Loudness: " + loudness);
             //If new loudness is approximately the same as current, return, otherwise tween
             if (Mathf.Approximately(Loudness, loudness)) return;
             this.RestartRoutine(ref _tweenLoudnessRoutine, TweenLoudnessRoutine(loudness));

@@ -21,6 +21,10 @@ namespace Scripts.Config
         [JsonConverter(typeof(StringEnumConverter))]
         [ReadOnly] public FullScreenMode WindowMode;
         
+        // Buffer size for the audio capture
+        [JsonIgnore] public int DefaultBufferSize = 64;
+        [ReadOnly] public int BufferSize;
+        
         // How sensitive Nisualizer is to audio
         [JsonIgnore] public float DefaultSensitivity = 0.5f;
         [ReadOnly] public float Sensitivity;
@@ -47,6 +51,7 @@ namespace Scripts.Config
             ReloadDelay = DefaultReloadDelay;
             FPS         = DefaultFPS;
             WindowMode  = DefaultWindowMode;
+            BufferSize  = DefaultBufferSize;
             Sensitivity = DefaultSensitivity;
             InputName   = DefaultInputName;
             Font        = DefaultFont;
