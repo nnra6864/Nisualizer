@@ -59,6 +59,7 @@
     <Compile Include="Assets/NnUtils/Scripts/ColorUtils.cs" />
     <Compile Include="Assets/Scripts/Config/ConfigData.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/PulseAudioMonitor.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioMonitorManager.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveParticleSystemScript.cs" />
     <Compile Include="Assets/Scripts/Audio/PulseAudioData.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigGameObject.cs" />
@@ -80,8 +81,10 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector2.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveVolumeScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/NBar.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/WindowsAudioMonitor.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigCanvasScaler.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigImage.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioMonitor.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshow.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowImage.cs" />
     <Compile Include="Assets/NnUtils/Scripts/WaitForSecondsWhileNot.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="Assets/Scripts/Core/GameManagerScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/RadioNutton.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTMPText.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioCaptureType.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigComponent.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveLabel.cs" />
     <Compile Include="Assets/NnUtils/Scripts/FileSystemMonitor.cs" />

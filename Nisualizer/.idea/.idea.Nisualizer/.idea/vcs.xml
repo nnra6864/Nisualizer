@@ -3,7 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/NnUtils" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Assets/NnUtils/Modules/AudioMonitor" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/NnUtils/Modules/JSONUtils" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/NnUtils/Modules/TextUtils" vcs="Git" />
   </component>
