@@ -18,7 +18,7 @@ namespace Scripts.Audio
     
         // TODO: Implement specific device listening
         //Name of the input device that's being used
-        private static string InputName => ConfigData.InputName;
+        private static string AudioDevice => ConfigData.AudioDevice;
     
         //Stores the AudioClip used in loudness detection
         private AudioClip _microphoneClip;
@@ -38,7 +38,7 @@ namespace Scripts.Audio
         public void Initialize()
         {
             _bufferSize = ConfigData.BufferSize;
-            AudioMonitorManager.Start(AudioCaptureType.Default, "Nisualizer", bufferSize: _bufferSize);
+            AudioMonitorManager.Start(AudioCaptureType.Default, "Nisualizer", bufferSize: _bufferSize, device: ConfigData.AudioDevice);
         }
 
         private void Start()

@@ -22,6 +22,8 @@ namespace Scripts.Config
         [JsonConverter(typeof(StringEnumConverter))]
         [ReadOnly] public FullScreenMode WindowMode;
 
+        // Whether the app window will be sent to the background layer
+        // Windows only
         [JsonIgnore] public WindowLayer DefaultWindowLayer = WindowLayer.Background;
         [JsonConverter(typeof(StringEnumConverter))]
         public WindowLayer WindowLayer;
@@ -35,10 +37,12 @@ namespace Scripts.Config
         [ReadOnly] public float Sensitivity;
 
         // Name of the input device being monitored
-        [JsonIgnore] public string DefaultInputName = "OutputInput";
-        [ReadOnly] public string InputName;
+        // Pulse Audio only
+        [JsonIgnore] public string DefaultAudioDevice = "@DEFAULT_MONITOR@";
+        [ReadOnly] public string AudioDevice;
         
         // Name of the font being used
+        // Linux only
         [JsonIgnore] public string DefaultFont = "Default";
         [ReadOnly] public string Font;
 
@@ -47,7 +51,12 @@ namespace Scripts.Config
         [ReadOnly] public string Scene;
         
         // Shell to be used
-        [JsonIgnore] public string DefaultShell = "/bin/bash";
+        [JsonIgnore] public string DefaultShell = Application.platform switch
+        {
+            RuntimePlatform.LinuxPlayer or RuntimePlatform.LinuxEditor or RuntimePlatform.LinuxServer or RuntimePlatform.LinuxHeadlessSimulation => "/bin/bash",
+            RuntimePlatform.WindowsPlayer or RuntimePlatform.WindowsEditor or RuntimePlatform.WindowsServer => "cmd.exe",
+            _ => string.Empty
+        };
         [ReadOnly] public string Shell;
 
         /// Resets all the fields to their default values
@@ -59,7 +68,7 @@ namespace Scripts.Config
             WindowLayer = DefaultWindowLayer;
             BufferSize  = DefaultBufferSize;
             Sensitivity = DefaultSensitivity;
-            InputName   = DefaultInputName;
+            AudioDevice = DefaultAudioDevice;
             Font        = DefaultFont;
             Scene       = DefaultScene;
             Shell       = DefaultShell;
