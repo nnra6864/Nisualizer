@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using NnUtils.Modules.SystemAudioMonitor;
+using NnUtils.Modules.SystemAudioMonitor.CoreAudio;
 using NnUtils.Scripts;
 using Scripts.Config;
 using Scripts.Core;
