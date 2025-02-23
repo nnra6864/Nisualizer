@@ -31,7 +31,7 @@ namespace Scripts.Core
         private const uint SWP_SHOWWINDOW = 0x0040;
  
         private IntPtr unityWindow;
-        public WindowLayer Layer { get; }
+        public WindowLayer Layer { get; private set; }
 #endif
 
         private void Awake()
