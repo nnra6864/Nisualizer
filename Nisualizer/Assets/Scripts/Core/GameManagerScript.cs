@@ -12,6 +12,7 @@ namespace Scripts.Core
 {
     [RequireComponent(typeof(ConfigScript))]
     [RequireComponent(typeof(LiveConfigReload))]
+    [RequireComponent(typeof(WindowManager))]
     [RequireComponent(typeof(AudioDataScript))]
     [RequireComponent(typeof(NisualizerSceneManagerScript))]
     public class GameManagerScript : MonoBehaviour
@@ -50,6 +51,9 @@ namespace Scripts.Core
         [ReadOnly] [SerializeField] private LiveConfigReload _liveConfigReload;
         public static LiveConfigReload LiveConfigReload => _instance._liveConfigReload;
         
+        [ReadOnly] [SerializeField] private WindowManager _windowManager;
+        public static WindowManager WindowManager => Instance._windowManager;
+        
         /// Directory for configs
         // Trust me, / at the end is needed or file system monitor dies o_0
         public static readonly string ConfigDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/Nisualizer/");
@@ -65,10 +69,11 @@ namespace Scripts.Core
             _config                 = GetComponent<ConfigScript>();
             _configData             = (GeneralConfigData)_config.Data;
             _liveConfigReload       = GetComponent<LiveConfigReload>();
+            _windowManager          = GetComponent<WindowManager>();
             _audioData              = GetComponent<AudioDataScript>();
             _nisualizerSceneManager = GetComponent<NisualizerSceneManagerScript>();
         }
-        
+
         private void Awake()
         {
             //Set Instance
@@ -86,16 +91,15 @@ namespace Scripts.Core
             // Load the Live Config Reload
             LiveConfigReload.Init();
             
+            // Load data from config
+            OnConfigLoaded();
+            ConfigData.OnLoaded += OnConfigLoaded;
+            
             // Initialize AudioData
             AudioData.Initialize();
             
             // Set DefaultFont for ConfigText
             ConfigText.DefaultFont = ConfigData.Font;
-            
-            // Set FPS
-            SetFPS();
-            ConfigData.OnLoaded             += OnConfigLoaded;
-            InteractiveTextProcessing.Shell =  ConfigData.Shell;
         }
 
         private void Update()
@@ -123,6 +127,7 @@ namespace Scripts.Core
             InteractiveTextProcessing.Shell =  ConfigData.Shell;
             SetFPS();
             SetWindowMode();
+            WindowManager.SwitchLayer(ConfigData.WindowLayer);
         }
         
         private void SetFPS() => Application.targetFrameRate = ConfigData.FPS;

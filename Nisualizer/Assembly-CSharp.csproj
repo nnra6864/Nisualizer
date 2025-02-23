@@ -65,6 +65,7 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigGameObject.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/SystemFont.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
+    <Compile Include="Assets/Scripts/Core/WindowManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTextScript.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradient.cs" />
     <Compile Include="Assets/Scripts/Audio/PulseAudioInterop.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Assets/Scenes/Snowstorm/Scripts/SnowstormManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector4.cs" />
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesVFXData.cs" />
+    <Compile Include="Assets/Scripts/Core/WindowLayer.cs" />
     <Compile Include="Assets/Scripts/Config/LiveConfigReload.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveVFXScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/ProjectImageManagerScript.cs" />

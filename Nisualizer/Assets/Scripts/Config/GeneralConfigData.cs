@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using NnUtils.Scripts;
+using Scripts.Core;
 using UnityEngine;
 
 namespace Scripts.Config
@@ -20,6 +21,10 @@ namespace Scripts.Config
         [JsonIgnore] public FullScreenMode DefaultWindowMode = FullScreenMode.Windowed;
         [JsonConverter(typeof(StringEnumConverter))]
         [ReadOnly] public FullScreenMode WindowMode;
+
+        [JsonIgnore] public WindowLayer DefaultWindowLayer = WindowLayer.Background;
+        [JsonConverter(typeof(StringEnumConverter))]
+        public WindowLayer WindowLayer;
         
         // Buffer size for the audio capture
         [JsonIgnore] public int DefaultBufferSize = 64;
@@ -51,6 +56,7 @@ namespace Scripts.Config
             ReloadDelay = DefaultReloadDelay;
             FPS         = DefaultFPS;
             WindowMode  = DefaultWindowMode;
+            WindowLayer = DefaultWindowLayer;
             BufferSize  = DefaultBufferSize;
             Sensitivity = DefaultSensitivity;
             InputName   = DefaultInputName;
