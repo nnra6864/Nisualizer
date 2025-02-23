@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
+using NnUtils.Modules.SystemAudioMonitor;
 using NnUtils.Modules.TextUtils.Scripts.InteractiveText;
 using NnUtils.Scripts;
 using Scripts.Audio;
@@ -108,6 +109,12 @@ namespace Scripts.Core
             if (ConfigScript?.Data == null) return;
             
             ConfigData.OnLoaded -= OnConfigLoaded;
+        }
+
+        // This has to be done on apk exit
+        private void OnApplicationQuit()
+        {
+            AudioMonitorManager.Instance.Dispose();
         }
 
         private void OnConfigLoaded()

@@ -13,9 +13,6 @@ namespace Scripts.Audio
         private static GeneralConfigData _configData;
         private static GeneralConfigData ConfigData => _configData ??= (GeneralConfigData)GameManagerScript.ConfigScript.Data;
         
-        // Audio Monitor Manager
-        private readonly AudioMonitorManager _audioMonitorManager = new();
-        
         //Higher values lead to a smoother appearance but also add more delay
         private int _bufferSize = 64;
     
@@ -41,13 +38,7 @@ namespace Scripts.Audio
         public void Initialize()
         {
             _bufferSize = ConfigData.BufferSize;
-            InitializeAudioMonitor();
-        }
-
-        private void InitializeAudioMonitor()
-        {
-            // Start Monitoring
-            _audioMonitorManager.Start(AudioCaptureType.Default, "Nisualizer", bufferSize: _bufferSize);
+            AudioMonitorManager.Start(AudioCaptureType.Default, "Nisualizer", bufferSize: _bufferSize);
         }
 
         private void Start()
@@ -57,13 +48,12 @@ namespace Scripts.Audio
 
         private void Update()
         {
-            TweenMicrophoneLoudness(_audioMonitorManager.Loudness * ConfigData.Sensitivity);
+            TweenMicrophoneLoudness(AudioMonitorManager.Loudness * ConfigData.Sensitivity);
         }
 
         private void OnDestroy()
         {
             ConfigData.OnLoaded -= Initialize;
-            _audioMonitorManager.Dispose();
         }
 
         //Tweens the loudness for a smoother look
