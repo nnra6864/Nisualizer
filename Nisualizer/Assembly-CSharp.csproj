@@ -72,9 +72,9 @@
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/SystemFont.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/AudioMeterInformationChannels.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/Blob.cs" />
     <Compile Include="Assets/Scripts/Core/WindowManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTextScript.cs" />
-    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Blob.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradient.cs" />
     <Compile Include="Assets/Scripts/Audio/PulseAudioInterop.cs" />
     <Compile Include="Assets/NnUtils/Scripts/NnManager.cs" />
@@ -87,7 +87,6 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshowImage.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigText.cs" />
     <Compile Include="Assets/NnUtils/Scripts/NashSet.cs" />
-    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/ClsCtx.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/MMDeviceEnumeratorComObject.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/MMDevice.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector2.cs" />
@@ -105,14 +104,13 @@
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/DataFlow.cs" />
     <Compile Include="Assets/Scripts/Core/GameManagerScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/RadioNutton.cs" />
-    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/StorageAccessMode.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/EEndpointHardwareSupport.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTMPText.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioCaptureType.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigComponent.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveLabel.cs" />
     <Compile Include="Assets/NnUtils/Scripts/FileSystemMonitor.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/ProjectImage.cs" />
-    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/AudioCaptureType.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolumeProfile.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IAudioMeterInformation.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IMMNotificationClient.cs" />
@@ -127,6 +125,7 @@
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesVFXData.cs" />
     <Compile Include="Assets/Scripts/Core/WindowLayer.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/PropVariantNative.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/StorageAccessMode.cs" />
     <Compile Include="Assets/Scripts/Config/LiveConfigReload.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveVFXScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/ProjectImageManagerScript.cs" />
@@ -138,6 +137,7 @@
     <Compile Include="Assets/NnUtils/Scripts/UI/InteractiveImageScript.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector3.cs" />
     <Compile Include="Assets/Scripts/Config/GeneralConfigData.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/ClsCtx.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IMMDevice.cs" />
     <Compile Include="Assets/Scenes/ChaoticCubes/Scripts/ChaoticCubesManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IPropertyStore.cs" />
