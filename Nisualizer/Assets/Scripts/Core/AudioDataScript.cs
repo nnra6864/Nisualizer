@@ -14,7 +14,6 @@ namespace Scripts.Core
         //Higher values lead to a smoother appearance but also add more delay
         private int _bufferSize = 64;
     
-        // TODO: Implement specific device listening
         //Name of the input device that's being used
         private static string AudioDevice => ConfigData.AudioDevice;
     
@@ -36,7 +35,7 @@ namespace Scripts.Core
         public void Initialize()
         {
             _bufferSize = ConfigData.BufferSize;
-            AudioMonitorManager.Start(AudioCaptureType.Default, "Nisualizer", bufferSize: _bufferSize, device: ConfigData.AudioDevice);
+            AudioMonitorManager.Start(AudioCaptureType.Default, "Nisualizer", bufferSize: _bufferSize, device: AudioDevice);
         }
 
         private void Start()

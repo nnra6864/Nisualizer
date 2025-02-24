@@ -37,7 +37,17 @@ namespace Scripts.Config
             ClearMonitors();
             
             // Start new monitors
-            foreach (var path in _paths) _fsm.Add(new(path, () => _hasChanged = true));
+            foreach (var path in _paths)
+            {
+                // Continue if dir/file doesn't exist
+                if (!Directory.Exists(path) && !File.Exists(path))
+                {
+                    Debug.LogWarning($"Path {path} does not exist, it won't be monitored for changes.");
+                    continue;
+                }
+                
+                _fsm.Add(new(path, () => _hasChanged = true));
+            }
         }
         
         private void Update() => HandleChange();
