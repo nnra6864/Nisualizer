@@ -31,6 +31,7 @@ namespace Scenes.ChaoticCubes.Scripts
         {
             UpdateCamera();
             UpdateLight();
+            _chaoticCubesVFX.transform.position = ConfigData.VFXPosition;
             UpdateChaoticCubesVFX();
             UpdateObjects();
         }
