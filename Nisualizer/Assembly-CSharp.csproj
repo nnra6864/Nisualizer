@@ -65,7 +65,6 @@
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioMonitorManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IMMDeviceCollection.cs" />
     <Compile Include="Assets/Scripts/InteractiveComponents/InteractiveParticleSystemScript.cs" />
-    <Compile Include="Assets/Scripts/Audio/PulseAudioData.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigGameObject.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/DeviceState.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/PropVariant.cs" />
@@ -76,10 +75,8 @@
     <Compile Include="Assets/Scripts/Core/WindowManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTextScript.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradient.cs" />
-    <Compile Include="Assets/Scripts/Audio/PulseAudioInterop.cs" />
     <Compile Include="Assets/NnUtils/Scripts/NnManager.cs" />
     <Compile Include="Assets/Scenes/Snowstorm/Config/SnowstormVFXConfigData.cs" />
-    <Compile Include="Assets/Scripts/Audio/AudioData.cs" />
     <Compile Include="Assets/Scripts/Core/NisualizerSceneManagerScript.cs" />
     <Compile Include="Assets/Scripts/Core/FontManagerScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Misc.cs" />
@@ -98,6 +95,7 @@
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioMonitor.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshow.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowImage.cs" />
+    <Compile Include="Assets/Scripts/Core/AudioDataScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/WaitForSecondsWhileNot.cs" />
     <Compile Include="Assets/Scripts/Config/ConfigScript.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigCanvas.cs" />
@@ -116,7 +114,6 @@
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IMMNotificationClient.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/MMDeviceCollection.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolume.cs" />
-    <Compile Include="Assets/Scripts/Audio/AudioDataScript.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowTransition.cs" />
     <Compile Include="Assets/Scenes/ChaoticCubes/Config/ChaoticCubesVFXTurbulenceData.cs" />
     <Compile Include="Assets/Scripts/UI/TransitionScript.cs" />

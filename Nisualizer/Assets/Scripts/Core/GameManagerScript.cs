@@ -4,7 +4,6 @@ using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI;
 using NnUtils.Modules.SystemAudioMonitor;
 using NnUtils.Modules.TextUtils.Scripts.InteractiveText;
 using NnUtils.Scripts;
-using Scripts.Audio;
 using Scripts.Config;
 using UnityEngine;
 
