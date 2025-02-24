@@ -33,7 +33,7 @@ namespace Scripts.Config
         [ReadOnly] public int BufferSize;
         
         // How sensitive Nisualizer is to audio
-        [JsonIgnore] public float DefaultSensitivity = 0.5f;
+        [JsonIgnore] public float DefaultSensitivity = 1;
         [ReadOnly] public float Sensitivity;
 
         // Name of the input device being monitored

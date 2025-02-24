@@ -12,13 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6333e9710f42cc98876cb7c05cfe57, type: 3}
   m_Name: GeneralConfigData
   m_EditorClassIdentifier: 
+  DefaultReloadDelay: 0.1
+  ReloadDelay: 0.1
   DefaultFPS: 60
   FPS: 60
-  DefaultSensitivity: 0.5
-  Sensitivity: 0.5
-  DefaultInputName: OutputInput
-  InputName: 
+  DefaultWindowMode: 3
+  WindowMode: 3
+  DefaultWindowLayer: 0
+  WindowLayer: 0
+  DefaultBufferSize: 64
+  BufferSize: 64
+  DefaultSensitivity: 10
+  Sensitivity: 30
+  DefaultAudioDevice: '@DEFAULT_MONITOR@'
+  AudioDevice: '@DEFAULT_MONITOR@'
   DefaultFont: Default
   Font: Default
   DefaultScene: Snowstorm
   Scene: Snowstorm
+  DefaultShell: /bin/bash
+  Shell: /bin/nu
