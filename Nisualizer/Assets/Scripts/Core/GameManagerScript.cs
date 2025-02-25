@@ -93,9 +93,6 @@ namespace Scripts.Core
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
             
-            // Load the Live Config Reload
-            LiveConfigReload.Init();
-            
             // Load data from config
             OnConfigLoaded();
             ConfigData.OnLoaded += OnConfigLoaded;
@@ -143,11 +140,18 @@ namespace Scripts.Core
                 if (Application.platform != RuntimePlatform.WindowsEditor) ConfigDirectory = Path.Combine(ConfigDirectory, ".config");
                 ConfigDirectory = Path.Combine(ConfigDirectory, "Nisualizer/");
             }
-            Debug.LogError(Path.Combine(ConfigDirectory, ConfigScript.ConfigName));
+        }
+
+        private static void UpdateLiveConfigReload()
+        {
+            // It's dogshit to init every time but it works
+            LiveConfigReload.Init();
+            LiveConfigReload.MonitorPaths(ConfigData.Monitor);
         }
 
         private void OnConfigLoaded()
         {
+            UpdateLiveConfigReload();
             ConfigText.DefaultFont = ConfigData.Font;
             InteractiveTextProcessing.Shell =  ConfigData.Shell;
             SetFPS();

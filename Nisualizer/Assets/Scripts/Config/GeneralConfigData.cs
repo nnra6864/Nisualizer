@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using NnUtils.Scripts;
@@ -59,6 +60,9 @@ namespace Scripts.Config
         };
         [ReadOnly] public string Shell;
 
+        [JsonIgnore] public string[] DefaultMonitor = Array.Empty<string>();
+        [JsonProperty] public string[] Monitor;
+
         /// Resets all the fields to their default values
         public override void ResetToDefault(bool silent = false)
         {
@@ -72,6 +76,7 @@ namespace Scripts.Config
             Font        = DefaultFont;
             Scene       = DefaultScene;
             Shell       = DefaultShell;
+            Monitor     = DefaultMonitor;
 
             base.ResetToDefault(silent);
         }

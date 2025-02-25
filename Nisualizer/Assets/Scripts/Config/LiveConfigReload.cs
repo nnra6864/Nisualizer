@@ -56,7 +56,6 @@ namespace Scripts.Config
         private void MonitorPath(string path)
         {
             if (!_paths.Add(path)) return;
-            Debug.Log($"Path: {path}");
             
             if (_fsm.FirstOrDefault(x => x.Path == path) != null) return;
             
