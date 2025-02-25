@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NnUtils.Scripts;
 using Scripts.Core;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Scripts.Config
         private static string ConfigDir => GameManagerScript.ConfigDirectory;
 
         /// List of all the monitors
-        private readonly List<FileSystemMonitor> _fsm = new();
+        private readonly HashSet<FileSystemMonitor> _fsm = new();
 
         /// Set to true when there is a change
         private bool _hasChanged;
@@ -21,35 +22,27 @@ namespace Scripts.Config
         /// Subscribe to this event from all the configs
         public event Action OnChanged;
         
-        private List<string> _paths = new();
-        
+        private readonly HashSet<string> _paths = new();
+
         /// Call when after initializing the general config
         public void Init()
         {
+            // Clear paths and monitors
+            _paths.Clear();
+            ClearMonitors();
+
             // Get all the paths
-            _paths = new()
-            {
+            string[] paths = {
                 ConfigDir,
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/fontconfig/")
+#if UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/fontconfig/")
+#endif
             };
 
-            // Clear previously initialized monitors
-            ClearMonitors();
-            
             // Start new monitors
-            foreach (var path in _paths)
-            {
-                // Continue if dir/file doesn't exist
-                if (!Directory.Exists(path) && !File.Exists(path))
-                {
-                    Debug.LogWarning($"Path {path} does not exist, it won't be monitored for changes.");
-                    continue;
-                }
-                
-                _fsm.Add(new(path, () => _hasChanged = true));
-            }
+            MonitorPaths(paths);
         }
-        
+
         private void Update() => HandleChange();
 
         /// Disposes all the monitors
@@ -57,6 +50,30 @@ namespace Scripts.Config
         {
             foreach (var fsm in _fsm) fsm.Dispose();
             _fsm.Clear();
+        }
+
+        /// Starts monitoring a path
+        private void MonitorPath(string path)
+        {
+            if (!_paths.Add(path)) return;
+            Debug.Log($"Path: {path}");
+            
+            if (_fsm.FirstOrDefault(x => x.Path == path) != null) return;
+            
+            // Continue if dir/file doesn't exist
+            if (!Directory.Exists(path) && !File.Exists(path))
+            {
+                Debug.LogWarning($"Path {path} does not exist, it won't be monitored for changes.");
+                return;
+            }
+
+            _fsm.Add(new(path, () => _hasChanged = true));
+        }
+
+        /// Calls <see cref="MonitorPath"/> for all paths
+        public void MonitorPaths(string[] paths)
+        {
+            foreach(var path in paths) MonitorPath(path);
         }
         
         /// Checks if there is a change and restarts the routine

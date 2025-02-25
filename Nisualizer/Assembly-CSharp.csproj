@@ -142,6 +142,7 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigVerticalLayoutGroup.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigColor.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Easings.cs" />
+    <Compile Include="Assets/Scripts/Core/StartupManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/MMDeviceEnumerator.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/RadioNuttonManager.cs" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
