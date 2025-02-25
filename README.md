@@ -27,8 +27,8 @@ A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 
 # Roadmap
 - [ ] Launch on startup
-- [ ] Arguments(e.g. using different configs for 2 displays)
-- [ ] Change the config directory for Windows(and their shit system structure)
+- [x] Arguments(e.g. using different configs for 2 displays)
+- [x] Change the config directory for Windows(and their shit system structure)
 - [ ] Implement system font support on Windows
 - [ ] Polish sending window to the background layer on windows
 - [ ] Implement configurable paths for the file system watcher used in live config reload
