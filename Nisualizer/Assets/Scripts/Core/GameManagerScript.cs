@@ -54,8 +54,7 @@ namespace Scripts.Core
         public static WindowManager WindowManager => Instance._windowManager;
         
         /// Directory for configs
-        // Trust me, / at the end is needed or file system monitor dies o_0
-        public static readonly string ConfigDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), ".config/Nisualizer/");
+        public static string ConfigDirectory;
         
         [ReadOnly] [SerializeField] private AudioDataScript _audioData;
         public static AudioDataScript AudioData => Instance._audioData;
@@ -75,15 +74,22 @@ namespace Scripts.Core
 
         private void Awake()
         {
-            //Set Instance
+            //Set Instance and return if not this
             Instance = this;
+            if (Instance != this) return;
+            
+            // Add the fps command to functions
+            InteractiveTextProcessing.Functions["fps"] = param => (1 / DeltaTime).ToString(param);
+
+            // Update the config directory and path
+            UpdateConfigPath();
+            
+            // Set DefaultFont for ConfigText
+            ConfigText.DefaultFont = ConfigData.Font;
         }
 
         private void Start()
         {
-            // Add the fps command to functions
-            InteractiveTextProcessing.Functions["fps"] = param => (1 / DeltaTime).ToString(param);
-            
             // Load the Config in Start to allow for other scripts to subscribe to events in Awake
             ConfigScript.Init();
             
@@ -96,9 +102,6 @@ namespace Scripts.Core
             
             // Initialize AudioData
             AudioData.Initialize();
-            
-            // Set DefaultFont for ConfigText
-            ConfigText.DefaultFont = ConfigData.Font;
         }
 
         private void Update()
@@ -118,6 +121,29 @@ namespace Scripts.Core
         private void OnApplicationQuit()
         {
             AudioMonitorManager.Instance.Dispose();
+        }
+
+        // Trust me, / at the end is needed or file system monitor dies o_0
+        private static void UpdateConfigPath()
+        {
+            // Update the config name if found
+            var configName = Misc.GetArg("ConfigName");
+            if (configName != null) ConfigScript.ConfigName = configName;
+            
+            // Update the config directory
+            var configDir = Misc.GetArg("ConfigDir");
+            if (configDir != null)
+            {
+                if (!configDir.EndsWith('/') && !configDir.EndsWith('\\')) configDir += '/';
+                ConfigDirectory = configDir;
+            }
+            else
+            {
+                ConfigDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                if (Application.platform != RuntimePlatform.WindowsEditor) ConfigDirectory = Path.Combine(ConfigDirectory, ".config");
+                ConfigDirectory = Path.Combine(ConfigDirectory, "Nisualizer/");
+            }
+            Debug.LogError(Path.Combine(ConfigDirectory, ConfigScript.ConfigName));
         }
 
         private void OnConfigLoaded()

@@ -1,7 +1,5 @@
-using NnUtils.Modules.JSONUtils.Scripts.Types.Components.UI.Image;
 using Scenes.Snowstorm.Config;
 using Scripts.Core;
-using Scripts.InteractiveComponents;
 using UnityEngine;
 using UnityEngine.VFX;
 
