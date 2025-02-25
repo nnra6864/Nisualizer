@@ -5,17 +5,13 @@ A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 # Showcase
 <details>
     <summary><h2>Snowstorm</h2></summary>
-    ### Snowstorm
-    ![Snowstorm](/Media/Snowstorm.png)
-    ### Simple Snowstorm
-    ![Simple Snowstorm](/Media/SimpleSnowstorm.png)
+    <img src="/Media/Snowstorm.png" alt="Snowstorm">
+    <img src="/Media/SimpleSnowstorm.png" alt="Simple Snowstorm">
 </details>
 <details>
     <summary><h2>Chaotic Cubes</h2></summary>
-    ### Neon Dust
-    ![Neon Dust](/Media/NeonDust.png)
-    ### Icy Cubes
-    ![Icy Cubes](/Media/IcyCubes.png)
+    <img src="/Media/NeonDust.png" alt="Neon Dust">
+    <img src="/Media/IcyCubes.png" alt="Icy Cubes">
 </details>
 
 # Features
