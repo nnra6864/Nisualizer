@@ -3,7 +3,7 @@
 </p>
 
 # Nisualizer
-This project aims to combine music visualizers, such as [GLava](https://github.com/jarcode-foss/glava) and [Cava](https://github.com/karlstav/cava), with wallpaper engines, such as [Wallpaper Engine](https://www.wallpaperengine.io/en) and [Lively](https://github.com/rocksdanister/lively), and bring them to the next level. <br/>
+This project aims to combine music visualizers, such as [GLava](https://github.com/jarcode-foss/glava) and [Cava](https://github.com/karlstav/cava), with wallpaper engines, such as [Wallpaper Engine](https://www.wallpaperengine.io/en) and [Lively](https://www.rocksdanister.com/lively/), and bring them to the next level. <br/>
 A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 
 # Showcase
@@ -37,6 +37,7 @@ A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 - [ ] Build more commands into the app itself(e.g. wttr.in, now playing etc.)
 - [ ] Completely modularize components such as vfx graphs etc.
 - [ ] JSON variables(to reduce code duplication)
+- [ ] Font materials
 - [x] Picking up system audio on Windows
 - [x] Picking up system audio on Linux
 - [x] Music Reactive Particle System
@@ -66,7 +67,7 @@ Thanks to the modularity of components, creating your own backgrounds should be 
 2. [pipewire-pulse](https://docs.pipewire.org/page_man_pipewire-pulse_1.html) or [Pulse Audio](https://www.freedesktop.org/wiki/Software/PulseAudio/), so Nisualizer can capture audio
 
 ### Windows Requirements
-1. [Lively](https://github.com/rocksdanister/lively)(optional), an alternative way to send Nisualizer to the background layer
+1. [Lively](https://www.rocksdanister.com/lively/)(optional), an alternative way to send Nisualizer to the background layer
 
 ## Setup
 ### Linux Setup
@@ -99,7 +100,7 @@ WIP
 
 # FAQ
 1. Do you plan to support Mac?
-    - Fuck no, you are free to make a PR tho.
+    - Fuck no, you are free to make a [PR](#extending-nisualizer) tho.
 2. How's the performance?
     - It depends on your config. Nisualizer is just a Unity application with only necessary objects in the scene, you add the rest via config. It shouldn't be any more demanding than [WPE](https://www.wallpaperengine.io/en) whilst achieving way more.
 3. Can I fork this project and make my own visualizer?
