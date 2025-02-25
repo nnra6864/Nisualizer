@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="/Media/Nisualizer.png" alt="Nisualizer" width=512px height=512px>
+</p>
+
 # Nisualizer
 This project aims to combine music visualizers, such as [GLava](https://github.com/jarcode-foss/glava) and [Cava](https://github.com/karlstav/cava), with wallpaper engines, such as [Wallpaper Engine](https://www.wallpaperengine.io/en) and [Lively](https://github.com/rocksdanister/lively), and bring them to the next level. <br/>
 A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
