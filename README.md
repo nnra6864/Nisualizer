@@ -30,7 +30,7 @@ A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 - [x] Arguments(e.g. using different configs for 2 displays)
 - [x] Change the config directory for Windows(and their shit system structure)
 - [ ] Implement system font support on Windows
-- [ ] Polish sending window to the background layer on windows
+- [x] Polish sending window to the background layer on windows
 - [x] Implement configurable paths for the file system watcher used in live config reload
 - [ ] Config volume profile
 - [ ] Slideshow
