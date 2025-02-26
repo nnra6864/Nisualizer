@@ -29,20 +29,20 @@ namespace Scripts.Core
         private void Start()
         {
             UpdateFont();
-            ConfigData.OnLoaded                                  += UpdateFont;
+            ConfigData.OnLoaded      += UpdateFont;
             SceneManager.sceneLoaded += UpdateFontOnSceneLoad;
         }
 
         private void OnDestroy()
         {
-            ConfigData.OnLoaded -= UpdateFont;
+            ConfigData.OnLoaded      -= UpdateFont;
             SceneManager.sceneLoaded -= UpdateFontOnSceneLoad;
         }
 
         public void UpdateFont()
         {
             var font = ConfigData.Font;
-            FontAsset = font == "Default" ? _defaultFont : SystemFont.GenerateFontFromName(ConfigData.Font);
+            FontAsset = font == "Default" ? _defaultFont : SystemFont.GenerateFontFromName(font);
             
             foreach (var tmpText in FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None))
                 tmpText.font = FontAsset;

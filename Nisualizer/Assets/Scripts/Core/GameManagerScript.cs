@@ -137,7 +137,8 @@ namespace Scripts.Core
             else
             {
                 ConfigDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                if (Application.platform != RuntimePlatform.WindowsEditor) ConfigDirectory = Path.Combine(ConfigDirectory, ".config");
+                if (Application.platform is not RuntimePlatform.WindowsPlayer and RuntimePlatform.WindowsEditor)
+                    ConfigDirectory = Path.Combine(ConfigDirectory, ".config");
                 ConfigDirectory = Path.Combine(ConfigDirectory, "Nisualizer/");
             }
         }
