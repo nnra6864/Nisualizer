@@ -83,9 +83,6 @@ namespace Scripts.Core
 
             // Update the config directory and path
             UpdateConfigPath();
-            
-            // Set DefaultFont for ConfigText
-            ConfigText.DefaultFont = ConfigData.Font;
         }
 
         private void Start()
@@ -158,6 +155,7 @@ namespace Scripts.Core
             SetFPS();
             SetWindowMode();
             WindowManager.SwitchLayer(ConfigData.WindowLayer);
+            LaunchOnStartup.Toggle(ConfigData.LaunchOnStartup);
         }
         
         private void SetFPS() => Application.targetFrameRate = ConfigData.FPS;

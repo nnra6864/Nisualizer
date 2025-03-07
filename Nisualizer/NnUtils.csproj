@@ -12,11 +12,11 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{b098ece9-e526-52eb-80c5-49b50d7b900e}</ProjectGuid>
+    <ProjectGuid>{c10454a6-b824-5362-f696-5c3feb93b204}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+    <AssemblyName>NnUtils</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -25,8 +25,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Temp\Bin\Debug\Assembly-CSharp-Editor\</OutputPath>
-    <DefineConstants>UNITY_6000_0_34;UNITY_6000_0;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_AMD;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_USES_EXPLICIT_MEMORY_MANAGER_INITIALIZER;PLATFORM_SUPPORTS_WAIT_FOR_PRESENTATION;PLATFORM_SUPPORTS_SPLIT_GRAPHICS_JOBS;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_LINUX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION</DefineConstants>
+    <OutputPath>Temp\Bin\Debug\NnUtils\</OutputPath>
+    <DefineConstants>UNITY_6000_0_34;UNITY_6000_0;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_AMD;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_USES_EXPLICIT_MEMORY_MANAGER_INITIALIZER;PLATFORM_SUPPORTS_WAIT_FOR_PRESENTATION;PLATFORM_SUPPORTS_SPLIT_GRAPHICS_JOBS;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_LINUX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169,0649</NoWarn>
@@ -44,26 +44,97 @@
     <Analyzer Include="/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll" />
     <Analyzer Include="/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
+    <Analyzer Include="/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Assets/NnUtils/Modules/TextUtils/Plugins/System.Drawing.Common.dll" />
+    <Analyzer Include="/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Assets/NnUtils/Modules/TextUtils/Plugins/Microsoft.Win32.Registry.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/PropertyKey.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IMMDeviceEnumerator.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/AudioMeterInformation.cs" />
+    <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/DynamicText.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/Slideshow.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolumeComponent.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowTransitionType.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradientAlphaKey.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradientColorKey.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Editor/ReadOnlyDrawer.cs" />
-    <Compile Include="Assets/Scripts/SceneCreator/Editor/NisualizerSceneCreator.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/TimeManager.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/ColorUtils.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/PulseAudioMonitor.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioMonitorManager.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IMMDeviceCollection.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigGameObject.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Editor/EditorShortcuts.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/DeviceState.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/PropVariant.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/Editor/NliderEditor.cs" />
-    <Compile Include="Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" />
+    <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/SystemFont.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/AudioMeterInformationChannels.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/Blob.cs" />
+    <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTextScript.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradient.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/NnManager.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/Misc.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshowImage.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigText.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/NashSet.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/MMDeviceEnumeratorComObject.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/MMDevice.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector2.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/NBar.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/WindowsAudioMonitor.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigCanvasScaler.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigImage.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioMonitor.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshow.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowImage.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/WaitForSecondsWhileNot.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigCanvas.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/DataFlow.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/RadioNutton.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/EEndpointHardwareSupport.cs" />
+    <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTMPText.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/AudioCaptureType.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigComponent.cs" />
+    <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveLabel.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Editor/MultiObjectRename.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/FileSystemMonitor.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/ProjectImage.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolumeProfile.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IAudioMeterInformation.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IMMNotificationClient.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/MMDeviceCollection.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/Volume/ConfigVolume.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/Slideshow/SlideshowTransition.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector4.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/PropVariantNative.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/StorageAccessMode.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/ProjectImageManagerScript.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Role.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/ReadOnlyAttribute.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/ConfigTransform.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/Image/ConfigSlideshowTransition.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigRectTransform.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/InteractiveImageScript.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigVector3.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/ClsCtx.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IMMDevice.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/IPropertyStore.cs" />
+    <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTextProcessing.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigVerticalLayoutGroup.cs" />
+    <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigColor.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/Easings.cs" />
+    <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/MMDeviceEnumerator.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/Editor/InteractiveImageScriptEditor.cs" />
-    <None Include="Assets/Scripts/SceneCreator/Editor/Nisualizer Scene Creator.uss" />
-    <None Include="Assets/Scripts/SceneCreator/Editor/Nisualizer Scene Creator.uxml" />
+    <Compile Include="Assets/NnUtils/Scripts/UI/RadioNuttonManager.cs" />
+    <None Include="Assets/NnUtils/Scripts/GameManager.txt" />
     <None Include="Assets/NnUtils/Scripts/Editor/NnScriptTemplate.txt" />
+    <None Include="Assets/NnUtils/NnUtils.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AMDModule">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.AMDModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ARModule">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
@@ -151,9 +222,6 @@
     </Reference>
     <Reference Include="UnityEngine.MultiplayerModule">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.MultiplayerModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.NVIDIAModule">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.NVIDIAModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>
@@ -431,17 +499,11 @@
     <Reference Include="nunit.framework">
       <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/PackageCache/com.unity.ext.nunit/net40/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="System.Drawing.Common">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Assets/Plugins/System.Drawing.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/PackageCache/com.unity.nuget.newtonsoft-json/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/PackageCache/com.unity.nuget.mono-cecil/Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Win32.Registry">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Assets/Plugins/Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Types.dll</HintPath>
@@ -815,273 +877,14 @@
     <Reference Include="mscorlib">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/Microsoft.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.ObjectPool">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/Microsoft.Extensions.ObjectPool.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Win32.Registry.AccessControl">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/Microsoft.Win32.Registry.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Win32.Registry">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/Microsoft.Win32.Registry.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Win32.SystemEvents">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/Microsoft.Win32.SystemEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="System.CodeDom">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.CodeDom.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition.Registration">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ComponentModel.Composition.Registration.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Configuration.ConfigurationManager">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Configuration.ConfigurationManager.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Data.DataSetExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.Odbc">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Data.Odbc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.OleDb">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Data.OleDb.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SqlClient">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Data.SqlClient.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Diagnostics.EventLog">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Diagnostics.EventLog.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Diagnostics.PerformanceCounter">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Diagnostics.PerformanceCounter.dll</HintPath>
-    </Reference>
-    <Reference Include="System.DirectoryServices.AccountManagement">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.DirectoryServices.AccountManagement.dll</HintPath>
-    </Reference>
-    <Reference Include="System.DirectoryServices.Protocols">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.DirectoryServices.Protocols.dll</HintPath>
-    </Reference>
-    <Reference Include="System.DirectoryServices">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.DirectoryServices.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Drawing.Common">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Drawing.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Formats.Asn1">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Formats.Asn1.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.FileSystem.AccessControl">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.IO.FileSystem.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Packaging">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.IO.Packaging.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Pipes.AccessControl">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.IO.Pipes.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Ports">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.IO.Ports.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Management">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Management.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Private.ServiceModel">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Private.ServiceModel.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reflection.Context">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Reflection.Context.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Caching">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Runtime.Caching.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.AccessControl">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Security.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Cng">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Security.Cryptography.Cng.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Pkcs">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Security.Cryptography.Pkcs.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.ProtectedData">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Security.Cryptography.ProtectedData.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Xml">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Security.Cryptography.Xml.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Permissions">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Security.Permissions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Security.Principal.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel.Duplex">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ServiceModel.Duplex.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel.Http">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ServiceModel.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel.NetTcp">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ServiceModel.NetTcp.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel.Primitives">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ServiceModel.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel.Security">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ServiceModel.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel.Syndication">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ServiceModel.Syndication.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ServiceModel.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceProcess.ServiceController">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.ServiceProcess.ServiceController.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Speech">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Speech.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encoding.CodePages">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Text.Encoding.CodePages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.AccessControl">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Threading.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Services.Description">
-      <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/NetStandard/EditorExtensions/System.Web.Services.Description.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.2D.Runtime">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.InputSystem.ForUI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualEffectGraph.Runtime">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualEffectGraph.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Collections.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor.Shared">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="PPv2URPConverters">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/PPv2URPConverters.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rendering.LightTransport.Editor">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Rendering.LightTransport.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rendering.LightTransport.Runtime">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.Rendering.LightTransport.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{5ad6c680-3479-056d-b0cd-152c7c227b85}</Project>
-      <Name>Assembly-CSharp</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

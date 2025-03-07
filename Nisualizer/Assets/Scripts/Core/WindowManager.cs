@@ -6,6 +6,22 @@ namespace Scripts.Core
 {
     public class WindowManager : MonoBehaviour
     {
+        
+        public void SwitchLayer(WindowLayer layer)
+        {
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+            // Initialize if not initialized
+            if (!_init) Init();
+
+            if (layer == WindowLayer.Background) MoveToBackground();
+            else MoveToForeground();
+#else
+            Debug.LogError("Switching Window Layers is only supported on Windows.");
+            return;
+#endif
+        }
+        
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
         // Window styles
         private const int GwlStyle = -16;
         private const int GwlExStyle = -20;
@@ -70,7 +86,7 @@ namespace Scripts.Core
         private bool _init;
         private WindowLayer _layer = WindowLayer.Foreground;
 
-        public void Init()
+        private void Init()
         {
             // Get handle to the Unity window
             _unityWindowHandle = GetActiveWindow();
@@ -120,20 +136,6 @@ namespace Scripts.Core
             _originalExStyle = GetWindowLong(_unityWindowHandle, GwlExStyle); 
             
             _init = true;
-        }
-        
-        public void SwitchLayer(WindowLayer layer)
-        {
-#if !UNITY_STANDALONE_WIN
-            Debug.LogError("Switching Window Layers is only supported on Windows.");
-            return;
-#endif
-
-            // Return if not initialized
-            if (!_init) Init();
-
-            if (layer == WindowLayer.Background) MoveToBackground();
-            else MoveToForeground();
         }
 
         private void MoveToBackground()
@@ -204,5 +206,6 @@ namespace Scripts.Core
             SetParent(_unityWindowHandle, IntPtr.Zero);
             SetWindowPos(_unityWindowHandle, IntPtr.Zero, 0, 0, 0, 0, SwpNoZOrder | SwpShowWindow);
         }
+#endif
     }
 }

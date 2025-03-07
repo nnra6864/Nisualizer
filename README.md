@@ -26,6 +26,7 @@ A simple example can be found [here](https://youtu.be/V6RLddVE4zE).<br/>
 - Digital Clock
 
 # Roadmap
+- [ ] Add config and cli arguments for setting the display
 - [ ] Launch on startup
 - [x] Arguments(e.g. using different configs for 2 displays)
 - [x] Change the config directory for Windows(and their shit system structure)

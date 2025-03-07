@@ -72,6 +72,7 @@
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/AudioMeterInformationChannels.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/Interfaces/Blob.cs" />
+    <Compile Include="Assets/NnUtils/Scripts/LaunchOnStartup.cs" />
     <Compile Include="Assets/Scripts/Core/WindowManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/TextUtils/Scripts/InteractiveText/InteractiveTextScript.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigGradient.cs" />
@@ -142,7 +143,6 @@
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/Components/UI/ConfigVerticalLayoutGroup.cs" />
     <Compile Include="Assets/NnUtils/Modules/JSONUtils/Scripts/Types/ConfigColor.cs" />
     <Compile Include="Assets/NnUtils/Scripts/Easings.cs" />
-    <Compile Include="Assets/Scripts/Core/StartupManager.cs" />
     <Compile Include="Assets/NnUtils/Modules/SystemAudioMonitor/CoreAudio/MMDeviceEnumerator.cs" />
     <Compile Include="Assets/NnUtils/Scripts/UI/RadioNuttonManager.cs" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
@@ -529,11 +529,17 @@
     <Reference Include="nunit.framework">
       <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/PackageCache/com.unity.ext.nunit/net40/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Assets/Plugins/System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/PackageCache/com.unity.nuget.newtonsoft-json/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Library/PackageCache/com.unity.nuget.mono-cecil/Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry">
+      <HintPath>/home/nnra/Data/Projects/Unity/Nisualizer/Nisualizer/Assets/Plugins/Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>/home/nnra/Unity/Hub/Editor/6000.0.34f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Types.dll</HintPath>

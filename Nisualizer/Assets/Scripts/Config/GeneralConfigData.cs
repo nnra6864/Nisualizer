@@ -23,6 +23,9 @@ namespace Scripts.Config
         [JsonConverter(typeof(StringEnumConverter))]
         [ReadOnly] public FullScreenMode WindowMode;
 
+        [JsonIgnore] public bool DefaultLaunchOnStartup = true;
+        [ReadOnly] public bool LaunchOnStartup;
+        
         // Whether the app window will be sent to the background layer
         // Windows only
         [JsonIgnore] public WindowLayer DefaultWindowLayer = WindowLayer.Background;
@@ -66,17 +69,18 @@ namespace Scripts.Config
         /// Resets all the fields to their default values
         public override void ResetToDefault(bool silent = false)
         {
-            ReloadDelay = DefaultReloadDelay;
-            FPS         = DefaultFPS;
-            WindowMode  = DefaultWindowMode;
-            WindowLayer = DefaultWindowLayer;
-            BufferSize  = DefaultBufferSize;
-            Sensitivity = DefaultSensitivity;
-            AudioDevice = DefaultAudioDevice;
-            Font        = DefaultFont;
-            Scene       = DefaultScene;
-            Shell       = DefaultShell;
-            Monitor     = DefaultMonitor;
+            ReloadDelay     = DefaultReloadDelay;
+            FPS             = DefaultFPS;
+            LaunchOnStartup = DefaultLaunchOnStartup;
+            WindowMode      = DefaultWindowMode;
+            WindowLayer     = DefaultWindowLayer;
+            BufferSize      = DefaultBufferSize;
+            Sensitivity     = DefaultSensitivity;
+            AudioDevice     = DefaultAudioDevice;
+            Font            = DefaultFont;
+            Scene           = DefaultScene;
+            Shell           = DefaultShell;
+            Monitor         = DefaultMonitor;
 
             base.ResetToDefault(silent);
         }
