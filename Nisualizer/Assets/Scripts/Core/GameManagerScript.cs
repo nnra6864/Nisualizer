@@ -154,7 +154,8 @@ namespace Scripts.Core
             InteractiveTextProcessing.Shell =  ConfigData.Shell;
             SetFPS();
             SetWindowMode();
-            WindowManager.SwitchLayer(ConfigData.WindowLayer);
+            WindowManager.SwitchLayer(ConfigData.WindowLayer, ConfigData.Display);
+            DisplayManager.MoveToDisplay(ConfigData.Display);
             LaunchOnStartup.Toggle(ConfigData.LaunchOnStartup);
         }
         

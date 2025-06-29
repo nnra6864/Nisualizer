@@ -1,27 +1,32 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Scripts.Core
 {
     public class WindowManager : MonoBehaviour
     {
-        
-        public void SwitchLayer(WindowLayer layer)
+        public void SwitchLayer(WindowLayer layer, int displayIndex = 0)
         {
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
             // Initialize if not initialized
             if (!_init) Init();
 
-            if (layer == WindowLayer.Background) MoveToBackground();
-            else MoveToForeground();
+            // Get the display
+            List<DisplayInfo> displays = new();
+            Screen.GetDisplayLayout(displays);
+            displayIndex = displayIndex < 0 ? 0 : displayIndex >= displays.Count ? displays.Count - 1 : displayIndex;
+            var display = displays[displayIndex];
+
+            if (layer == WindowLayer.Background) MoveToBackground(display);
+            else MoveToForeground(display);
 #else
             Debug.LogError("Switching Window Layers is only supported on Windows.");
-            return;
 #endif
         }
         
-#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+#if UNITY_STANDALONE_WIN
         // Window styles
         private const int GwlStyle = -16;
         private const int GwlExStyle = -20;
@@ -30,8 +35,8 @@ namespace Scripts.Core
         private const int WsExNoActivate = 0x08000000;
 
         // For finding desktop window
-        private static readonly IntPtr HwndBottom = new IntPtr(1);
-        private static readonly IntPtr HwndTop = new IntPtr(0);
+        private static readonly IntPtr HwndBottom = new(1);
+        private static readonly IntPtr HwndTop = new(0);
         private const int SwpNoMove = 0x0002;
         private const int SwpNoSize = 0x0001;
         private const int SwpNoActivate = 0x0010;
@@ -138,7 +143,7 @@ namespace Scripts.Core
             _init = true;
         }
 
-        private void MoveToBackground()
+        private void MoveToBackground(DisplayInfo display)
         {
             if (_layer == WindowLayer.Background)
             {
@@ -168,15 +173,17 @@ namespace Scripts.Core
             SetParent(_unityWindowHandle, _workerWHandle);
 
             // Position and size the window appropriately
+            var rect = display.workArea;
             SetWindowPos(_unityWindowHandle, HwndTop, 0, 0,
-                Screen.currentResolution.width, Screen.currentResolution.height,
+                rect.width, rect.height,
                 SwpNoActivate | SwpShowWindow);
+            Debug.Log($"Moved window to: {rect.x} | {rect.y} | {rect.width} | {rect.height}");
 
             _layer = WindowLayer.Background;
             Debug.Log("Successfully moved window to the background layer.");
         }
 
-        private void MoveToForeground()
+        private void MoveToForeground(DisplayInfo display)
         {
             if (_layer == WindowLayer.Foreground)
             {

@@ -23,6 +23,11 @@ namespace Scripts.Config
         [JsonConverter(typeof(StringEnumConverter))]
         [ReadOnly] public FullScreenMode WindowMode;
 
+        [JsonIgnore] public int DefaultDisplay = 0;
+        [ReadOnly] public int Display;
+        
+        // Whether the app should launch on startup
+        // Windows only
         [JsonIgnore] public bool DefaultLaunchOnStartup = true;
         [ReadOnly] public bool LaunchOnStartup;
         
@@ -72,6 +77,7 @@ namespace Scripts.Config
             ReloadDelay     = DefaultReloadDelay;
             FPS             = DefaultFPS;
             LaunchOnStartup = DefaultLaunchOnStartup;
+            Display         = DefaultDisplay;
             WindowMode      = DefaultWindowMode;
             WindowLayer     = DefaultWindowLayer;
             BufferSize      = DefaultBufferSize;
