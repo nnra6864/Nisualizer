@@ -1,4 +1,5 @@
 using System.Collections;
+using NnUtils.Modules.Easings;
 using NnUtils.Modules.SystemAudioMonitor;
 using NnUtils.Scripts;
 using Scripts.Config;

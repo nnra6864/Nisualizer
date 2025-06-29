@@ -55,7 +55,7 @@ namespace Scripts.Config
         
         
         [Tooltip("Path to the config")]
-        [ReadOnly] [SerializeField] private string _configPath;
+        /*[ReadOnly]*/ [SerializeField] private string _configPath;
         
         // Has to be public so that it can be set via SceneCreator script
         [Tooltip("Default Config")]

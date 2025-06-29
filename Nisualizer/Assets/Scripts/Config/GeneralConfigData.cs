@@ -12,24 +12,24 @@ namespace Scripts.Config
     {
         // Delays the config reload to avoid multiple reloads and config overwrites
         [JsonIgnore] public float DefaultReloadDelay = 0.1f;
-        [ReadOnly] public float ReloadDelay;
+        /*[ReadOnly]*/ public float ReloadDelay;
         
         // FPS of the app
         [JsonIgnore] public int DefaultFPS = 60;
-        [ReadOnly] public int FPS;
+        /*[ReadOnly]*/ public int FPS;
 
         // Window mode of the app
         [JsonIgnore] public FullScreenMode DefaultWindowMode = FullScreenMode.Windowed;
         [JsonConverter(typeof(StringEnumConverter))]
-        [ReadOnly] public FullScreenMode WindowMode;
+        /*[ReadOnly]*/ public FullScreenMode WindowMode;
 
         [JsonIgnore] public int DefaultDisplay = 0;
-        [ReadOnly] public int Display;
+        /*[ReadOnly]*/ public int Display;
         
         // Whether the app should launch on startup
         // Windows only
         [JsonIgnore] public bool DefaultLaunchOnStartup = true;
-        [ReadOnly] public bool LaunchOnStartup;
+        /*[ReadOnly]*/ public bool LaunchOnStartup;
         
         // Whether the app window will be sent to the background layer
         // Windows only
@@ -39,25 +39,25 @@ namespace Scripts.Config
         
         // Buffer size for the audio capture
         [JsonIgnore] public int DefaultBufferSize = 64;
-        [ReadOnly] public int BufferSize;
+        /*[ReadOnly]*/ public int BufferSize;
         
         // How sensitive Nisualizer is to audio
         [JsonIgnore] public float DefaultSensitivity = 1;
-        [ReadOnly] public float Sensitivity;
+        /*[ReadOnly]*/ public float Sensitivity;
 
         // Name of the input device being monitored
         // Pulse Audio only
         [JsonIgnore] public string DefaultAudioDevice = "@DEFAULT_MONITOR@";
-        [ReadOnly] public string AudioDevice;
+        /*[ReadOnly]*/ public string AudioDevice;
         
         // Name of the font being used
         // Linux only
         [JsonIgnore] public string DefaultFont = "Default";
-        [ReadOnly] public string Font;
+        /*[ReadOnly]*/ public string Font;
 
         // Name of the scene being used
         [JsonIgnore] public string DefaultScene = "Snowstorm";
-        [ReadOnly] public string Scene;
+        /*[ReadOnly]*/ public string Scene;
         
         // Shell to be used
         [JsonIgnore] public string DefaultShell = Application.platform switch
@@ -66,7 +66,7 @@ namespace Scripts.Config
             RuntimePlatform.WindowsPlayer or RuntimePlatform.WindowsEditor or RuntimePlatform.WindowsServer => "cmd.exe",
             _ => string.Empty
         };
-        [ReadOnly] public string Shell;
+        /*[ReadOnly]*/ public string Shell;
 
         [JsonIgnore] public string[] DefaultMonitor = Array.Empty<string>();
         [JsonProperty] public string[] Monitor;

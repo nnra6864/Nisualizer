@@ -1,4 +1,5 @@
 using System.Collections;
+using NnUtils.Modules.Easings;
 using NnUtils.Scripts;
 using UnityEngine;
 using UnityEngine.UI;

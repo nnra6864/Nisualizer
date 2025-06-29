@@ -4,6 +4,8 @@
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/NnUtils" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/NnUtils/Modules/JSONUtils" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/NnUtils/Modules/NnUtilsFiles" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/NnUtils/Modules/SystemAudioMonitor" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/NnUtils/Modules/TextUtils" vcs="Git" />
   </component>
 </project>

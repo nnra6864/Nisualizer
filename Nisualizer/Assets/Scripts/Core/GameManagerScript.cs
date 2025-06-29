@@ -39,27 +39,27 @@ namespace Scripts.Core
         public static float DeltaTime { get; private set; }
         
         /// Contains all the Config logic
-        [ReadOnly] [SerializeField] private ConfigScript _config;
+        /*[ReadOnly]*/ [SerializeField] private ConfigScript _config;
         public static ConfigScript ConfigScript => Instance._config;
 
         /// Contains all the Config data
-        [ReadOnly] [SerializeField] private GeneralConfigData _configData;
+        /*[ReadOnly]*/ [SerializeField] private GeneralConfigData _configData;
         public static GeneralConfigData ConfigData => Instance._configData ??= (GeneralConfigData)Instance._config.Data;
         
         /// Handles config edits
-        [ReadOnly] [SerializeField] private LiveConfigReload _liveConfigReload;
+        /*[ReadOnly]*/ [SerializeField] private LiveConfigReload _liveConfigReload;
         public static LiveConfigReload LiveConfigReload => _instance._liveConfigReload;
         
-        [ReadOnly] [SerializeField] private WindowManager _windowManager;
+        /*[ReadOnly]*/ [SerializeField] private WindowManager _windowManager;
         public static WindowManager WindowManager => Instance._windowManager;
         
         /// Directory for configs
         public static string ConfigDirectory;
         
-        [ReadOnly] [SerializeField] private AudioDataScript _audioData;
+        /*[ReadOnly]*/ [SerializeField] private AudioDataScript _audioData;
         public static AudioDataScript AudioData => Instance._audioData;
         
-        [ReadOnly] [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManager;
+        /*[ReadOnly]*/ [SerializeField] private NisualizerSceneManagerScript _nisualizerSceneManager;
         public static NisualizerSceneManagerScript NisualizerSceneManager => Instance._nisualizerSceneManager;
 
         private void Reset()
@@ -134,7 +134,7 @@ namespace Scripts.Core
             else
             {
                 ConfigDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                if (Application.platform is not RuntimePlatform.WindowsPlayer and RuntimePlatform.WindowsEditor)
+                if (Application.platform is not (RuntimePlatform.WindowsPlayer or RuntimePlatform.WindowsEditor))
                     ConfigDirectory = Path.Combine(ConfigDirectory, ".config");
                 ConfigDirectory = Path.Combine(ConfigDirectory, "Nisualizer/");
             }

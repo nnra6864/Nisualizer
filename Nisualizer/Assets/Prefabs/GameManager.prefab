@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitionTime: 0.25
-  _transitionEasing: 9
+  _transitionEasing: 8
 --- !u!114 &6851525485944725458
 MonoBehaviour:
   m_ObjectHideFlags: 0
